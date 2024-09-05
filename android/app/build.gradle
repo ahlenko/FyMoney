@@ -1,8 +1,15 @@
 plugins {
     id "com.android.application"
     id "kotlin-android"
-    // The Flutter Gradle Plugin must be applied after the Android and Kotlin Gradle plugins.
     id "dev.flutter.flutter-gradle-plugin"
+}
+
+def appName = "FyMonay"
+
+def keystoreProperties = new Properties()
+def keystorePropertiesFile = rootProject.file('key.properties')
+if (keystorePropertiesFile.exists()) {
+    keystoreProperties.load(new FileInputStream(keystorePropertiesFile))
 }
 
 android {
@@ -20,21 +27,67 @@ android {
     }
 
     defaultConfig {
-        // TODO: Specify your own unique Application ID (https://developer.android.com/studio/build/application-id.html).
         applicationId = "com.example.fymoney"
-        // You can update the following values to match your application needs.
-        // For more information, see: https://flutter.dev/to/review-gradle-config.
         minSdk = flutter.minSdkVersion
         targetSdk = flutter.targetSdkVersion
         versionCode = flutter.versionCode
         versionName = flutter.versionName
     }
 
+    signingConfigs {
+        release {
+            keyAlias keystoreProperties['keyAlias']
+            keyPassword keystoreProperties['keyPassword']
+            storeFile keystoreProperties['storeFile'] ? file(keystoreProperties['storeFile']) : null
+            storePassword keystoreProperties['storePassword']
+        }
+    }
+
     buildTypes {
         release {
-            // TODO: Add your own signing config for the release build.
-            // Signing with the debug keys for now, so `flutter run --release` works.
             signingConfig = signingConfigs.debug
+        }
+    }
+}
+
+android.applicationVariants.all { variant ->
+    if (variant.buildType.name == "release") {
+        tasks["bundle${variant.name.capitalize()}"].doLast {
+            def releaseBundle = file("${buildDir}/outputs/bundle/release/app-release.aab")
+            def newBundleFileName = file("${buildDir}/outputs/bundle/release/${appName}_${variant.versionName}.aab")
+            if (releaseBundle.exists()) {
+                releaseBundle.renameTo(newBundleFileName)
+                def green = "\u001B[32m"
+                def underline = "\u001B[4m"
+                def reset = "\u001B[0m"
+                println("\n${green}✓✓✓ - AAB Bundle file${reset} created and renamed to ${underline}${appName}_${variant.versionName}.aab${reset}")
+                println("${green}✓ Built ${underline}${newBundleFileName}${reset}\n")
+            } else {
+                println("AAB file not found!")
+            }
+        }
+    }
+}
+
+android.applicationVariants.all { variant ->
+    if (variant.buildType.name == "release") {
+        variant.outputs.all { output ->
+            output.outputFileName = "app-release.apk"
+        }
+
+        tasks["assemble${variant.name.capitalize()}"].doLast {
+            def releaseApk = file("${buildDir}/outputs/apk/release/app-release.apk")
+            def newApkFileName = file("${buildDir}/outputs/apk/release/${appName}_${variant.versionName}.apk")
+            if (releaseApk.exists()) {
+                releaseApk.renameTo(newApkFileName)
+                def green = "\u001B[32m"
+                def underline = "\u001B[4m"
+                def reset = "\u001B[0m"
+                println("\n${green}✓✓✓ - APK file file${reset} created and renamed to ${underline}${appName}_${variant.versionName}.apk${reset}")
+                println("${green}✓ Built ${underline}${newApkFileName}${reset}\n")
+            } else {
+                println("APK file not found!")
+            }
         }
     }
 }
