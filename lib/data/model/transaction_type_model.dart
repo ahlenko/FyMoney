@@ -20,47 +20,48 @@ class TransactionTypeModel {
 
   static List<TransactionTypeModel> localTypes = List.of([
     TransactionTypeModel(
-      color: Color(0xFF5C89CD),
+      color: Color(0xFF9A4E77),
       index: 0,
+      name: Strings.products,
+      type: .spending,
+      icon: Vector.icProducts,
+    ),
+    TransactionTypeModel(
+      color: Color(0xFF5C89CD),
+      index: 1,
       name: Strings.dwelling,
       type: .spending,
       icon: Vector.icDwelling,
     ),
     TransactionTypeModel(
       color: Color(0xFF908383),
-      index: 1,
+      index: 2,
       name: Strings.car,
       type: .spending,
       icon: Vector.icCar,
     ),
     TransactionTypeModel(
       color: Color(0xFF7EAC5A),
-      index: 2,
+      index: 3,
       name: Strings.reataurants,
       type: .spending,
       icon: Vector.icReataurants,
     ),
     TransactionTypeModel(
       color: Color(0xFFB872C3),
-      index: 3,
+      index: 4,
       name: Strings.clothes,
       type: .spending,
       icon: Vector.icClothes,
     ),
     TransactionTypeModel(
       color: Color(0xFFDACA39),
-      index: 4,
+      index: 5,
       name: Strings.taxi,
       type: .spending,
       icon: Vector.icTaxi,
     ),
-    TransactionTypeModel(
-      color: Color(0xFF9A4E77),
-      index: 5,
-      name: Strings.products,
-      type: .spending,
-      icon: Vector.icProducts,
-    ),
+
     TransactionTypeModel(
       color: Color(0xFFFF6231),
       index: 6,
@@ -126,19 +127,20 @@ class TransactionTypeModel {
     ),
 
     TransactionTypeModel(
-      color: Color(0xFF63A91C),
-      index: 0,
-      name: Strings.deposit,
-      type: .earning,
-      icon: Vector.icDeposit,
-    ),
-    TransactionTypeModel(
       color: Color(0xFF6D907B),
-      index: 1,
+      index: 0,
       name: Strings.salary,
       type: .earning,
       icon: Vector.icSalary,
     ),
+    TransactionTypeModel(
+      color: Color(0xFF63A91C),
+      index: 1,
+      name: Strings.deposit,
+      type: .earning,
+      icon: Vector.icDeposit,
+    ),
+
     TransactionTypeModel(
       color: Color(0xFFBD446F),
       index: 2,

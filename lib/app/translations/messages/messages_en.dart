@@ -42,7 +42,13 @@ class MessagesEn extends Translations {
       Strings.car: '''Car''',
       Strings.dwelling: '''Dwelling''',
       Strings.date: '''Date''',
-          Strings.amount: '''Amount''',
-        },
+      Strings.amount: '''Amount''',
+      Strings.spendingRecord: '''Spending record''',
+      Strings.earningRecord: '''Earning record''',
+      Strings.comment: '''Comment:''',
+      Strings.earningCategory: '''Earning category:''',
+      Strings.spendingCategory: '''Spending category''',
+      Strings.save: '''Save''',
+    },
   };
 }

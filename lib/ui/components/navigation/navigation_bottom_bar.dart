@@ -3,6 +3,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:fymoney/app/extensions/context_extension.dart';
 import 'package:fymoney/data/model/transaction_model.dart';
+import 'package:fymoney/ui/screens/home/pages/transaction/create/create_transaction_page.dart';
 import 'package:fymoney/ui/screens/home/pages/transaction/history/history_transaction_page.dart';
 import 'package:fymoney/ui/theme/colors.dart';
 import 'package:fymoney/ui/theme/icons/vector.dart';
@@ -24,7 +25,30 @@ class NavigationBottomBar extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.spaceAround,
         children: [
           GestureDetector(
-            onTap: () => Scaffold.of(context).openDrawer(),
+            onTap: () => Navigator.of(context).push(
+              PageRouteBuilder(
+                pageBuilder: (context, animation, secondaryAnimation) =>
+                    CreateTransactionPage(selectedType: .spending),
+                transitionsBuilder:
+                    (context, animation, secondaryAnimation, child) {
+                      const begin = Offset(0.0, 1.0);
+                      const end = Offset.zero;
+                      const curve = Curves.easeOut;
+
+                      var tween = Tween(
+                        begin: begin,
+                        end: end,
+                      ).chain(CurveTween(curve: curve));
+                      var offsetAnimation = animation.drive(tween);
+
+                      return SlideTransition(
+                        position: offsetAnimation,
+                        child: child,
+                      );
+                    },
+                reverseTransitionDuration: const Duration(milliseconds: 300),
+              ),
+            ),
             child: Container(
               padding: EdgeInsets.all(45.w),
               decoration: BoxDecoration(
@@ -62,7 +86,30 @@ class NavigationBottomBar extends StatelessWidget {
             child: SvgPicture.asset(Vector.icBurger, width: 158.w),
           ),
           GestureDetector(
-            onTap: () => Scaffold.of(context).openEndDrawer(),
+            onTap: () => Navigator.of(context).push(
+              PageRouteBuilder(
+                pageBuilder: (context, animation, secondaryAnimation) =>
+                    CreateTransactionPage(selectedType: .earning),
+                transitionsBuilder:
+                    (context, animation, secondaryAnimation, child) {
+                      const begin = Offset(0.0, 1.0);
+                      const end = Offset.zero;
+                      const curve = Curves.easeOut;
+
+                      var tween = Tween(
+                        begin: begin,
+                        end: end,
+                      ).chain(CurveTween(curve: curve));
+                      var offsetAnimation = animation.drive(tween);
+
+                      return SlideTransition(
+                        position: offsetAnimation,
+                        child: child,
+                      );
+                    },
+                reverseTransitionDuration: const Duration(milliseconds: 300),
+              ),
+            ),
             child: Container(
               padding: EdgeInsets.all(45.w),
               decoration: BoxDecoration(

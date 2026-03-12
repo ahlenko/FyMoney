@@ -38,4 +38,10 @@ class Strings {
   static const String dwelling = 'dwelling';
   static const String date = 'date';
   static const String amount = 'amount';
+  static const String spendingRecord = 'spendingRecord';
+  static const String earningRecord = 'earningRecord';
+  static const String comment = 'comment';
+  static const String earningCategory = 'earningCategory';
+  static const String spendingCategory = 'spendingCategory';
+  static const String save = 'save';
 }

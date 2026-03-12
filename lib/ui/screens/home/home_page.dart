@@ -78,8 +78,7 @@ class _HomePageState extends State<HomePage> {
             sufixCallback: () => {},
             sufixIcon: Vector.icSettings,
           ),
-          drawer: CreateTransactionPage(isSpending: true),
-          endDrawer: CreateTransactionPage(isSpending: false),
+
           bottomNavigationBar: NavigationBottomBar(
             selectedType: state.transactionType,
           ),
