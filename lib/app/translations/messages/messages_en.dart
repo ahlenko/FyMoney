@@ -41,6 +41,8 @@ class MessagesEn extends Translations {
       Strings.reataurants: '''Reataurants''',
       Strings.car: '''Car''',
       Strings.dwelling: '''Dwelling''',
-    },
+      Strings.date: '''Date''',
+          Strings.amount: '''Amount''',
+        },
   };
 }

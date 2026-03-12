@@ -33,7 +33,7 @@ class TransactionRowStatsItem extends StatelessWidget {
           borderRadius: BorderRadius.circular(25.r),
         ),
         child: SizedBox(
-          height: 200.h,
+          height: 190.h,
           child: Padding(
             padding: EdgeInsets.symmetric(horizontal: 20.w),
             child: Row(

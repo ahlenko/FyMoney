@@ -27,10 +27,10 @@ class AuthPage extends StatefulWidget {
 }
 
 class _AuthPageState extends State<AuthPage> {
+  final cubit = getIt.get<AuthCubit>();
+
   @override
   Widget build(BuildContext context) {
-    final cubit = getIt.get<AuthCubit>();
-
     return BlocBuilder<AuthCubit, AuthState>(
       bloc: cubit,
       builder: (context, state) {

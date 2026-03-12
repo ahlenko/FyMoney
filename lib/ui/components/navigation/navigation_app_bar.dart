@@ -6,7 +6,6 @@ import 'package:fymoney/ui/theme/colors.dart';
 import 'package:fymoney/ui/theme/fonts/fonts.dart';
 import 'package:fymoney/ui/theme/fonts/types.dart';
 import 'package:fymoney/ui/theme/icons/vector.dart';
-import 'package:fymoney/util/screen_util.dart';
 
 class NavigationAppBar extends StatelessWidget implements PreferredSizeWidget {
   final VoidCallback? prefixCallback;
@@ -51,7 +50,7 @@ class NavigationAppBar extends StatelessWidget implements PreferredSizeWidget {
           ),
 
           GestureDetector(
-            onTap: prefixCallback ?? Navigator.of(context).pop,
+            onTap: sufixCallback,
             child: SvgPicture.asset(sufixIcon, width: 136.w),
           ),
         ],

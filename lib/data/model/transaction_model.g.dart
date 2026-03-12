@@ -10,6 +10,7 @@ _TransactionModel _$TransactionModelFromJson(Map<String, dynamic> json) =>
     _TransactionModel(
       id: json['id'] as String?,
       currency: json['currency'] as String?,
+      typeIndex: (json['typeIndex'] as num?)?.toInt() ?? 0,
       amount: (json['amount'] as num?)?.toInt() ?? 0,
       comment: json['comment'] as String? ?? "",
       type:
@@ -23,6 +24,7 @@ Map<String, dynamic> _$TransactionModelToJson(_TransactionModel instance) =>
     <String, dynamic>{
       'id': instance.id,
       'currency': instance.currency,
+      'typeIndex': instance.typeIndex,
       'amount': instance.amount,
       'comment': instance.comment,
       'type': _$TransactionTypeEnumMap[instance.type]!,
@@ -31,6 +33,6 @@ Map<String, dynamic> _$TransactionModelToJson(_TransactionModel instance) =>
     };
 
 const _$TransactionTypeEnumMap = {
-  TransactionType.earning: 'earning',
   TransactionType.spending: 'spending',
+  TransactionType.earning: 'earning',
 };

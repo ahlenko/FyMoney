@@ -9,6 +9,7 @@ abstract class TransactionModel with _$TransactionModel {
   const factory TransactionModel({
     String? id,
     String? currency,
+    @Default(0) int typeIndex,
     @Default(0) int amount,
     @Default("") String comment,
     @Default(TransactionType.spending) TransactionType type,
@@ -24,8 +25,8 @@ abstract class TransactionModel with _$TransactionModel {
 
 @JsonEnum(valueField: "subscriptionPeriod")
 enum TransactionType {
-  @JsonValue('earning')
-  earning(),
   @JsonValue('spending')
   spending(),
+  @JsonValue('earning')
+  earning(),
 }

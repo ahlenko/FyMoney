@@ -3,8 +3,8 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:fymoney/app/di/di.dart';
 import 'package:fymoney/app/translations/tr_strings.dart';
+import 'package:fymoney/data/model/transaction_model.dart';
 import 'package:fymoney/data/model/transaction_type_model.dart';
 import 'package:fymoney/ui/components/item/transaction_grid_stats_item.dart';
 import 'package:fymoney/ui/components/item/transaction_row_stats_item.dart';
@@ -30,21 +30,23 @@ class _HomePageState extends State<HomePage> {
   late StreamSubscription<HomeState> subscription;
   late PageController _pageController;
   bool isPageAnimating = false;
-  final cubit = getIt.get<HomeCubit>();
+
+  late HomeCubit cubit;
 
   @override
   void initState() {
     super.initState();
+    cubit = context.read<HomeCubit>();
 
     _pageController = PageController(
-      initialPage: cubit.state.earningSelected ? 1 : 0,
+      initialPage: TransactionType.spending.index,
     );
 
     WidgetsBinding.instance.addPostFrameCallback((_) {
       subscription = cubit.stream.listen((state) {
         if (_pageController.positions.isNotEmpty) {
           final currentIndex = _pageController.page?.round() ?? 0;
-          final targetIndex = state.earningSelected ? 1 : 0;
+          final targetIndex = state.transactionType.index;
           final distance = (targetIndex - currentIndex).abs();
 
           final duration = Duration(milliseconds: distance * 200);
@@ -78,7 +80,9 @@ class _HomePageState extends State<HomePage> {
           ),
           drawer: CreateTransactionPage(isSpending: true),
           endDrawer: CreateTransactionPage(isSpending: false),
-          bottomNavigationBar: NavigationBottomBar(),
+          bottomNavigationBar: NavigationBottomBar(
+            selectedType: state.transactionType,
+          ),
           body: SafeArea(
             child: Column(
               children: [
@@ -86,26 +90,26 @@ class _HomePageState extends State<HomePage> {
                   mainAxisAlignment: MainAxisAlignment.spaceAround,
                   children: [
                     GestureDetector(
-                      onTap: () => cubit.setPage(0),
+                      onTap: () => cubit.setPage(.spending),
                       child: Text(
                         Strings.spending.tr,
                         style: TextStyle(
                           fontFamily: Fonts.inter,
                           color: AppColors.black.withValues(
-                            alpha: state.earningSelected ? .5 : 1,
+                            alpha: state.transactionType == .earning ? .5 : 1,
                           ),
                           fontSize: 50.sp,
                         ),
                       ),
                     ),
                     GestureDetector(
-                      onTap: () => cubit.setPage(1),
+                      onTap: () => cubit.setPage(.earning),
                       child: Text(
                         Strings.earning.tr,
                         style: TextStyle(
                           fontFamily: Fonts.inter,
                           color: AppColors.black.withValues(
-                            alpha: !state.earningSelected ? .5 : 1,
+                            alpha: state.transactionType == .spending ? .5 : 1,
                           ),
                           fontSize: 50.sp,
                         ),
@@ -122,7 +126,7 @@ class _HomePageState extends State<HomePage> {
                     controller: _pageController,
                     onPageChanged: (value) {
                       if (!isPageAnimating) {
-                        cubit.setPage(value);
+                        cubit.setPage(TransactionType.values[value]);
                       }
                     },
                     children: [

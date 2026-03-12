@@ -1,5 +1,6 @@
 import 'package:bloc/bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:fymoney/data/model/transaction_model.dart';
 import 'package:injectable/injectable.dart';
 
 part 'home_state.dart';
@@ -13,7 +14,7 @@ class HomeCubit extends Cubit<HomeState> {
     emit(state.copyWith(hoveredIndex: hoverIndex));
   }
 
-  void setPage(int value) {
-    emit(state.copyWith(earningSelected: value == 1));
+  void setPage(TransactionType transactionType) {
+    emit(state.copyWith(transactionType: transactionType));
   }
 }

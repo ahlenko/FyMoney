@@ -43,6 +43,8 @@ class MessagesUk extends Translations {
       Strings.reataurants: '''Ресторани''',
       Strings.car: '''Автомобіль''',
       Strings.dwelling: '''Житло''',
+      Strings.date: '''Дата''',
+      Strings.amount: '''Сума''',
     },
   };
 }

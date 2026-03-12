@@ -6,6 +6,7 @@ import 'package:fymoney/app/cubits/settings/app_settings_cubit.dart';
 import 'package:fymoney/app/di/di.dart';
 import 'package:fymoney/data/hive/repo/hive_app.dart';
 import 'package:fymoney/main_setup.dart';
+import 'package:fymoney/ui/screens/home/home_cubit.dart';
 
 bool isRunningOniPad = false;
 
@@ -15,6 +16,7 @@ void main() async {
   runApp(
     MultiBlocProvider(
       providers: [
+        BlocProvider(create: (context) => getIt.get<HomeCubit>()),
         BlocProvider(create: (context) => getIt.get<AppSettingsCubit>()),
         BlocProvider(create: (context) => getIt.get<NetworkConnectionCubit>()),
       ],

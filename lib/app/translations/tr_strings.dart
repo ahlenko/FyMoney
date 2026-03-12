@@ -36,4 +36,6 @@ class Strings {
   static const String reataurants = 'reataurants';
   static const String car = 'car';
   static const String dwelling = 'dwelling';
+  static const String date = 'date';
+  static const String amount = 'amount';
 }
