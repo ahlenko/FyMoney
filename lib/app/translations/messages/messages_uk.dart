@@ -47,10 +47,13 @@ class MessagesUk extends Translations {
       Strings.amount: '''Сума''',
       Strings.spendingRecord: '''Запис витрати''',
       Strings.earningRecord: '''Запис доходу''',
-      Strings.comment: '''Коментар''',
-      Strings.earningCategory: '''Категорія доходу''',
-      Strings.spendingCategory: '''Категорія витрати''',
+      Strings.comment: '''Коментар:''',
+      Strings.earningCategory: '''Категорія доходу:''',
+      Strings.spendingCategory: '''Категорія витрати:''',
       Strings.save: '''Зберегти''',
+      Strings.settings: '''Налаштування''',
+      Strings.version: '''Версія: ''',
+      Strings.termsOfUse: '''Умови користування''',
     },
   };
 }

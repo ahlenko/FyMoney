@@ -28,7 +28,7 @@ class NavigationAppBar extends StatelessWidget implements PreferredSizeWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: EdgeInsets.fromLTRB(40.w, context.topSafe, 40.w, 37.h),
+      padding: EdgeInsets.fromLTRB(40.w, context.topSafe, 40.w, 16.h),
       child: Row(
         children: [
           GestureDetector(

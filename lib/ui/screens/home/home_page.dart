@@ -3,6 +3,7 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:fymoney/app/navigation/router.dart';
 import 'package:fymoney/app/translations/tr_strings.dart';
 import 'package:fymoney/data/model/transaction_model.dart';
 import 'package:fymoney/data/model/transaction_type_model.dart';
@@ -12,7 +13,6 @@ import 'package:fymoney/ui/components/navigation/navigation_app_bar.dart';
 import 'package:fymoney/ui/components/navigation/navigation_bottom_bar.dart';
 import 'package:fymoney/ui/components/transaction_stats_circule.dart';
 import 'package:fymoney/ui/screens/home/home_cubit.dart';
-import 'package:fymoney/ui/screens/home/pages/transaction/create/create_transaction_page.dart';
 import 'package:fymoney/ui/theme/colors.dart';
 import 'package:fymoney/ui/theme/fonts/fonts.dart';
 import 'package:fymoney/ui/theme/icons/vector.dart';
@@ -75,7 +75,8 @@ class _HomePageState extends State<HomePage> {
           appBar: NavigationAppBar(
             prefixCallback: () => {},
             prefixIcon: Vector.icCalendar,
-            sufixCallback: () => {},
+            sufixCallback: () =>
+                Navigator.of(context).pushNamed(Routes.settings),
             sufixIcon: Vector.icSettings,
           ),
 

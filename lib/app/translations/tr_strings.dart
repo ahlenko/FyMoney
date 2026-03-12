@@ -44,4 +44,7 @@ class Strings {
   static const String earningCategory = 'earningCategory';
   static const String spendingCategory = 'spendingCategory';
   static const String save = 'save';
+  static const String settings = 'settings';
+  static const String version = 'version';
+  static const String termsOfUse = 'termsOfUse';
 }

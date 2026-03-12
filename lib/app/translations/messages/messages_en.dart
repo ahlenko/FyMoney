@@ -49,6 +49,9 @@ class MessagesEn extends Translations {
       Strings.earningCategory: '''Earning category:''',
       Strings.spendingCategory: '''Spending category''',
       Strings.save: '''Save''',
-    },
+      Strings.settings: '''Settings''',
+          Strings.version: '''Version: ''',
+          Strings.termsOfUse: '''Terms of use''',
+        },
   };
 }
