@@ -21,6 +21,8 @@ class MessagesEn extends Translations {
       Strings.pleaseUseAValidEmail: '''Please use a valid email''',
       Strings.passwordsDoNotMatch: '''Passwords do not match.''',
       Strings.emailAlreadyInUse: '''Email already in use''',
-    },
+      Strings.earning: '''Earning''',
+          Strings.spending: '''Spending''',
+        },
   };
 }

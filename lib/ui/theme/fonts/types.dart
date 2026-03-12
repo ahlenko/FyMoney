@@ -8,6 +8,7 @@ abstract class Types {
   static final medium = FontWeight.w500;
   static final semiBold = FontWeight.w600;
   static final bold = FontWeight.w700;
+  static final extraBold = FontWeight.w900;
 
   static TextStyle interBase = TextStyle(
     color: AppColors.white,

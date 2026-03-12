@@ -1,0 +1,148 @@
+import 'dart:math';
+import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:fymoney/ui/theme/colors.dart';
+import 'package:fymoney/ui/theme/fonts/fonts.dart';
+
+class TransactionStatsCircule extends StatefulWidget {
+  final List<SegmentData> segments;
+  final int? selectedSegment;
+
+  const TransactionStatsCircule({
+    super.key,
+    required this.segments,
+    required this.selectedSegment,
+  });
+
+  @override
+  State<TransactionStatsCircule> createState() =>
+      _TransactionStatsCirculeState();
+}
+
+class _TransactionStatsCirculeState extends State<TransactionStatsCircule> {
+  double get total =>
+      widget.segments.fold(0, (previousValue, e) => previousValue + e.value);
+
+  @override
+  Widget build(BuildContext context) {
+    return SizedBox(
+      height: 854.w,
+      child: Stack(
+        alignment: Alignment.center,
+        children: [
+          CustomPaint(
+            size: Size(854.w, 854.w),
+            painter: _CirclePainter(
+              segments: widget.segments,
+              total: total,
+              selectedIndex: widget.selectedSegment,
+            ),
+          ),
+          Column(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              if (widget.selectedSegment == null)
+                Text(
+                  '0,00 грн',
+                  style: TextStyle(
+                    fontFamily: Fonts.segoeUI,
+                    color: AppColors.red,
+                    fontSize: 55.sp,
+                  ),
+                ),
+              Visibility(
+                visible: widget.selectedSegment != null,
+                child: Text(
+                  '0,00 грн',
+                  style: TextStyle(
+                    fontFamily: Fonts.segoeUI,
+                    color: AppColors.black,
+                    fontSize: 55.sp,
+                  ),
+                ),
+              ),
+              if (widget.selectedSegment == null)
+                Text(
+                  '0,00 грн',
+                  style: TextStyle(
+                    fontFamily: Fonts.segoeUI,
+                    color: AppColors.green,
+                    fontSize: 55.sp,
+                  ),
+                ),
+            ],
+          ),
+        ],
+      ),
+    );
+  }
+}
+
+class _CirclePainter extends CustomPainter {
+  final List<SegmentData> segments;
+  final int? selectedIndex;
+  final double total;
+
+  _CirclePainter({
+    required this.segments,
+    required this.total,
+    required this.selectedIndex,
+  });
+
+  @override
+  void paint(Canvas canvas, Size size) {
+    final center = Offset(size.width / 2, size.height / 2);
+    const strokeWidth = 10.0;
+
+    double startAngle = -pi / 2;
+
+    final bgPaint = Paint()
+      ..color = AppColors.gray
+      ..style = PaintingStyle.stroke
+      ..strokeWidth = strokeWidth;
+
+    final radius = size.width / 2 - 16;
+    final rect = Rect.fromCircle(center: center, radius: radius);
+
+    if (segments.isEmpty) canvas.drawArc(rect, 0, 100, false, bgPaint);
+
+    for (int i = 0; i < segments.length; i++) {
+      final sweepAngle = (segments[i].value / total) * 2 * pi;
+
+      final isSelected = i == selectedIndex;
+
+      final radius = size.width / 2 - 16;
+
+      final rect = Rect.fromCircle(center: center, radius: radius);
+
+      final paint = Paint()
+        ..color = segments[i].color.withValues(
+          alpha: selectedIndex == null || isSelected ? 1 : 0.3,
+        )
+        ..style = PaintingStyle.stroke
+        ..strokeWidth = strokeWidth;
+
+      final circlePaint = Paint()
+        ..color = segments[i].color.withValues(alpha: isSelected ? 0.3 : 0)
+        ..style = PaintingStyle.fill
+        ..strokeWidth = strokeWidth;
+
+      canvas.drawArc(rect, startAngle, sweepAngle, false, paint);
+      canvas.drawCircle(center, radius - 5, circlePaint);
+
+      startAngle += sweepAngle;
+    }
+  }
+
+  @override
+  bool shouldRepaint(covariant _CirclePainter oldDelegate) {
+    return oldDelegate.selectedIndex != selectedIndex;
+  }
+}
+
+class SegmentData {
+  final double value;
+  final Color color;
+
+  const SegmentData({required this.value, required this.color});
+}

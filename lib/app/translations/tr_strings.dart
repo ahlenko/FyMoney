@@ -16,4 +16,6 @@ class Strings {
   static const String pleaseUseAValidEmail = 'pleaseUseAValidEmail';
   static const String emailAlreadyInUse = 'emain-already-in-use';
   static const String invalidCredential = 'invalid-credential';
+  static const String earning = 'earning';
+  static const String spending = 'spending';
 }

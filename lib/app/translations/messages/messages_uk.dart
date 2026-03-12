@@ -23,6 +23,8 @@ class MessagesUk extends Translations {
       Strings.passwordsDoNotMatch: '''Паролі не збігаються''',
       Strings.emailAlreadyInUse: '''Email вже використовується''',
       Strings.invalidCredential: '''Невірний email або пароль''',
-    },
+      Strings.earning: '''Earning''',
+          Strings.spending: '''Spending''',
+        },
   };
 }
