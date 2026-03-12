@@ -5,5 +5,6 @@ abstract class HomeState with _$HomeState {
   const factory HomeState({
     @Default(false) bool loading,
     @Default(false) bool earningSelected,
+    int? hoveredIndex,
   }) = _HomeState;
 }

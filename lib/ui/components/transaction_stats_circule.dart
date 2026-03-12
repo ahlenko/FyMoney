@@ -26,12 +26,12 @@ class _TransactionStatsCirculeState extends State<TransactionStatsCircule> {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      height: 854.w,
+      height: 780.w,
       child: Stack(
         alignment: Alignment.center,
         children: [
           CustomPaint(
-            size: Size(854.w, 854.w),
+            size: Size(780.w, 780.w),
             painter: _CirclePainter(
               segments: widget.segments,
               total: total,

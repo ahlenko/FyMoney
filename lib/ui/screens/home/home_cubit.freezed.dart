@@ -14,7 +14,7 @@ T _$identity<T>(T value) => value;
 /// @nodoc
 mixin _$HomeState {
 
- bool get loading; bool get earningSelected;
+ bool get loading; bool get earningSelected; int? get hoveredIndex;
 /// Create a copy of HomeState
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
@@ -25,16 +25,16 @@ $HomeStateCopyWith<HomeState> get copyWith => _$HomeStateCopyWithImpl<HomeState>
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is HomeState&&(identical(other.loading, loading) || other.loading == loading)&&(identical(other.earningSelected, earningSelected) || other.earningSelected == earningSelected));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is HomeState&&(identical(other.loading, loading) || other.loading == loading)&&(identical(other.earningSelected, earningSelected) || other.earningSelected == earningSelected)&&(identical(other.hoveredIndex, hoveredIndex) || other.hoveredIndex == hoveredIndex));
 }
 
 
 @override
-int get hashCode => Object.hash(runtimeType,loading,earningSelected);
+int get hashCode => Object.hash(runtimeType,loading,earningSelected,hoveredIndex);
 
 @override
 String toString() {
-  return 'HomeState(loading: $loading, earningSelected: $earningSelected)';
+  return 'HomeState(loading: $loading, earningSelected: $earningSelected, hoveredIndex: $hoveredIndex)';
 }
 
 
@@ -45,7 +45,7 @@ abstract mixin class $HomeStateCopyWith<$Res>  {
   factory $HomeStateCopyWith(HomeState value, $Res Function(HomeState) _then) = _$HomeStateCopyWithImpl;
 @useResult
 $Res call({
- bool loading, bool earningSelected
+ bool loading, bool earningSelected, int? hoveredIndex
 });
 
 
@@ -62,11 +62,12 @@ class _$HomeStateCopyWithImpl<$Res>
 
 /// Create a copy of HomeState
 /// with the given fields replaced by the non-null parameter values.
-@pragma('vm:prefer-inline') @override $Res call({Object? loading = null,Object? earningSelected = null,}) {
+@pragma('vm:prefer-inline') @override $Res call({Object? loading = null,Object? earningSelected = null,Object? hoveredIndex = freezed,}) {
   return _then(_self.copyWith(
 loading: null == loading ? _self.loading : loading // ignore: cast_nullable_to_non_nullable
 as bool,earningSelected: null == earningSelected ? _self.earningSelected : earningSelected // ignore: cast_nullable_to_non_nullable
-as bool,
+as bool,hoveredIndex: freezed == hoveredIndex ? _self.hoveredIndex : hoveredIndex // ignore: cast_nullable_to_non_nullable
+as int?,
   ));
 }
 
@@ -151,10 +152,10 @@ return $default(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( bool loading,  bool earningSelected)?  $default,{required TResult orElse(),}) {final _that = this;
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( bool loading,  bool earningSelected,  int? hoveredIndex)?  $default,{required TResult orElse(),}) {final _that = this;
 switch (_that) {
 case _HomeState() when $default != null:
-return $default(_that.loading,_that.earningSelected);case _:
+return $default(_that.loading,_that.earningSelected,_that.hoveredIndex);case _:
   return orElse();
 
 }
@@ -172,10 +173,10 @@ return $default(_that.loading,_that.earningSelected);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( bool loading,  bool earningSelected)  $default,) {final _that = this;
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( bool loading,  bool earningSelected,  int? hoveredIndex)  $default,) {final _that = this;
 switch (_that) {
 case _HomeState():
-return $default(_that.loading,_that.earningSelected);case _:
+return $default(_that.loading,_that.earningSelected,_that.hoveredIndex);case _:
   throw StateError('Unexpected subclass');
 
 }
@@ -192,10 +193,10 @@ return $default(_that.loading,_that.earningSelected);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( bool loading,  bool earningSelected)?  $default,) {final _that = this;
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( bool loading,  bool earningSelected,  int? hoveredIndex)?  $default,) {final _that = this;
 switch (_that) {
 case _HomeState() when $default != null:
-return $default(_that.loading,_that.earningSelected);case _:
+return $default(_that.loading,_that.earningSelected,_that.hoveredIndex);case _:
   return null;
 
 }
@@ -207,11 +208,12 @@ return $default(_that.loading,_that.earningSelected);case _:
 
 
 class _HomeState implements HomeState {
-  const _HomeState({this.loading = false, this.earningSelected = false});
+  const _HomeState({this.loading = false, this.earningSelected = false, this.hoveredIndex});
   
 
 @override@JsonKey() final  bool loading;
 @override@JsonKey() final  bool earningSelected;
+@override final  int? hoveredIndex;
 
 /// Create a copy of HomeState
 /// with the given fields replaced by the non-null parameter values.
@@ -223,16 +225,16 @@ _$HomeStateCopyWith<_HomeState> get copyWith => __$HomeStateCopyWithImpl<_HomeSt
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _HomeState&&(identical(other.loading, loading) || other.loading == loading)&&(identical(other.earningSelected, earningSelected) || other.earningSelected == earningSelected));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _HomeState&&(identical(other.loading, loading) || other.loading == loading)&&(identical(other.earningSelected, earningSelected) || other.earningSelected == earningSelected)&&(identical(other.hoveredIndex, hoveredIndex) || other.hoveredIndex == hoveredIndex));
 }
 
 
 @override
-int get hashCode => Object.hash(runtimeType,loading,earningSelected);
+int get hashCode => Object.hash(runtimeType,loading,earningSelected,hoveredIndex);
 
 @override
 String toString() {
-  return 'HomeState(loading: $loading, earningSelected: $earningSelected)';
+  return 'HomeState(loading: $loading, earningSelected: $earningSelected, hoveredIndex: $hoveredIndex)';
 }
 
 
@@ -243,7 +245,7 @@ abstract mixin class _$HomeStateCopyWith<$Res> implements $HomeStateCopyWith<$Re
   factory _$HomeStateCopyWith(_HomeState value, $Res Function(_HomeState) _then) = __$HomeStateCopyWithImpl;
 @override @useResult
 $Res call({
- bool loading, bool earningSelected
+ bool loading, bool earningSelected, int? hoveredIndex
 });
 
 
@@ -260,11 +262,12 @@ class __$HomeStateCopyWithImpl<$Res>
 
 /// Create a copy of HomeState
 /// with the given fields replaced by the non-null parameter values.
-@override @pragma('vm:prefer-inline') $Res call({Object? loading = null,Object? earningSelected = null,}) {
+@override @pragma('vm:prefer-inline') $Res call({Object? loading = null,Object? earningSelected = null,Object? hoveredIndex = freezed,}) {
   return _then(_HomeState(
 loading: null == loading ? _self.loading : loading // ignore: cast_nullable_to_non_nullable
 as bool,earningSelected: null == earningSelected ? _self.earningSelected : earningSelected // ignore: cast_nullable_to_non_nullable
-as bool,
+as bool,hoveredIndex: freezed == hoveredIndex ? _self.hoveredIndex : hoveredIndex // ignore: cast_nullable_to_non_nullable
+as int?,
   ));
 }
 

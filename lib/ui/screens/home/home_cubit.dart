@@ -8,4 +8,12 @@ part 'home_cubit.freezed.dart';
 @injectable
 class HomeCubit extends Cubit<HomeState> {
   HomeCubit() : super(HomeState());
+
+  changeHoverState(int? hoverIndex) {
+    emit(state.copyWith(hoveredIndex: hoverIndex));
+  }
+
+  void setPage(int value) {
+    emit(state.copyWith(earningSelected: value == 1));
+  }
 }

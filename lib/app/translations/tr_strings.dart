@@ -18,4 +18,22 @@ class Strings {
   static const String invalidCredential = 'invalid-credential';
   static const String earning = 'earning';
   static const String spending = 'spending';
+  static const String deposit = 'deposit';
+  static const String salary = 'salary';
+  static const String avings = 'avings';
+  static const String gifts = 'gifts';
+  static const String beaches = 'beaches';
+  static const String hugiene = 'hugiene';
+  static const String pets = 'pets';
+  static const String connection = 'connection';
+  static const String sport = 'sport';
+  static const String vacation = 'vacation';
+  static const String health = 'health';
+  static const String transport = 'transport';
+  static const String products = 'products';
+  static const String taxi = 'taxi';
+  static const String clothes = 'clothes';
+  static const String reataurants = 'reataurants';
+  static const String car = 'car';
+  static const String dwelling = 'dwelling';
 }
