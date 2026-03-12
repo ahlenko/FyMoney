@@ -1,7 +1,8 @@
-
-
 import 'package:flutter/material.dart';
 import 'package:fymoney/app/navigation/router.dart';
+import 'package:fymoney/ui/screens/auth/auth_page.dart';
+import 'package:fymoney/ui/screens/home/home_page.dart';
+import 'package:fymoney/ui/screens/home/pages/c_settings/settings_page.dart';
 import 'package:fymoney/ui/screens/splash_page.dart';
 
 class CustomRouteObserver extends RouteObserver {}
@@ -22,6 +23,9 @@ class RoutesGenerator {
 
   static List<Path> paths = [
     Path(Routes.splash, (context, match, args) => const SplashPage()),
+    Path(Routes.auth, (context, match, args) => const AuthPage()),
+    Path(Routes.home, (context, match, args) => const HomePage()),
+    Path(Routes.settings, (context, match, args) => const SettingsPage()),
   ];
 
   static Route<dynamic>? onGenerateRoute(RouteSettings settings) {

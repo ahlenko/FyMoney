@@ -7,10 +7,9 @@ mixin TrSettings {
   static const fallbackLocale = Locale('en');
   static List<Locale> supportedLocales = List.of([
     const Locale('en'),
+    const Locale('uk'),
   ]);
-  static final languages = [
-    'en'
-  ];
+  static final languages = ['en', 'uk'];
   static const Iterable<LocalizationsDelegate> localizationsDelegates = [
     GlobalMaterialLocalizations.delegate,
     GlobalWidgetsLocalizations.delegate,

@@ -70,7 +70,7 @@ class _FyMoneyAppState extends State<FyMoneyApp> with AfterLayoutMixin {
       child: ScreenUtilInit(
         designSize: isRunningOniPad
             ? const Size(834, 1194)
-            : const Size(375, 812),
+            : const Size(1080, 2460),
         minTextAdapt: true,
         splitScreenMode: true,
         builder: (_, child) {

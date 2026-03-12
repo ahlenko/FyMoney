@@ -12,7 +12,20 @@
           "package_name": "com.ahlenko.fymoney"
         }
       },
-      "oauth_client": [],
+      "oauth_client": [
+        {
+          "client_id": "1086470512004-69k047a6rbftf9jaahc9o915ti7pveif.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.ahlenko.fymoney",
+            "certificate_hash": "09f92658c39eccfce64e52aad601fca1bf164515"
+          }
+        },
+        {
+          "client_id": "1086470512004-bf292u1qomtup47lng4gskemg6gkbvq0.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
       "api_key": [
         {
           "current_key": "AIzaSyDEAEIYZyr_ckzbV7J0vJFI13_ktyuShb4"
@@ -20,7 +33,19 @@
       ],
       "services": {
         "appinvite_service": {
-          "other_platform_oauth_client": []
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1086470512004-bf292u1qomtup47lng4gskemg6gkbvq0.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "1086470512004-9e7j6i5r3cmlr2af48ema80htrb58qth.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.ahlenko.fymoney"
+              }
+            }
+          ]
         }
       }
     }

@@ -1,30 +1,36 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
-<dict>
-	<key>API_KEY</key>
-	<string>AIzaSyCtlobhLEjWwh_E5wIHTl2ub7sEaWeU5ZE</string>
-	<key>GCM_SENDER_ID</key>
-	<string>1086470512004</string>
-	<key>PLIST_VERSION</key>
-	<string>1</string>
-	<key>BUNDLE_ID</key>
-	<string>com.ahlenko.fymoney</string>
-	<key>PROJECT_ID</key>
-	<string>fymoney-7e096</string>
-	<key>STORAGE_BUCKET</key>
-	<string>fymoney-7e096.firebasestorage.app</string>
-	<key>IS_ADS_ENABLED</key>
-	<false></false>
-	<key>IS_ANALYTICS_ENABLED</key>
-	<false></false>
-	<key>IS_APPINVITE_ENABLED</key>
-	<true></true>
-	<key>IS_GCM_ENABLED</key>
-	<true></true>
-	<key>IS_SIGNIN_ENABLED</key>
-	<true></true>
-	<key>GOOGLE_APP_ID</key>
-	<string>1:1086470512004:ios:b4da13495b941aac2e51d1</string>
-</dict>
+	<dict>
+		<key>CLIENT_ID</key>
+		<string>1086470512004-9e7j6i5r3cmlr2af48ema80htrb58qth.apps.googleusercontent.com</string>
+		<key>REVERSED_CLIENT_ID</key>
+		<string>com.googleusercontent.apps.1086470512004-9e7j6i5r3cmlr2af48ema80htrb58qth</string>
+		<key>ANDROID_CLIENT_ID</key>
+		<string>1086470512004-69k047a6rbftf9jaahc9o915ti7pveif.apps.googleusercontent.com</string>
+		<key>API_KEY</key>
+		<string>AIzaSyCtlobhLEjWwh_E5wIHTl2ub7sEaWeU5ZE</string>
+		<key>GCM_SENDER_ID</key>
+		<string>1086470512004</string>
+		<key>PLIST_VERSION</key>
+		<string>1</string>
+		<key>BUNDLE_ID</key>
+		<string>com.ahlenko.fymoney</string>
+		<key>PROJECT_ID</key>
+		<string>fymoney-7e096</string>
+		<key>STORAGE_BUCKET</key>
+		<string>fymoney-7e096.firebasestorage.app</string>
+		<key>IS_ADS_ENABLED</key>
+		<false></false>
+		<key>IS_ANALYTICS_ENABLED</key>
+		<false></false>
+		<key>IS_APPINVITE_ENABLED</key>
+		<true></true>
+		<key>IS_GCM_ENABLED</key>
+		<true></true>
+		<key>IS_SIGNIN_ENABLED</key>
+		<true></true>
+		<key>GOOGLE_APP_ID</key>
+		<string>1:1086470512004:ios:b4da13495b941aac2e51d1</string>
+	</dict>
 </plist>

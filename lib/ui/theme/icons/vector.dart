@@ -1,5 +1,44 @@
 abstract class Vector {
   static const basePath = 'assets/images/vector';
-  
-  static const template = '$basePath/template.png';
+
+  static const icBack = '$basePath/ic_back.svg';
+  static const icBeaches = '$basePath/ic_beaches.svg';
+  static const icBurger = '$basePath/ic_burger.svg';
+  static const icCalendar = '$basePath/ic_calendar.svg';
+  static const icCar = '$basePath/ic_car.svg';
+  static const icChangePmail = '$basePath/ic_change_email.svg';
+  static const icChangePassword = '$basePath/ic_change_password.svg';
+  static const icClothes = '$basePath/ic_clothes.svg';
+  static const icConnection = '$basePath/ic_connection.svg';
+  static const icCurrency = '$basePath/ic_currency.svg';
+  static const icDeleteUser = '$basePath/ic_delete_user.svg';
+  static const icDeposit = '$basePath/ic_deposit.svg';
+  static const icDwelling = '$basePath/ic_dwelling.svg';
+  static const icEdit = '$basePath/ic_edit.svg';
+  static const icExit = '$basePath/ic_exit.svg';
+  static const icGifts = '$basePath/ic_gifts.svg';
+  static const icHealth = '$basePath/ic_health.svg';
+  static const icHugiene = '$basePath/ic_hugiene.svg';
+  static const icLanguage = '$basePath/ic_language.svg';
+  static const icMinus = '$basePath/ic_minus.svg';
+  static const icNight = '$basePath/ic_night.svg';
+  static const icPets = '$basePath/ic_pets.svg';
+  static const icPlus = '$basePath/ic_plus.svg';
+  static const icProducts = '$basePath/ic_products.svg';
+  static const icReataurants = '$basePath/ic_reataurants.svg';
+  static const icSalary = '$basePath/ic_salary.svg';
+  static const icSavings = '$basePath/ic_savings.svg';
+  static const icSettings = '$basePath/ic_settings.svg';
+  static const icSortDown = '$basePath/ic_sort_down.svg';
+  static const icSortUp = '$basePath/ic_sort_up.svg';
+  static const icSport = '$basePath/ic_sport.svg';
+  static const icTaxi = '$basePath/ic_taxi.svg';
+  static const icTransport = '$basePath/ic_transport.svg';
+  static const icVacation = '$basePath/ic_vacation.svg';
+  static const logoLarge = '$basePath/logo_large.svg';
+  static const logoSmall = '$basePath/logo_small.svg';
+  static const eyeSlash = '$basePath/eye_slash.svg';
+  static const eye = '$basePath/eye.svg';
+  static const googleLogo = '$basePath/google_logo.svg';
+  static const appleLogo = '$basePath/apple_logo.svg';
 }

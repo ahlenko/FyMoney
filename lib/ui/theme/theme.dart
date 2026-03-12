@@ -3,7 +3,7 @@ import 'package:fymoney/ui/theme/colors.dart';
 
 ThemeData createTheme() {
   return ThemeData(
-    scaffoldBackgroundColor: AppColors.black,
+    scaffoldBackgroundColor: AppColors.white,
     bottomSheetTheme: BottomSheetThemeData(backgroundColor: Colors.transparent),
   );
 }
