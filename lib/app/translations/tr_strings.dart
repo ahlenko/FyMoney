@@ -47,4 +47,35 @@ class Strings {
   static const String settings = 'settings';
   static const String version = 'version';
   static const String termsOfUse = 'termsOfUse';
+  static const String earnintData = 'earnintData';
+  static const String spendingData = 'spendingData';
+  static const String update = 'update';
+  static const String delete = 'delete';
+  static const String type = 'type';
+  static const String category = 'category';
+  static const String earning_ = 'earning_';
+  static const String spending_ = 'spending_';
+  static const String deleteAccount = 'deleteAccount';
+  static const String changePassword = 'changePassword';
+  static const String language = 'language';
+
+  static const String currency = 'currency';
+  static const String cancel = 'cancel';
+  static const String confirmation = 'confirmation';
+  static const String youReallyWoonnaToDeleteAccount =
+      'youReallyWoonnaToDeleteAccount';
+  static const String change = 'change';
+  static const String oldPassword = 'oldPassword';
+  static const String newPassword = 'newPassword';
+  static const String confirmPassword = 'confirmPassword';
+  static const String uk = 'uk';
+  static const String en = 'en';
+  static const String confirm = 'confirm';
+  static const String repeateAuthWithProvider = 'repeateAuthWithProvider';
+  static const String wrongOldPassword = 'wrongOldPassword';
+  static const String week = 'week';
+  static const String month = 'month';
+  static const String quarter = 'quarter';
+  static const String year = 'year';
+  static const String dataSelectionRange = 'dataSelectionRange';
 }

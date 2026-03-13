@@ -5,7 +5,7 @@ import 'package:fymoney/app/di/di.dart';
 import 'package:fymoney/app/extensions/context_extension.dart';
 import 'package:fymoney/app/navigation/router.dart';
 import 'package:fymoney/app/translations/tr_strings.dart';
-import 'package:fymoney/data/model/transaction_model.dart';
+import 'package:fymoney/data/firebase/model/transaction_model.dart';
 import 'package:fymoney/data/model/transaction_type_model.dart';
 import 'package:fymoney/ui/components/button/custom_button.dart';
 import 'package:fymoney/ui/components/fields/amount_field.dart';

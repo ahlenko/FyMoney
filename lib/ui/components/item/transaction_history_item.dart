@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:fymoney/data/model/transaction_model.dart';
+import 'package:fymoney/data/firebase/model/transaction_model.dart';
 import 'package:fymoney/data/model/transaction_type_model.dart';
+import 'package:fymoney/ui/dialogs/view_transaction_dialog.dart';
 import 'package:fymoney/ui/theme/colors.dart';
 import 'package:fymoney/ui/theme/fonts/fonts.dart';
 import 'package:fymoney/util/screen_util.dart';
@@ -10,12 +11,7 @@ import 'package:get/utils.dart';
 
 class TransactionHistoryItem extends StatelessWidget {
   final TransactionModel transaction;
-  final VoidCallback onTap;
-  const TransactionHistoryItem({
-    super.key,
-    required this.transaction,
-    required this.onTap,
-  });
+  const TransactionHistoryItem({super.key, required this.transaction});
 
   @override
   Widget build(BuildContext context) {
@@ -28,7 +24,13 @@ class TransactionHistoryItem extends StatelessWidget {
               .firstWhere((tr) => tr.index == transaction.typeIndex);
 
     return GestureDetector(
-      onTap: onTap,
+      onTap: () => showDialog(
+        context: context,
+        builder: (context) => ViewTransactionDialog(
+          transaction: transaction,
+          type: transactionType,
+        ),
+      ),
       child: Container(
         color: Colors.transparent,
 

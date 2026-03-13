@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:fymoney/data/firebase/model/user_creation_request.dart';
 import 'package:fymoney/data/firebase/model/user_data.dart';
@@ -99,5 +101,18 @@ abstract class UserRepo {
       rethrow;
     }
     return null;
+  }
+
+  static Future<void> deleteUserData() async {
+    try {
+      await _firestore
+          .collection(collection)
+          .doc((await HiveUser.getUserData())?.documentId ?? '')
+          .delete();
+      log('User data successfully deleted.');
+    } catch (e) {
+      log('Error deleting user data: $e');
+      rethrow;
+    }
   }
 }

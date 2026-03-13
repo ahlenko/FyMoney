@@ -1,6 +1,7 @@
 import 'package:bloc/bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:fymoney/data/model/transaction_model.dart';
+import 'package:fymoney/data/firebase/model/transaction_model.dart';
+import 'package:fymoney/data/model/select_interval.dart';
 import 'package:injectable/injectable.dart';
 
 part 'home_state.dart';
@@ -16,5 +17,9 @@ class HomeCubit extends Cubit<HomeState> {
 
   void setPage(TransactionType transactionType) {
     emit(state.copyWith(transactionType: transactionType));
+  }
+
+  void setSelectInterval(SelectInterval interval) {
+    emit(state.copyWith(selectInterval: interval));
   }
 }

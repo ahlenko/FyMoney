@@ -25,6 +25,7 @@ class CustomButton extends StatelessWidget {
       child: AutoSizeText(
         title,
         maxLines: 1,
+        maxFontSize: 18,
         style: TextStyle(fontFamily: Fonts.inter, fontSize: 60.sp),
       ),
     );

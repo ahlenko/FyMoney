@@ -14,7 +14,7 @@ T _$identity<T>(T value) => value;
 /// @nodoc
 mixin _$SettingsState {
 
- bool get loading;
+ bool get loading; String get languageCode; List<String> get linkedProviders;
 /// Create a copy of SettingsState
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
@@ -25,16 +25,16 @@ $SettingsStateCopyWith<SettingsState> get copyWith => _$SettingsStateCopyWithImp
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is SettingsState&&(identical(other.loading, loading) || other.loading == loading));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is SettingsState&&(identical(other.loading, loading) || other.loading == loading)&&(identical(other.languageCode, languageCode) || other.languageCode == languageCode)&&const DeepCollectionEquality().equals(other.linkedProviders, linkedProviders));
 }
 
 
 @override
-int get hashCode => Object.hash(runtimeType,loading);
+int get hashCode => Object.hash(runtimeType,loading,languageCode,const DeepCollectionEquality().hash(linkedProviders));
 
 @override
 String toString() {
-  return 'SettingsState(loading: $loading)';
+  return 'SettingsState(loading: $loading, languageCode: $languageCode, linkedProviders: $linkedProviders)';
 }
 
 
@@ -45,7 +45,7 @@ abstract mixin class $SettingsStateCopyWith<$Res>  {
   factory $SettingsStateCopyWith(SettingsState value, $Res Function(SettingsState) _then) = _$SettingsStateCopyWithImpl;
 @useResult
 $Res call({
- bool loading
+ bool loading, String languageCode, List<String> linkedProviders
 });
 
 
@@ -62,10 +62,12 @@ class _$SettingsStateCopyWithImpl<$Res>
 
 /// Create a copy of SettingsState
 /// with the given fields replaced by the non-null parameter values.
-@pragma('vm:prefer-inline') @override $Res call({Object? loading = null,}) {
+@pragma('vm:prefer-inline') @override $Res call({Object? loading = null,Object? languageCode = null,Object? linkedProviders = null,}) {
   return _then(_self.copyWith(
 loading: null == loading ? _self.loading : loading // ignore: cast_nullable_to_non_nullable
-as bool,
+as bool,languageCode: null == languageCode ? _self.languageCode : languageCode // ignore: cast_nullable_to_non_nullable
+as String,linkedProviders: null == linkedProviders ? _self.linkedProviders : linkedProviders // ignore: cast_nullable_to_non_nullable
+as List<String>,
   ));
 }
 
@@ -150,10 +152,10 @@ return $default(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( bool loading)?  $default,{required TResult orElse(),}) {final _that = this;
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( bool loading,  String languageCode,  List<String> linkedProviders)?  $default,{required TResult orElse(),}) {final _that = this;
 switch (_that) {
 case _SettingsState() when $default != null:
-return $default(_that.loading);case _:
+return $default(_that.loading,_that.languageCode,_that.linkedProviders);case _:
   return orElse();
 
 }
@@ -171,10 +173,10 @@ return $default(_that.loading);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( bool loading)  $default,) {final _that = this;
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( bool loading,  String languageCode,  List<String> linkedProviders)  $default,) {final _that = this;
 switch (_that) {
 case _SettingsState():
-return $default(_that.loading);case _:
+return $default(_that.loading,_that.languageCode,_that.linkedProviders);case _:
   throw StateError('Unexpected subclass');
 
 }
@@ -191,10 +193,10 @@ return $default(_that.loading);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( bool loading)?  $default,) {final _that = this;
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( bool loading,  String languageCode,  List<String> linkedProviders)?  $default,) {final _that = this;
 switch (_that) {
 case _SettingsState() when $default != null:
-return $default(_that.loading);case _:
+return $default(_that.loading,_that.languageCode,_that.linkedProviders);case _:
   return null;
 
 }
@@ -206,10 +208,18 @@ return $default(_that.loading);case _:
 
 
 class _SettingsState implements SettingsState {
-  const _SettingsState({this.loading = false});
+  const _SettingsState({this.loading = false, this.languageCode = 'en', final  List<String> linkedProviders = const []}): _linkedProviders = linkedProviders;
   
 
 @override@JsonKey() final  bool loading;
+@override@JsonKey() final  String languageCode;
+ final  List<String> _linkedProviders;
+@override@JsonKey() List<String> get linkedProviders {
+  if (_linkedProviders is EqualUnmodifiableListView) return _linkedProviders;
+  // ignore: implicit_dynamic_type
+  return EqualUnmodifiableListView(_linkedProviders);
+}
+
 
 /// Create a copy of SettingsState
 /// with the given fields replaced by the non-null parameter values.
@@ -221,16 +231,16 @@ _$SettingsStateCopyWith<_SettingsState> get copyWith => __$SettingsStateCopyWith
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _SettingsState&&(identical(other.loading, loading) || other.loading == loading));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _SettingsState&&(identical(other.loading, loading) || other.loading == loading)&&(identical(other.languageCode, languageCode) || other.languageCode == languageCode)&&const DeepCollectionEquality().equals(other._linkedProviders, _linkedProviders));
 }
 
 
 @override
-int get hashCode => Object.hash(runtimeType,loading);
+int get hashCode => Object.hash(runtimeType,loading,languageCode,const DeepCollectionEquality().hash(_linkedProviders));
 
 @override
 String toString() {
-  return 'SettingsState(loading: $loading)';
+  return 'SettingsState(loading: $loading, languageCode: $languageCode, linkedProviders: $linkedProviders)';
 }
 
 
@@ -241,7 +251,7 @@ abstract mixin class _$SettingsStateCopyWith<$Res> implements $SettingsStateCopy
   factory _$SettingsStateCopyWith(_SettingsState value, $Res Function(_SettingsState) _then) = __$SettingsStateCopyWithImpl;
 @override @useResult
 $Res call({
- bool loading
+ bool loading, String languageCode, List<String> linkedProviders
 });
 
 
@@ -258,10 +268,12 @@ class __$SettingsStateCopyWithImpl<$Res>
 
 /// Create a copy of SettingsState
 /// with the given fields replaced by the non-null parameter values.
-@override @pragma('vm:prefer-inline') $Res call({Object? loading = null,}) {
+@override @pragma('vm:prefer-inline') $Res call({Object? loading = null,Object? languageCode = null,Object? linkedProviders = null,}) {
   return _then(_SettingsState(
 loading: null == loading ? _self.loading : loading // ignore: cast_nullable_to_non_nullable
-as bool,
+as bool,languageCode: null == languageCode ? _self.languageCode : languageCode // ignore: cast_nullable_to_non_nullable
+as String,linkedProviders: null == linkedProviders ? _self._linkedProviders : linkedProviders // ignore: cast_nullable_to_non_nullable
+as List<String>,
   ));
 }
 

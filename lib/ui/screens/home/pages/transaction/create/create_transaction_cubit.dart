@@ -1,6 +1,6 @@
 import 'package:bloc/bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:fymoney/data/model/transaction_model.dart';
+import 'package:fymoney/data/firebase/model/transaction_model.dart';
 import 'package:fymoney/data/model/transaction_type_model.dart';
 import 'package:injectable/injectable.dart';
 

@@ -5,7 +5,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:fymoney/app/di/di.dart';
 import 'package:fymoney/app/translations/tr_strings.dart';
-import 'package:fymoney/data/model/transaction_model.dart';
+import 'package:fymoney/data/firebase/model/transaction_model.dart';
 import 'package:fymoney/ui/components/item/transaction_history_item.dart';
 import 'package:fymoney/ui/components/navigation/navigation_app_bar.dart';
 import 'package:fymoney/ui/screens/home/pages/transaction/history/history_transaction_cubit.dart';
@@ -124,11 +124,11 @@ class _HistoryTransactionPageState extends State<HistoryTransactionPage> {
                             TransactionHistoryItem(
                               transaction: TransactionModel(
                                 typeIndex: 1,
+                                comment: "fdsfs asfsdfds gsegs gers g",
                                 type: .spending,
                                 amount: 45356,
                                 createDate: DateTime.now(),
                               ),
-                              onTap: () => {},
                             ),
                             TransactionHistoryItem(
                               transaction: TransactionModel(
@@ -137,7 +137,6 @@ class _HistoryTransactionPageState extends State<HistoryTransactionPage> {
                                 amount: 34123,
                                 createDate: DateTime.now(),
                               ),
-                              onTap: () => {},
                             ),
                             TransactionHistoryItem(
                               transaction: TransactionModel(
@@ -146,7 +145,6 @@ class _HistoryTransactionPageState extends State<HistoryTransactionPage> {
                                 amount: 6594,
                                 createDate: DateTime.now(),
                               ),
-                              onTap: () => {},
                             ),
                           ],
                         ),
@@ -161,7 +159,6 @@ class _HistoryTransactionPageState extends State<HistoryTransactionPage> {
                                 amount: 10000,
                                 createDate: DateTime.now(),
                               ),
-                              onTap: () => {},
                             ),
                             TransactionHistoryItem(
                               transaction: TransactionModel(
@@ -170,7 +167,6 @@ class _HistoryTransactionPageState extends State<HistoryTransactionPage> {
                                 amount: 10000,
                                 createDate: DateTime.now(),
                               ),
-                              onTap: () => {},
                             ),
                             TransactionHistoryItem(
                               transaction: TransactionModel(
@@ -179,7 +175,6 @@ class _HistoryTransactionPageState extends State<HistoryTransactionPage> {
                                 amount: 5000,
                                 createDate: DateTime.now(),
                               ),
-                              onTap: () => {},
                             ),
                           ],
                         ),

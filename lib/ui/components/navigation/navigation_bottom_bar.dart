@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:fymoney/app/extensions/context_extension.dart';
-import 'package:fymoney/data/model/transaction_model.dart';
+import 'package:fymoney/data/firebase/model/transaction_model.dart';
 import 'package:fymoney/ui/screens/home/pages/transaction/create/create_transaction_page.dart';
 import 'package:fymoney/ui/screens/home/pages/transaction/history/history_transaction_page.dart';
 import 'package:fymoney/ui/theme/colors.dart';

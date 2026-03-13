@@ -77,7 +77,7 @@ class _AuthPageState extends State<AuthPage> {
                               focusNode: cubit.passwordNode,
                               title: Strings.password.tr,
                               onChanged: () {
-                                if (state.emailError != null) {
+                                if (state.passwordError != null) {
                                   cubit.validatePassword();
                                 }
                               },
@@ -90,7 +90,7 @@ class _AuthPageState extends State<AuthPage> {
                                 focusNode: cubit.repeatePasswordNode,
                                 title: Strings.repeatePassword.tr,
                                 onChanged: () {
-                                  if (state.emailError != null) {
+                                  if (state.repeatePasswordError != null) {
                                     cubit.validateConfirmPassword();
                                   }
                                 },

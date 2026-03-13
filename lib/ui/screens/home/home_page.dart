@@ -5,13 +5,14 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:fymoney/app/navigation/router.dart';
 import 'package:fymoney/app/translations/tr_strings.dart';
-import 'package:fymoney/data/model/transaction_model.dart';
+import 'package:fymoney/data/firebase/model/transaction_model.dart';
 import 'package:fymoney/data/model/transaction_type_model.dart';
 import 'package:fymoney/ui/components/item/transaction_grid_stats_item.dart';
 import 'package:fymoney/ui/components/item/transaction_row_stats_item.dart';
 import 'package:fymoney/ui/components/navigation/navigation_app_bar.dart';
 import 'package:fymoney/ui/components/navigation/navigation_bottom_bar.dart';
 import 'package:fymoney/ui/components/transaction_stats_circule.dart';
+import 'package:fymoney/ui/dialogs/select_interval_dialog.dart';
 import 'package:fymoney/ui/screens/home/home_cubit.dart';
 import 'package:fymoney/ui/theme/colors.dart';
 import 'package:fymoney/ui/theme/fonts/fonts.dart';
@@ -73,7 +74,13 @@ class _HomePageState extends State<HomePage> {
       builder: (context, state) {
         return Scaffold(
           appBar: NavigationAppBar(
-            prefixCallback: () => {},
+            prefixCallback: () => showDialog(
+              context: context,
+              builder: (context) => SelectIntervalDialog(
+                onIntervalChanged: cubit.setSelectInterval,
+                selectedInterval: state.selectInterval,
+              ),
+            ),
             prefixIcon: Vector.icCalendar,
             sufixCallback: () =>
                 Navigator.of(context).pushNamed(Routes.settings),

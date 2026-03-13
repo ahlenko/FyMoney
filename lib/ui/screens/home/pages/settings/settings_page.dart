@@ -1,11 +1,19 @@
+import 'dart:async';
+
+import 'package:after_layout/after_layout.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:fymoney/app/di/di.dart';
 import 'package:fymoney/app/extensions/context_extension.dart';
 import 'package:fymoney/app/navigation/router.dart';
+import 'package:fymoney/app/translations/tr_settings.dart';
 import 'package:fymoney/app/translations/tr_strings.dart';
 import 'package:fymoney/data/hive/repo/hive_user.dart';
+import 'package:fymoney/ui/dialogs/change_password_dialog.dart';
+import 'package:fymoney/ui/dialogs/delete_account_dialog.dart';
+import 'package:fymoney/ui/components/item/settings_row_item.dart';
+import 'package:fymoney/ui/components/item/settings_row_language.dart';
 import 'package:fymoney/ui/components/navigation/navigation_app_bar.dart';
 import 'package:fymoney/ui/screens/home/pages/settings/settings_cubit.dart';
 import 'package:fymoney/ui/theme/colors.dart';
@@ -23,8 +31,16 @@ class SettingsPage extends StatefulWidget {
   State<SettingsPage> createState() => _SettingsPageState();
 }
 
-class _SettingsPageState extends State<SettingsPage> {
+class _SettingsPageState extends State<SettingsPage> with AfterLayoutMixin {
   final cubit = getIt.get<SettingsCubit>();
+
+  @override
+  void initState() {
+    super.initState();
+    cubit.initLanguage();
+    cubit.getLinked();
+  }
+
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<SettingsCubit, SettingsState>(
@@ -52,12 +68,39 @@ class _SettingsPageState extends State<SettingsPage> {
                     fontSize: 50.sp,
                   ),
                 ),
-
-                spacerVertical(120.h),
-
+                spacerVertical(50.h),
                 Expanded(
                   child: SingleChildScrollView(
-                    child: Column(children: [Row(children: [])]),
+                    child: Column(
+                      children: [
+                        SettingsRowLanguage(
+                          icon: Vector.icLanguage,
+                          text: Strings.language.tr,
+                          selectedOption: state.languageCode,
+                          onSelectedChanged: (lang) => cubit.emitLanguage(
+                            lang ?? TrSettings.fallbackLocale.languageCode,
+                          ),
+                        ),
+                        if (state.linkedProviders.contains('password'))
+                          SettingsRowItem(
+                            icon: Vector.icChangePassword,
+                            text: Strings.changePassword.tr,
+                            onTap: () => showDialog(
+                              context: context,
+                              builder: (context) => ChangePasswordDialog(),
+                            ),
+                          ),
+                        SettingsRowItem(
+                          icon: Vector.icDeleteUser,
+                          text: Strings.deleteAccount.tr,
+                          tint: AppColors.redButton,
+                          onTap: () => showDialog(
+                            context: context,
+                            builder: (context) => DeleteAccountDialog(),
+                          ),
+                        ),
+                      ],
+                    ),
                   ),
                 ),
                 spacerVertical(34),
@@ -97,5 +140,10 @@ class _SettingsPageState extends State<SettingsPage> {
         );
       },
     );
+  }
+
+  @override
+  FutureOr<void> afterFirstLayout(BuildContext context) {
+    cubit.getLinked();
   }
 }
