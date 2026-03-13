@@ -14,7 +14,7 @@ T _$identity<T>(T value) => value;
 /// @nodoc
 mixin _$SettingsState {
 
- bool get loading; String get languageCode; List<String> get linkedProviders;
+ bool get loading; String get languageCode; List<String> get linkedProviders; List<CurrencyModel> get availableCurrencies; CurrencyModel? get selectedCurrency;
 /// Create a copy of SettingsState
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
@@ -25,16 +25,16 @@ $SettingsStateCopyWith<SettingsState> get copyWith => _$SettingsStateCopyWithImp
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is SettingsState&&(identical(other.loading, loading) || other.loading == loading)&&(identical(other.languageCode, languageCode) || other.languageCode == languageCode)&&const DeepCollectionEquality().equals(other.linkedProviders, linkedProviders));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is SettingsState&&(identical(other.loading, loading) || other.loading == loading)&&(identical(other.languageCode, languageCode) || other.languageCode == languageCode)&&const DeepCollectionEquality().equals(other.linkedProviders, linkedProviders)&&const DeepCollectionEquality().equals(other.availableCurrencies, availableCurrencies)&&(identical(other.selectedCurrency, selectedCurrency) || other.selectedCurrency == selectedCurrency));
 }
 
 
 @override
-int get hashCode => Object.hash(runtimeType,loading,languageCode,const DeepCollectionEquality().hash(linkedProviders));
+int get hashCode => Object.hash(runtimeType,loading,languageCode,const DeepCollectionEquality().hash(linkedProviders),const DeepCollectionEquality().hash(availableCurrencies),selectedCurrency);
 
 @override
 String toString() {
-  return 'SettingsState(loading: $loading, languageCode: $languageCode, linkedProviders: $linkedProviders)';
+  return 'SettingsState(loading: $loading, languageCode: $languageCode, linkedProviders: $linkedProviders, availableCurrencies: $availableCurrencies, selectedCurrency: $selectedCurrency)';
 }
 
 
@@ -45,11 +45,11 @@ abstract mixin class $SettingsStateCopyWith<$Res>  {
   factory $SettingsStateCopyWith(SettingsState value, $Res Function(SettingsState) _then) = _$SettingsStateCopyWithImpl;
 @useResult
 $Res call({
- bool loading, String languageCode, List<String> linkedProviders
+ bool loading, String languageCode, List<String> linkedProviders, List<CurrencyModel> availableCurrencies, CurrencyModel? selectedCurrency
 });
 
 
-
+$CurrencyModelCopyWith<$Res>? get selectedCurrency;
 
 }
 /// @nodoc
@@ -62,15 +62,29 @@ class _$SettingsStateCopyWithImpl<$Res>
 
 /// Create a copy of SettingsState
 /// with the given fields replaced by the non-null parameter values.
-@pragma('vm:prefer-inline') @override $Res call({Object? loading = null,Object? languageCode = null,Object? linkedProviders = null,}) {
+@pragma('vm:prefer-inline') @override $Res call({Object? loading = null,Object? languageCode = null,Object? linkedProviders = null,Object? availableCurrencies = null,Object? selectedCurrency = freezed,}) {
   return _then(_self.copyWith(
 loading: null == loading ? _self.loading : loading // ignore: cast_nullable_to_non_nullable
 as bool,languageCode: null == languageCode ? _self.languageCode : languageCode // ignore: cast_nullable_to_non_nullable
 as String,linkedProviders: null == linkedProviders ? _self.linkedProviders : linkedProviders // ignore: cast_nullable_to_non_nullable
-as List<String>,
+as List<String>,availableCurrencies: null == availableCurrencies ? _self.availableCurrencies : availableCurrencies // ignore: cast_nullable_to_non_nullable
+as List<CurrencyModel>,selectedCurrency: freezed == selectedCurrency ? _self.selectedCurrency : selectedCurrency // ignore: cast_nullable_to_non_nullable
+as CurrencyModel?,
   ));
 }
+/// Create a copy of SettingsState
+/// with the given fields replaced by the non-null parameter values.
+@override
+@pragma('vm:prefer-inline')
+$CurrencyModelCopyWith<$Res>? get selectedCurrency {
+    if (_self.selectedCurrency == null) {
+    return null;
+  }
 
+  return $CurrencyModelCopyWith<$Res>(_self.selectedCurrency!, (value) {
+    return _then(_self.copyWith(selectedCurrency: value));
+  });
+}
 }
 
 
@@ -152,10 +166,10 @@ return $default(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( bool loading,  String languageCode,  List<String> linkedProviders)?  $default,{required TResult orElse(),}) {final _that = this;
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( bool loading,  String languageCode,  List<String> linkedProviders,  List<CurrencyModel> availableCurrencies,  CurrencyModel? selectedCurrency)?  $default,{required TResult orElse(),}) {final _that = this;
 switch (_that) {
 case _SettingsState() when $default != null:
-return $default(_that.loading,_that.languageCode,_that.linkedProviders);case _:
+return $default(_that.loading,_that.languageCode,_that.linkedProviders,_that.availableCurrencies,_that.selectedCurrency);case _:
   return orElse();
 
 }
@@ -173,10 +187,10 @@ return $default(_that.loading,_that.languageCode,_that.linkedProviders);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( bool loading,  String languageCode,  List<String> linkedProviders)  $default,) {final _that = this;
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( bool loading,  String languageCode,  List<String> linkedProviders,  List<CurrencyModel> availableCurrencies,  CurrencyModel? selectedCurrency)  $default,) {final _that = this;
 switch (_that) {
 case _SettingsState():
-return $default(_that.loading,_that.languageCode,_that.linkedProviders);case _:
+return $default(_that.loading,_that.languageCode,_that.linkedProviders,_that.availableCurrencies,_that.selectedCurrency);case _:
   throw StateError('Unexpected subclass');
 
 }
@@ -193,10 +207,10 @@ return $default(_that.loading,_that.languageCode,_that.linkedProviders);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( bool loading,  String languageCode,  List<String> linkedProviders)?  $default,) {final _that = this;
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( bool loading,  String languageCode,  List<String> linkedProviders,  List<CurrencyModel> availableCurrencies,  CurrencyModel? selectedCurrency)?  $default,) {final _that = this;
 switch (_that) {
 case _SettingsState() when $default != null:
-return $default(_that.loading,_that.languageCode,_that.linkedProviders);case _:
+return $default(_that.loading,_that.languageCode,_that.linkedProviders,_that.availableCurrencies,_that.selectedCurrency);case _:
   return null;
 
 }
@@ -208,7 +222,7 @@ return $default(_that.loading,_that.languageCode,_that.linkedProviders);case _:
 
 
 class _SettingsState implements SettingsState {
-  const _SettingsState({this.loading = false, this.languageCode = 'en', final  List<String> linkedProviders = const []}): _linkedProviders = linkedProviders;
+  const _SettingsState({this.loading = false, this.languageCode = 'en', final  List<String> linkedProviders = const [], final  List<CurrencyModel> availableCurrencies = const [], this.selectedCurrency}): _linkedProviders = linkedProviders,_availableCurrencies = availableCurrencies;
   
 
 @override@JsonKey() final  bool loading;
@@ -220,6 +234,14 @@ class _SettingsState implements SettingsState {
   return EqualUnmodifiableListView(_linkedProviders);
 }
 
+ final  List<CurrencyModel> _availableCurrencies;
+@override@JsonKey() List<CurrencyModel> get availableCurrencies {
+  if (_availableCurrencies is EqualUnmodifiableListView) return _availableCurrencies;
+  // ignore: implicit_dynamic_type
+  return EqualUnmodifiableListView(_availableCurrencies);
+}
+
+@override final  CurrencyModel? selectedCurrency;
 
 /// Create a copy of SettingsState
 /// with the given fields replaced by the non-null parameter values.
@@ -231,16 +253,16 @@ _$SettingsStateCopyWith<_SettingsState> get copyWith => __$SettingsStateCopyWith
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _SettingsState&&(identical(other.loading, loading) || other.loading == loading)&&(identical(other.languageCode, languageCode) || other.languageCode == languageCode)&&const DeepCollectionEquality().equals(other._linkedProviders, _linkedProviders));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _SettingsState&&(identical(other.loading, loading) || other.loading == loading)&&(identical(other.languageCode, languageCode) || other.languageCode == languageCode)&&const DeepCollectionEquality().equals(other._linkedProviders, _linkedProviders)&&const DeepCollectionEquality().equals(other._availableCurrencies, _availableCurrencies)&&(identical(other.selectedCurrency, selectedCurrency) || other.selectedCurrency == selectedCurrency));
 }
 
 
 @override
-int get hashCode => Object.hash(runtimeType,loading,languageCode,const DeepCollectionEquality().hash(_linkedProviders));
+int get hashCode => Object.hash(runtimeType,loading,languageCode,const DeepCollectionEquality().hash(_linkedProviders),const DeepCollectionEquality().hash(_availableCurrencies),selectedCurrency);
 
 @override
 String toString() {
-  return 'SettingsState(loading: $loading, languageCode: $languageCode, linkedProviders: $linkedProviders)';
+  return 'SettingsState(loading: $loading, languageCode: $languageCode, linkedProviders: $linkedProviders, availableCurrencies: $availableCurrencies, selectedCurrency: $selectedCurrency)';
 }
 
 
@@ -251,11 +273,11 @@ abstract mixin class _$SettingsStateCopyWith<$Res> implements $SettingsStateCopy
   factory _$SettingsStateCopyWith(_SettingsState value, $Res Function(_SettingsState) _then) = __$SettingsStateCopyWithImpl;
 @override @useResult
 $Res call({
- bool loading, String languageCode, List<String> linkedProviders
+ bool loading, String languageCode, List<String> linkedProviders, List<CurrencyModel> availableCurrencies, CurrencyModel? selectedCurrency
 });
 
 
-
+@override $CurrencyModelCopyWith<$Res>? get selectedCurrency;
 
 }
 /// @nodoc
@@ -268,16 +290,30 @@ class __$SettingsStateCopyWithImpl<$Res>
 
 /// Create a copy of SettingsState
 /// with the given fields replaced by the non-null parameter values.
-@override @pragma('vm:prefer-inline') $Res call({Object? loading = null,Object? languageCode = null,Object? linkedProviders = null,}) {
+@override @pragma('vm:prefer-inline') $Res call({Object? loading = null,Object? languageCode = null,Object? linkedProviders = null,Object? availableCurrencies = null,Object? selectedCurrency = freezed,}) {
   return _then(_SettingsState(
 loading: null == loading ? _self.loading : loading // ignore: cast_nullable_to_non_nullable
 as bool,languageCode: null == languageCode ? _self.languageCode : languageCode // ignore: cast_nullable_to_non_nullable
 as String,linkedProviders: null == linkedProviders ? _self._linkedProviders : linkedProviders // ignore: cast_nullable_to_non_nullable
-as List<String>,
+as List<String>,availableCurrencies: null == availableCurrencies ? _self._availableCurrencies : availableCurrencies // ignore: cast_nullable_to_non_nullable
+as List<CurrencyModel>,selectedCurrency: freezed == selectedCurrency ? _self.selectedCurrency : selectedCurrency // ignore: cast_nullable_to_non_nullable
+as CurrencyModel?,
   ));
 }
 
+/// Create a copy of SettingsState
+/// with the given fields replaced by the non-null parameter values.
+@override
+@pragma('vm:prefer-inline')
+$CurrencyModelCopyWith<$Res>? get selectedCurrency {
+    if (_self.selectedCurrency == null) {
+    return null;
+  }
 
+  return $CurrencyModelCopyWith<$Res>(_self.selectedCurrency!, (value) {
+    return _then(_self.copyWith(selectedCurrency: value));
+  });
+}
 }
 
 // dart format on

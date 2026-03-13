@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:fymoney/app/cubits/settings/app_settings_cubit.dart';
 import 'package:fymoney/data/firebase/model/transaction_model.dart';
 import 'package:fymoney/data/model/transaction_type_model.dart';
 import 'package:fymoney/ui/dialogs/view_transaction_dialog.dart';
@@ -51,7 +53,7 @@ class TransactionHistoryItem extends StatelessWidget {
             ),
             spacerHorizontal(46.w),
             Text(
-              "${(transaction.amount / 100).toStringAsFixed(2)} грн.",
+              "${(transaction.amount / 100).toStringAsFixed(2)} ${context.watch<AppSettingsCubit>().state.selectedCurrency?.symbol ?? ''}",
               style: TextStyle(
                 fontFamily: Fonts.segoeUI,
                 fontSize: 55.sp,

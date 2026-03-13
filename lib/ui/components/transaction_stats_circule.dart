@@ -1,6 +1,8 @@
 import 'dart:math';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:fymoney/app/cubits/settings/app_settings_cubit.dart';
 import 'package:fymoney/ui/theme/colors.dart';
 import 'package:fymoney/ui/theme/fonts/fonts.dart';
 
@@ -43,7 +45,7 @@ class _TransactionStatsCirculeState extends State<TransactionStatsCircule> {
             children: [
               if (widget.selectedSegment == null)
                 Text(
-                  '0,00 грн',
+                  '0,00 ${context.watch<AppSettingsCubit>().state.selectedCurrency?.symbol ?? ''}',
                   style: TextStyle(
                     fontFamily: Fonts.segoeUI,
                     color: AppColors.red,
@@ -53,7 +55,7 @@ class _TransactionStatsCirculeState extends State<TransactionStatsCircule> {
               Visibility(
                 visible: widget.selectedSegment != null,
                 child: Text(
-                  '0,00 грн',
+                  '0,00 ${context.watch<AppSettingsCubit>().state.selectedCurrency?.symbol ?? ''}',
                   style: TextStyle(
                     fontFamily: Fonts.segoeUI,
                     color: AppColors.black,
@@ -63,7 +65,7 @@ class _TransactionStatsCirculeState extends State<TransactionStatsCircule> {
               ),
               if (widget.selectedSegment == null)
                 Text(
-                  '0,00 грн',
+                  '0,00 ${context.watch<AppSettingsCubit>().state.selectedCurrency?.symbol ?? ''}',
                   style: TextStyle(
                     fontFamily: Fonts.segoeUI,
                     color: AppColors.green,

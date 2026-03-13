@@ -2,7 +2,7 @@ import 'dart:developer';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:fymoney/data/firebase/model/user_creation_request.dart';
-import 'package:fymoney/data/firebase/model/user_data.dart';
+import 'package:fymoney/data/hive/model/user_data.dart';
 import 'package:fymoney/data/hive/repo/hive_user.dart';
 import 'package:fymoney/util/auth_util.dart';
 

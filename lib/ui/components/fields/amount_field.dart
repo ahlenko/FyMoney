@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:fymoney/app/cubits/settings/app_settings_cubit.dart';
 import 'package:fymoney/ui/theme/colors.dart';
 import 'package:fymoney/ui/theme/fonts/fonts.dart';
 import 'package:fymoney/util/screen_util.dart';
@@ -98,7 +100,7 @@ class AmountField extends StatelessWidget {
               bottom: 0,
               child: Center(
                 child: Text(
-                  'грн.',
+                  '${context.watch<AppSettingsCubit>().state.selectedCurrency?.symbol ?? ''}',
                   style: TextStyle(fontFamily: Fonts.segoeUI, fontSize: 55.sp),
                 ),
               ),

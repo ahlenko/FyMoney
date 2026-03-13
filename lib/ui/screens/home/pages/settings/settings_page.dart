@@ -10,9 +10,10 @@ import 'package:fymoney/app/navigation/router.dart';
 import 'package:fymoney/app/translations/tr_settings.dart';
 import 'package:fymoney/app/translations/tr_strings.dart';
 import 'package:fymoney/data/hive/repo/hive_user.dart';
+import 'package:fymoney/ui/components/item/settings_row_item.dart';
 import 'package:fymoney/ui/dialogs/change_password_dialog.dart';
 import 'package:fymoney/ui/dialogs/delete_account_dialog.dart';
-import 'package:fymoney/ui/components/item/settings_row_item.dart';
+import 'package:fymoney/ui/components/item/settings_row_currency.dart';
 import 'package:fymoney/ui/components/item/settings_row_language.dart';
 import 'package:fymoney/ui/components/navigation/navigation_app_bar.dart';
 import 'package:fymoney/ui/screens/home/pages/settings/settings_cubit.dart';
@@ -38,7 +39,7 @@ class _SettingsPageState extends State<SettingsPage> with AfterLayoutMixin {
   void initState() {
     super.initState();
     cubit.initLanguage();
-    cubit.getLinked();
+    cubit.initCurrencies();
   }
 
   @override
@@ -81,6 +82,15 @@ class _SettingsPageState extends State<SettingsPage> with AfterLayoutMixin {
                             lang ?? TrSettings.fallbackLocale.languageCode,
                           ),
                         ),
+                        if (state.availableCurrencies.isNotEmpty &&
+                            state.selectedCurrency != null)
+                          SettingsRowCurrency(
+                            icon: Vector.icCurrency,
+                            text: Strings.currency.tr,
+                            availableCurrencies: state.availableCurrencies,
+                            onSelectedChanged: cubit.emitCurrency,
+                            selectedOption: state.selectedCurrency!,
+                          ),
                         if (state.linkedProviders.contains('password'))
                           SettingsRowItem(
                             icon: Vector.icChangePassword,

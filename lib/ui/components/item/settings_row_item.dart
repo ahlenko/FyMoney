@@ -23,7 +23,8 @@ class SettingsRowItem extends StatelessWidget {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: onTap,
-      child: Padding(
+      child: Container(
+        color: Colors.transparent,
         padding: EdgeInsets.symmetric(horizontal: 40.w, vertical: 32.h),
         child: Row(
           children: [

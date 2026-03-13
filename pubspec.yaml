@@ -69,6 +69,7 @@ flutter:
   uses-material-design: true
 
   assets:
+    - assets/json/
     - assets/images/raster/
     - assets/images/vector/
 

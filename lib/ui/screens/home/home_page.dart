@@ -3,6 +3,7 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:fymoney/app/cubits/settings/app_settings_cubit.dart';
 import 'package:fymoney/app/navigation/router.dart';
 import 'package:fymoney/app/translations/tr_strings.dart';
 import 'package:fymoney/data/firebase/model/transaction_model.dart';
@@ -236,7 +237,7 @@ class _HomePageState extends State<HomePage> {
                 ),
 
                 Text(
-                  'Бюджет: 0,00 грн',
+                  'Бюджет: 0,00 ${context.watch<AppSettingsCubit>().state.selectedCurrency?.symbol ?? ''}',
                   style: TextStyle(
                     fontFamily: Fonts.segoeUI,
                     color: AppColors.black,

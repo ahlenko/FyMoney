@@ -3,16 +3,19 @@
 // Check in to version control
 
 import 'package:hive_ce/hive_ce.dart';
-import 'package:fymoney/data/firebase/model/user_data.dart';
+import 'package:fymoney/data/hive/model/currency_model.dart';
+import 'package:fymoney/data/hive/model/user_data.dart';
 
 extension HiveRegistrar on HiveInterface {
   void registerAdapters() {
+    registerAdapter(CurrencyModelAdapter());
     registerAdapter(UserDataAdapter());
   }
 }
 
 extension IsolatedHiveRegistrar on IsolatedHiveInterface {
   void registerAdapters() {
+    registerAdapter(CurrencyModelAdapter());
     registerAdapter(UserDataAdapter());
   }
 }

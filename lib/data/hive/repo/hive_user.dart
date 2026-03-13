@@ -1,6 +1,6 @@
-import 'package:fymoney/data/firebase/model/user_data.dart';
 import 'package:fymoney/data/firebase/repo/user_repo.dart';
 import 'package:fymoney/data/hive/hive_const.dart';
+import 'package:fymoney/data/hive/model/user_data.dart';
 import 'package:hive_ce/hive.dart';
 
 abstract class HiveUser {

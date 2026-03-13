@@ -1,5 +1,6 @@
 import 'package:bloc/bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:fymoney/data/hive/model/currency_model.dart';
 import 'package:fymoney/data/hive/repo/hive_app.dart';
 import 'package:injectable/injectable.dart';
 
@@ -14,10 +15,15 @@ class AppSettingsCubit extends Cubit<AppSettingsState> {
 
   void _init() async {
     toggleLanguage(await HiveApp.getLanguage());
+    toggleCurrency(await HiveApp.getCurrency());
   }
 
   void toggleLanguage(String languageCode) {
     emit(state.copyWith(languageCode: languageCode));
+  }
+
+  void toggleCurrency(CurrencyModel currency) {
+    emit(state.copyWith(selectedCurrency: currency));
   }
 
   void saveSettings() async {
