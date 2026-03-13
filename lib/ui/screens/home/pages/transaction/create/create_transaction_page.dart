@@ -15,6 +15,7 @@ import 'package:fymoney/ui/components/navigation/navigation_app_bar.dart';
 import 'package:fymoney/ui/screens/home/pages/transaction/create/create_transaction_cubit.dart';
 import 'package:fymoney/ui/theme/colors.dart';
 import 'package:fymoney/ui/theme/fonts/fonts.dart';
+import 'package:fymoney/ui/theme/fonts/types.dart';
 import 'package:fymoney/ui/theme/icons/vector.dart';
 import 'package:fymoney/util/screen_util.dart';
 import 'package:get/get_utils/src/extensions/internacionalization.dart';
@@ -64,10 +65,8 @@ class _CreateTransactionPageState extends State<CreateTransactionPage> {
                       widget.selectedType == TransactionType.spending
                           ? Strings.spendingRecord.tr
                           : Strings.earningRecord.tr,
-                      style: TextStyle(
-                        fontFamily: Fonts.inter,
+                      style: Types.inter50Regular.copyWith(
                         color: AppColors.black.withValues(alpha: .5),
-                        fontSize: 50.sp,
                       ),
                     ),
                   ),
@@ -82,10 +81,8 @@ class _CreateTransactionPageState extends State<CreateTransactionPage> {
                     padding: EdgeInsetsGeometry.symmetric(horizontal: 75.w),
                     child: Text(
                       Strings.comment.tr,
-                      style: TextStyle(
-                        fontFamily: Fonts.inter,
+                      style: Types.inter50Regular.copyWith(
                         color: AppColors.black.withValues(alpha: .5),
-                        fontSize: 50.sp,
                       ),
                     ),
                   ),
@@ -102,10 +99,8 @@ class _CreateTransactionPageState extends State<CreateTransactionPage> {
                       widget.selectedType == TransactionType.spending
                           ? Strings.spendingCategory.tr
                           : Strings.earningCategory.tr,
-                      style: TextStyle(
-                        fontFamily: Fonts.inter,
+                      style: Types.inter50Regular.copyWith(
                         color: AppColors.black.withValues(alpha: .5),
-                        fontSize: 50.sp,
                       ),
                     ),
                   ),

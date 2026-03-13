@@ -15,6 +15,7 @@ import 'package:fymoney/ui/components/fields/password_field.dart';
 import 'package:fymoney/ui/screens/auth/auth_cubit.dart';
 import 'package:fymoney/ui/theme/colors.dart';
 import 'package:fymoney/ui/theme/fonts/fonts.dart';
+import 'package:fymoney/ui/theme/fonts/types.dart';
 import 'package:fymoney/ui/theme/icons/vector.dart';
 import 'package:fymoney/util/screen_util.dart';
 import 'package:get/get_utils/src/extensions/internacionalization.dart';
@@ -50,10 +51,7 @@ class _AuthPageState extends State<AuthPage> {
                       spacerVertical(75.h),
                       Text(
                         state.login ? Strings.logIn.tr : Strings.signIn.tr,
-                        style: TextStyle(
-                          fontFamily: Fonts.inter,
-                          fontSize: 70.sp,
-                        ),
+                        style: Types.inter70Regular,
                       ),
                       Padding(
                         padding: EdgeInsets.symmetric(horizontal: 160.w),
@@ -159,9 +157,7 @@ class _AuthPageState extends State<AuthPage> {
                           state.login
                               ? Strings.createAccount.tr
                               : Strings.login.tr,
-                          style: TextStyle(
-                            fontFamily: Fonts.inter,
-                            fontSize: 55.sp,
+                          style: Types.inter55Regular.copyWith(
                             color: AppColors.purple,
                           ),
                         ),

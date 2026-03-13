@@ -4,6 +4,7 @@ import 'package:flutter_svg/svg.dart';
 import 'package:fymoney/data/model/transaction_type_model.dart';
 import 'package:fymoney/ui/theme/colors.dart';
 import 'package:fymoney/ui/theme/fonts/fonts.dart';
+import 'package:fymoney/ui/theme/fonts/types.dart';
 import 'package:get/get_utils/src/extensions/internacionalization.dart';
 
 class TransactionGridSelectableItem extends StatelessWidget {
@@ -40,9 +41,7 @@ class TransactionGridSelectableItem extends StatelessWidget {
               SvgPicture.asset(transactionType.icon, width: 125.w),
               Text(
                 transactionType.name.tr,
-                style: TextStyle(
-                  fontFamily: Fonts.segoeUI,
-                  fontSize: 40.sp,
+                style: Types.segoe40Regular.copyWith(
                   color: transactionType.color,
                 ),
               ),

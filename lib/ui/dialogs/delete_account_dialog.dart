@@ -7,6 +7,7 @@ import 'package:fymoney/data/hive/repo/hive_user.dart';
 import 'package:fymoney/ui/dialogs/base/base_dialog.dart';
 import 'package:fymoney/ui/theme/colors.dart';
 import 'package:fymoney/ui/theme/fonts/fonts.dart';
+import 'package:fymoney/ui/theme/fonts/types.dart';
 import 'package:fymoney/util/auth_util.dart';
 import 'package:get/get_utils/src/extensions/internacionalization.dart';
 
@@ -55,10 +56,8 @@ class _DeleteAccountDialogState extends State<DeleteAccountDialog> {
           Text(
             Strings.youReallyWoonnaToDeleteAccount.tr,
             textAlign: TextAlign.center,
-            style: TextStyle(
-              fontFamily: Fonts.inter,
+            style: Types.inter42Regular.copyWith(
               color: AppColors.black.withValues(alpha: .7),
-              fontSize: 42.sp,
             ),
           ),
         ],

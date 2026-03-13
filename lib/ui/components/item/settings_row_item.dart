@@ -3,6 +3,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:fymoney/ui/theme/colors.dart';
 import 'package:fymoney/ui/theme/fonts/fonts.dart';
+import 'package:fymoney/ui/theme/fonts/types.dart';
 import 'package:fymoney/util/screen_util.dart';
 
 class SettingsRowItem extends StatelessWidget {
@@ -32,10 +33,8 @@ class SettingsRowItem extends StatelessWidget {
             spacerHorizontal(35),
             Text(
               text,
-              style: TextStyle(
-                fontFamily: Fonts.inter,
+              style: Types.inter50Regular.copyWith(
                 color: tint ?? AppColors.black,
-                fontSize: 50.sp,
               ),
             ),
             spacerAdaptive(),

@@ -17,6 +17,7 @@ import 'package:fymoney/ui/dialogs/select_interval_dialog.dart';
 import 'package:fymoney/ui/screens/home/home_cubit.dart';
 import 'package:fymoney/ui/theme/colors.dart';
 import 'package:fymoney/ui/theme/fonts/fonts.dart';
+import 'package:fymoney/ui/theme/fonts/types.dart';
 import 'package:fymoney/ui/theme/icons/vector.dart';
 import 'package:fymoney/util/screen_util.dart';
 import 'package:get/get_utils/src/extensions/internacionalization.dart';
@@ -101,12 +102,10 @@ class _HomePageState extends State<HomePage> {
                       onTap: () => cubit.setPage(.spending),
                       child: Text(
                         Strings.spending.tr,
-                        style: TextStyle(
-                          fontFamily: Fonts.inter,
+                        style: Types.inter50Regular.copyWith(
                           color: AppColors.black.withValues(
                             alpha: state.transactionType == .earning ? .5 : 1,
                           ),
-                          fontSize: 50.sp,
                         ),
                       ),
                     ),
@@ -114,12 +113,10 @@ class _HomePageState extends State<HomePage> {
                       onTap: () => cubit.setPage(.earning),
                       child: Text(
                         Strings.earning.tr,
-                        style: TextStyle(
-                          fontFamily: Fonts.inter,
+                        style: Types.inter50Regular.copyWith(
                           color: AppColors.black.withValues(
                             alpha: state.transactionType == .spending ? .5 : 1,
                           ),
-                          fontSize: 50.sp,
                         ),
                       ),
                     ),
@@ -159,11 +156,7 @@ class _HomePageState extends State<HomePage> {
                           spacerVertical(37.h),
                           Text(
                             '8 травня - 11 травня',
-                            style: TextStyle(
-                              fontFamily: Fonts.segoeUI,
-                              color: AppColors.black,
-                              fontSize: 40.sp,
-                            ),
+                            style: Types.segoe40Regular,
                           ),
                           spacerVertical(43.h),
                           Padding(
@@ -206,11 +199,7 @@ class _HomePageState extends State<HomePage> {
                           spacerVertical(37.h),
                           Text(
                             '8 травня - 11 травня',
-                            style: TextStyle(
-                              fontFamily: Fonts.segoeUI,
-                              color: AppColors.black,
-                              fontSize: 40.sp,
-                            ),
+                            style: Types.segoe40Regular,
                           ),
                           spacerVertical(43.h),
                           Padding(
@@ -238,11 +227,7 @@ class _HomePageState extends State<HomePage> {
 
                 Text(
                   'Бюджет: 0,00 ${context.watch<AppSettingsCubit>().state.selectedCurrency?.symbol ?? ''}',
-                  style: TextStyle(
-                    fontFamily: Fonts.segoeUI,
-                    color: AppColors.black,
-                    fontSize: 55.sp,
-                  ),
+                  style: Types.segoe55Regular,
                 ),
                 spacerVertical(27.h),
               ],

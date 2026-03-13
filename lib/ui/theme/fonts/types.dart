@@ -11,14 +11,72 @@ abstract class Types {
   static final extraBold = FontWeight.w900;
 
   static TextStyle interBase = TextStyle(
-    color: AppColors.white,
+    color: AppColors.black,
     fontFamily: Fonts.inter,
     fontWeight: regular,
-    fontSize: 16.sp,
+    fontSize: 40.sp,
   );
 
-  static TextStyle inter10Regular = interBase.copyWith(
-    fontSize: 10.sp,
+  static TextStyle inter40Regular = interBase.copyWith(fontWeight: regular);
+
+  static TextStyle inter42Regular = interBase.copyWith(
+    fontSize: 42.sp,
+    fontWeight: regular,
+  );
+
+  static TextStyle inter46Regular = interBase.copyWith(
+    fontSize: 46.sp,
+    fontWeight: regular,
+  );
+
+  static TextStyle inter48Regular = interBase.copyWith(
+    fontSize: 48.sp,
+    fontWeight: regular,
+  );
+
+  static TextStyle inter50Regular = interBase.copyWith(
+    fontSize: 50.sp,
+    fontWeight: regular,
+  );
+
+  static TextStyle inter55Regular = interBase.copyWith(
+    fontSize: 55.sp,
+    fontWeight: regular,
+  );
+
+  static TextStyle inter60Regular = interBase.copyWith(
+    fontSize: 60.sp,
+    fontWeight: regular,
+  );
+
+  static TextStyle inter70Regular = interBase.copyWith(
+    fontSize: 70.sp,
+    fontWeight: regular,
+  );
+  static TextStyle inter80ExtraBold = interBase.copyWith(
+    fontSize: 80.sp,
+    fontWeight: extraBold,
+  );
+
+  static TextStyle segoeBase = TextStyle(
+    color: AppColors.black,
+    fontFamily: Fonts.segoeUI,
+    fontWeight: regular,
+    fontSize: 40.sp,
+  );
+
+  static TextStyle segoe40Regular = segoeBase.copyWith(
+    fontSize: 40.sp,
+    fontWeight: regular,
+  );
+
+  static TextStyle segoe48Regular = segoeBase.copyWith(
+    fontSize: 48.sp,
+    fontWeight: regular,
+  );
+
+  static TextStyle segoe55Regular = segoeBase.copyWith(
+    fontSize: 55.sp,
     fontWeight: regular,
   );
 }

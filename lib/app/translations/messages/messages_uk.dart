@@ -85,6 +85,7 @@ class MessagesUk extends Translations {
       Strings.quarter: '''Квартал''',
       Strings.year: '''Рік''',
       Strings.dataSelectionRange: '''Інтервал вибірки:''',
-    },
+      Strings.fymoney: '''FYMONEY''',
+        },
   };
 }

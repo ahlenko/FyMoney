@@ -5,6 +5,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:fymoney/app/cubits/settings/app_settings_cubit.dart';
 import 'package:fymoney/ui/theme/colors.dart';
 import 'package:fymoney/ui/theme/fonts/fonts.dart';
+import 'package:fymoney/ui/theme/fonts/types.dart';
 
 class TransactionStatsCircule extends StatefulWidget {
   final List<SegmentData> segments;
@@ -46,31 +47,19 @@ class _TransactionStatsCirculeState extends State<TransactionStatsCircule> {
               if (widget.selectedSegment == null)
                 Text(
                   '0,00 ${context.watch<AppSettingsCubit>().state.selectedCurrency?.symbol ?? ''}',
-                  style: TextStyle(
-                    fontFamily: Fonts.segoeUI,
-                    color: AppColors.red,
-                    fontSize: 55.sp,
-                  ),
+                  style: Types.segoe55Regular.copyWith(color: AppColors.red),
                 ),
               Visibility(
                 visible: widget.selectedSegment != null,
                 child: Text(
                   '0,00 ${context.watch<AppSettingsCubit>().state.selectedCurrency?.symbol ?? ''}',
-                  style: TextStyle(
-                    fontFamily: Fonts.segoeUI,
-                    color: AppColors.black,
-                    fontSize: 55.sp,
-                  ),
+                  style: Types.segoe55Regular,
                 ),
               ),
               if (widget.selectedSegment == null)
                 Text(
                   '0,00 ${context.watch<AppSettingsCubit>().state.selectedCurrency?.symbol ?? ''}',
-                  style: TextStyle(
-                    fontFamily: Fonts.segoeUI,
-                    color: AppColors.green,
-                    fontSize: 55.sp,
-                  ),
+                  style: Types.segoe55Regular.copyWith(color: AppColors.green),
                 ),
             ],
           ),

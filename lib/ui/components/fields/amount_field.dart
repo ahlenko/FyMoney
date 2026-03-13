@@ -5,6 +5,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:fymoney/app/cubits/settings/app_settings_cubit.dart';
 import 'package:fymoney/ui/theme/colors.dart';
 import 'package:fymoney/ui/theme/fonts/fonts.dart';
+import 'package:fymoney/ui/theme/fonts/types.dart';
 import 'package:fymoney/util/screen_util.dart';
 
 class AmountField extends StatelessWidget {
@@ -82,7 +83,7 @@ class AmountField extends StatelessWidget {
                 ),
               ),
               textAlign: TextAlign.center,
-              style: TextStyle(fontFamily: Fonts.segoeUI, fontSize: 55.sp),
+              style: Types.segoe55Regular,
             ),
             Positioned(
               right: 165.w,
@@ -96,12 +97,13 @@ class AmountField extends StatelessWidget {
             ),
             Positioned(
               right: 35.w,
+              width: 95.w,
               top: 0,
               bottom: 0,
               child: Center(
                 child: Text(
                   '${context.watch<AppSettingsCubit>().state.selectedCurrency?.symbol ?? ''}',
-                  style: TextStyle(fontFamily: Fonts.segoeUI, fontSize: 55.sp),
+                  style: Types.segoe55Regular,
                 ),
               ),
             ),
@@ -113,11 +115,7 @@ class AmountField extends StatelessWidget {
             padding: EdgeInsets.only(left: 45.w),
             child: Text(
               error!,
-              style: TextStyle(
-                fontSize: 40.sp,
-                fontFamily: Fonts.segoeUI,
-                color: AppColors.red,
-              ),
+              style: Types.segoe40Regular.copyWith(color: AppColors.red),
             ),
           ),
         ],

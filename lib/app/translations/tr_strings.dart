@@ -78,4 +78,5 @@ class Strings {
   static const String quarter = 'quarter';
   static const String year = 'year';
   static const String dataSelectionRange = 'dataSelectionRange';
+  static const String fymoney = 'fymoney';
 }

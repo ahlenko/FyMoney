@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:fymoney/ui/theme/colors.dart';
 import 'package:fymoney/ui/theme/fonts/fonts.dart';
+import 'package:fymoney/ui/theme/fonts/types.dart';
 import 'package:fymoney/util/screen_util.dart';
 
 class EmailField extends StatelessWidget {
@@ -27,10 +28,7 @@ class EmailField extends StatelessWidget {
       children: [
         Padding(
           padding: EdgeInsets.only(left: 45.w),
-          child: Text(
-            title,
-            style: TextStyle(fontSize: 40.sp, fontFamily: Fonts.segoeUI),
-          ),
+          child: Text(title, style: Types.segoe40Regular),
         ),
         spacerVertical(10),
         TextField(
@@ -50,7 +48,7 @@ class EmailField extends StatelessWidget {
             ),
           ),
 
-          style: TextStyle(fontFamily: Fonts.inter, fontSize: 48.sp),
+          style: Types.inter48Regular,
         ),
         if (error != null) ...[
           spacerVertical(10),
@@ -58,11 +56,7 @@ class EmailField extends StatelessWidget {
             padding: EdgeInsets.only(left: 45.w),
             child: Text(
               error!,
-              style: TextStyle(
-                fontSize: 40.sp,
-                fontFamily: Fonts.segoeUI,
-                color: AppColors.red,
-              ),
+              style: Types.segoe40Regular.copyWith(color: AppColors.red),
             ),
           ),
         ],

@@ -3,6 +3,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:fymoney/ui/components/button/custom_button.dart';
 import 'package:fymoney/ui/theme/colors.dart';
 import 'package:fymoney/ui/theme/fonts/fonts.dart';
+import 'package:fymoney/ui/theme/fonts/types.dart';
 import 'package:fymoney/util/screen_util.dart';
 
 class BaseDialog extends StatelessWidget {
@@ -40,10 +41,7 @@ class BaseDialog extends StatelessWidget {
               child: Column(
                 mainAxisSize: MainAxisSize.min,
                 children: [
-                  Text(
-                    dialogTitle,
-                    style: TextStyle(fontFamily: Fonts.inter, fontSize: 55.sp),
-                  ),
+                  Text(dialogTitle, style: Types.inter55Regular),
                   spacerVertical(40),
                   body,
                   if (negativeButtonText != null &&

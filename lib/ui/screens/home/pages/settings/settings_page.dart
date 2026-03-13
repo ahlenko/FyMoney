@@ -19,6 +19,7 @@ import 'package:fymoney/ui/components/navigation/navigation_app_bar.dart';
 import 'package:fymoney/ui/screens/home/pages/settings/settings_cubit.dart';
 import 'package:fymoney/ui/theme/colors.dart';
 import 'package:fymoney/ui/theme/fonts/fonts.dart';
+import 'package:fymoney/ui/theme/fonts/types.dart';
 import 'package:fymoney/ui/theme/icons/vector.dart';
 import 'package:fymoney/util/auth_util.dart';
 import 'package:fymoney/util/device_util.dart';
@@ -63,10 +64,8 @@ class _SettingsPageState extends State<SettingsPage> with AfterLayoutMixin {
               children: [
                 Text(
                   Strings.settings.tr,
-                  style: TextStyle(
-                    fontFamily: Fonts.inter,
+                  style: Types.inter50Regular.copyWith(
                     color: AppColors.black.withValues(alpha: .5),
-                    fontSize: 50.sp,
                   ),
                 ),
                 spacerVertical(50.h),
@@ -118,10 +117,8 @@ class _SettingsPageState extends State<SettingsPage> with AfterLayoutMixin {
                   onTap: () => {},
                   child: Text(
                     Strings.termsOfUse.tr,
-                    style: TextStyle(
-                      fontFamily: Fonts.inter,
+                    style: Types.inter46Regular.copyWith(
                       color: AppColors.purpleLite,
-                      fontSize: 46.sp,
                     ),
                   ),
                 ),
@@ -133,10 +130,8 @@ class _SettingsPageState extends State<SettingsPage> with AfterLayoutMixin {
                         ? Center(
                             child: Text(
                               Strings.version.tr + snapshot.requireData,
-                              style: TextStyle(
-                                fontFamily: Fonts.inter,
+                              style: Types.inter40Regular.copyWith(
                                 color: AppColors.black.withValues(alpha: .6),
-                                fontSize: 40.sp,
                               ),
                             ),
                           )

@@ -4,6 +4,7 @@ import 'package:flutter_svg/svg.dart';
 import 'package:fymoney/app/translations/tr_settings.dart';
 import 'package:fymoney/ui/theme/colors.dart';
 import 'package:fymoney/ui/theme/fonts/fonts.dart';
+import 'package:fymoney/ui/theme/fonts/types.dart';
 import 'package:fymoney/util/screen_util.dart';
 import 'package:get/get_utils/src/extensions/internacionalization.dart';
 
@@ -33,10 +34,8 @@ class SettingsRowLanguage extends StatelessWidget {
           spacerHorizontal(35),
           Text(
             text,
-            style: TextStyle(
-              fontFamily: Fonts.inter,
+            style: Types.inter50Regular.copyWith(
               color: tint ?? AppColors.black,
-              fontSize: 50.sp,
             ),
           ),
           spacerAdaptive(),
@@ -49,24 +48,15 @@ class SettingsRowLanguage extends StatelessWidget {
             ),
             underline: const SizedBox(),
             elevation: 1,
-            style: TextStyle(
-              fontFamily: Fonts.inter,
+            style: Types.inter50Regular.copyWith(
               color: tint ?? AppColors.black,
-              fontSize: 50.sp,
             ),
             dropdownColor: Colors.white,
             items: TrSettings.languages
                 .map(
                   (lang) => DropdownMenuItem<String>(
                     value: lang,
-                    child: Text(
-                      lang.tr,
-                      style: TextStyle(
-                        fontFamily: Fonts.inter,
-                        fontSize: 50.sp,
-                        color: AppColors.black,
-                      ),
-                    ),
+                    child: Text(lang.tr, style: Types.inter50Regular),
                   ),
                 )
                 .toList(),

@@ -11,6 +11,7 @@ import 'package:fymoney/ui/components/navigation/navigation_app_bar.dart';
 import 'package:fymoney/ui/screens/home/pages/transaction/history/history_transaction_cubit.dart';
 import 'package:fymoney/ui/theme/colors.dart';
 import 'package:fymoney/ui/theme/fonts/fonts.dart';
+import 'package:fymoney/ui/theme/fonts/types.dart';
 import 'package:fymoney/ui/theme/icons/vector.dart';
 import 'package:fymoney/util/screen_util.dart';
 import 'package:get/get_utils/src/extensions/internacionalization.dart';
@@ -83,12 +84,10 @@ class _HistoryTransactionPageState extends State<HistoryTransactionPage> {
                       onTap: () => cubit.setPage(.spending),
                       child: Text(
                         Strings.spending.tr,
-                        style: TextStyle(
-                          fontFamily: Fonts.inter,
+                        style: Types.inter50Regular.copyWith(
                           color: AppColors.black.withValues(
                             alpha: state.transactionType == .earning ? .5 : 1,
                           ),
-                          fontSize: 50.sp,
                         ),
                       ),
                     ),
@@ -96,12 +95,10 @@ class _HistoryTransactionPageState extends State<HistoryTransactionPage> {
                       onTap: () => cubit.setPage(.earning),
                       child: Text(
                         Strings.earning.tr,
-                        style: TextStyle(
-                          fontFamily: Fonts.inter,
+                        style: Types.inter50Regular.copyWith(
                           color: AppColors.black.withValues(
                             alpha: state.transactionType == .spending ? .5 : 1,
                           ),
-                          fontSize: 50.sp,
                         ),
                       ),
                     ),
@@ -191,33 +188,22 @@ class _HistoryTransactionPageState extends State<HistoryTransactionPage> {
                         onTap: () => cubit.setSortByAmount(false),
                         child: Text(
                           Strings.date.tr,
-                          style: TextStyle(
-                            fontFamily: Fonts.segoeUI,
+                          style: Types.segoe40Regular.copyWith(
                             color: AppColors.black.withValues(
                               alpha: !state.sortByAmount ? 1 : .5,
                             ),
-                            fontSize: 40.sp,
                           ),
                         ),
                       ),
-                      Text(
-                        '8 травня - 11 травня',
-                        style: TextStyle(
-                          fontFamily: Fonts.segoeUI,
-                          color: AppColors.black,
-                          fontSize: 40.sp,
-                        ),
-                      ),
+                      Text('8 травня - 11 травня', style: Types.segoe40Regular),
                       GestureDetector(
                         onTap: () => cubit.setSortByAmount(true),
                         child: Text(
                           Strings.amount.tr,
-                          style: TextStyle(
-                            fontFamily: Fonts.segoeUI,
+                          style: Types.segoe40Regular.copyWith(
                             color: AppColors.black.withValues(
                               alpha: state.sortByAmount ? 1 : .5,
                             ),
-                            fontSize: 40.sp,
                           ),
                         ),
                       ),

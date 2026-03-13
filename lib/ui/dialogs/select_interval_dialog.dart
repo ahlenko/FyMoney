@@ -7,6 +7,7 @@ import 'package:fymoney/data/model/select_interval.dart';
 import 'package:fymoney/ui/dialogs/base/base_dialog.dart';
 import 'package:fymoney/ui/theme/colors.dart';
 import 'package:fymoney/ui/theme/fonts/fonts.dart';
+import 'package:fymoney/ui/theme/fonts/types.dart';
 import 'package:get/get_utils/src/extensions/internacionalization.dart';
 
 class SelectIntervalDialog extends StatelessWidget {
@@ -48,9 +49,7 @@ class SelectIntervalDialog extends StatelessWidget {
                   child: Center(
                     child: Text(
                       el.name.tr,
-                      style: TextStyle(
-                        fontFamily: Fonts.inter,
-                        fontSize: 48.w,
+                      style: Types.inter48Regular.copyWith(
                         color: AppColors.black.withValues(alpha: .7),
                       ),
                     ),

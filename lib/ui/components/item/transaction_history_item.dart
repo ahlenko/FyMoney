@@ -8,6 +8,7 @@ import 'package:fymoney/data/model/transaction_type_model.dart';
 import 'package:fymoney/ui/dialogs/view_transaction_dialog.dart';
 import 'package:fymoney/ui/theme/colors.dart';
 import 'package:fymoney/ui/theme/fonts/fonts.dart';
+import 'package:fymoney/ui/theme/fonts/types.dart';
 import 'package:fymoney/util/screen_util.dart';
 import 'package:get/utils.dart';
 
@@ -44,9 +45,7 @@ class TransactionHistoryItem extends StatelessWidget {
             Expanded(
               child: Text(
                 transactionType.name.tr,
-                style: TextStyle(
-                  fontFamily: Fonts.segoeUI,
-                  fontSize: 55.sp,
+                style: Types.segoe55Regular.copyWith(
                   color: transactionType.color,
                 ),
               ),
@@ -54,9 +53,7 @@ class TransactionHistoryItem extends StatelessWidget {
             spacerHorizontal(46.w),
             Text(
               "${(transaction.amount / 100).toStringAsFixed(2)} ${context.watch<AppSettingsCubit>().state.selectedCurrency?.symbol ?? ''}",
-              style: TextStyle(
-                fontFamily: Fonts.segoeUI,
-                fontSize: 55.sp,
+              style: Types.segoe55Regular.copyWith(
                 color: AppColors.black.withValues(alpha: .7),
               ),
             ),

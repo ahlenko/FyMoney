@@ -4,6 +4,7 @@ import 'package:flutter_svg/svg.dart';
 import 'package:fymoney/data/hive/model/currency_model.dart';
 import 'package:fymoney/ui/theme/colors.dart';
 import 'package:fymoney/ui/theme/fonts/fonts.dart';
+import 'package:fymoney/ui/theme/fonts/types.dart';
 import 'package:fymoney/util/screen_util.dart';
 
 class SettingsRowCurrency extends StatelessWidget {
@@ -34,10 +35,8 @@ class SettingsRowCurrency extends StatelessWidget {
           spacerHorizontal(35),
           Text(
             text,
-            style: TextStyle(
-              fontFamily: Fonts.inter,
+            style: Types.inter50Regular.copyWith(
               color: tint ?? AppColors.black,
-              fontSize: 50.sp,
             ),
           ),
           spacerAdaptive(),
@@ -51,10 +50,8 @@ class SettingsRowCurrency extends StatelessWidget {
             underline: const SizedBox(),
             elevation: 1,
 
-            style: TextStyle(
-              fontFamily: Fonts.inter,
+            style: Types.inter50Regular.copyWith(
               color: tint ?? AppColors.black,
-              fontSize: 50.sp,
             ),
             dropdownColor: Colors.white,
             items: availableCurrencies
@@ -68,11 +65,7 @@ class SettingsRowCurrency extends StatelessWidget {
                         textAlign: TextAlign.end,
                         maxLines: 1,
                         overflow: TextOverflow.ellipsis,
-                        style: TextStyle(
-                          fontFamily: Fonts.inter,
-                          fontSize: 50.sp,
-                          color: AppColors.black,
-                        ),
+                        style: Types.inter50Regular,
                       ),
                     ),
                   ),

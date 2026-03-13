@@ -4,6 +4,7 @@ import 'package:fymoney/app/translations/tr_strings.dart';
 import 'package:fymoney/ui/dialogs/base/base_dialog.dart';
 import 'package:fymoney/ui/theme/colors.dart';
 import 'package:fymoney/ui/theme/fonts/fonts.dart';
+import 'package:fymoney/ui/theme/fonts/types.dart';
 import 'package:get/get_utils/src/extensions/internacionalization.dart';
 
 class RepeateAuthDialog extends StatelessWidget {
@@ -28,10 +29,8 @@ class RepeateAuthDialog extends StatelessWidget {
               providerIsGoogle ? 'Google' : 'Apple',
             ),
             textAlign: TextAlign.center,
-            style: TextStyle(
-              fontFamily: Fonts.inter,
+            style: Types.inter42Regular.copyWith(
               color: AppColors.black.withValues(alpha: .7),
-              fontSize: 42.sp,
             ),
           ),
         ],

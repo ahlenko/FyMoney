@@ -2,10 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:fymoney/app/extensions/context_extension.dart';
+import 'package:fymoney/app/translations/tr_strings.dart';
 import 'package:fymoney/ui/theme/colors.dart';
 import 'package:fymoney/ui/theme/fonts/fonts.dart';
 import 'package:fymoney/ui/theme/fonts/types.dart';
 import 'package:fymoney/ui/theme/icons/vector.dart';
+import 'package:get/get_utils/src/extensions/internacionalization.dart';
 
 class NavigationAppBar extends StatelessWidget implements PreferredSizeWidget {
   final VoidCallback? prefixCallback;
@@ -38,14 +40,9 @@ class NavigationAppBar extends StatelessWidget implements PreferredSizeWidget {
 
           Expanded(
             child: Text(
-              "FYMONEY",
+              Strings.fymoney.tr,
               textAlign: TextAlign.center,
-              style: TextStyle(
-                fontFamily: Fonts.inter,
-                fontSize: 80.sp,
-                fontWeight: Types.extraBold,
-                color: AppColors.purple,
-              ),
+              style: Types.inter80ExtraBold.copyWith(color: AppColors.purple),
             ),
           ),
 

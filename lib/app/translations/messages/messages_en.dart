@@ -83,6 +83,7 @@ class MessagesEn extends Translations {
       Strings.quarter: '''Quarter''',
       Strings.year: '''Year''',
       Strings.dataSelectionRange: '''Data selection range:''',
-    },
+      Strings.fymoney: '''FYMONEY''',
+        },
   };
 }

@@ -8,6 +8,7 @@ import 'package:fymoney/ui/dialogs/base/base_dialog.dart';
 import 'package:fymoney/ui/components/fields/amount_field.dart';
 import 'package:fymoney/ui/theme/colors.dart';
 import 'package:fymoney/ui/theme/fonts/fonts.dart';
+import 'package:fymoney/ui/theme/fonts/types.dart';
 import 'package:fymoney/util/screen_util.dart';
 import 'package:get/get_utils/src/extensions/internacionalization.dart';
 import 'package:intl/intl.dart';
@@ -42,22 +43,11 @@ class _ViewTransactionDialogState extends State<ViewTransactionDialog> {
         children: [
           Row(
             children: [
-              Text(
-                Strings.category.tr,
-                style: TextStyle(
-                  fontFamily: Fonts.inter,
-                  color: AppColors.black,
-                  fontSize: 55.sp,
-                ),
-              ),
+              Text(Strings.category.tr, style: Types.inter55Regular),
               spacerAdaptive(),
               Text(
                 widget.type.name.tr,
-                style: TextStyle(
-                  fontFamily: Fonts.inter,
-                  color: widget.type.color,
-                  fontSize: 55.sp,
-                ),
+                style: Types.inter55Regular.copyWith(color: widget.type.color),
               ),
               spacerHorizontal(16),
               SvgPicture.asset(widget.type.icon, width: 90.w),
@@ -66,24 +56,13 @@ class _ViewTransactionDialogState extends State<ViewTransactionDialog> {
           spacerVertical(24),
           Row(
             children: [
-              Text(
-                Strings.type.tr,
-                style: TextStyle(
-                  fontFamily: Fonts.inter,
-                  color: AppColors.black,
-                  fontSize: 55.sp,
-                ),
-              ),
+              Text(Strings.type.tr, style: Types.inter55Regular),
               spacerAdaptive(),
               Text(
                 widget.transaction.type == TransactionType.earning
                     ? Strings.earning_.tr
                     : Strings.spending_.tr,
-                style: TextStyle(
-                  fontFamily: Fonts.inter,
-                  color: AppColors.black,
-                  fontSize: 55.sp,
-                ),
+                style: Types.inter55Regular,
               ),
             ],
           ),
@@ -91,45 +70,25 @@ class _ViewTransactionDialogState extends State<ViewTransactionDialog> {
           if (widget.transaction.createDate != null) ...[
             Row(
               children: [
-                Text(
-                  "${Strings.date.tr}:",
-                  style: TextStyle(
-                    fontFamily: Fonts.inter,
-                    color: AppColors.black,
-                    fontSize: 55.sp,
-                  ),
-                ),
+                Text("${Strings.date.tr}:", style: Types.inter55Regular),
                 spacerAdaptive(),
                 Text(
                   DateFormat(
                     'dd MMMM yyyy',
                     'uk',
                   ).format(widget.transaction.createDate!.toLocal()),
-                  style: TextStyle(
-                    fontFamily: Fonts.inter,
-                    color: AppColors.black,
-                    fontSize: 55.sp,
-                  ),
+                  style: Types.inter55Regular,
                 ),
               ],
             ),
             spacerVertical(24),
           ],
           if (widget.transaction.comment.isNotEmpty) ...[
-            Text(
-              Strings.comment.tr,
-              style: TextStyle(
-                fontFamily: Fonts.inter,
-                color: AppColors.black,
-                fontSize: 55.sp,
-              ),
-            ),
+            Text(Strings.comment.tr, style: Types.inter55Regular),
             Text(
               widget.transaction.comment,
-              style: TextStyle(
-                fontFamily: Fonts.segoeUI,
+              style: Types.segoe48Regular.copyWith(
                 color: AppColors.black.withValues(alpha: .5),
-                fontSize: 48.sp,
               ),
             ),
             spacerVertical(24),
