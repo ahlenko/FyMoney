@@ -3,7 +3,7 @@ import 'dart:math';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:fymoney/app/translations/tr_strings.dart';
-import 'package:fymoney/data/model/select_interval.dart';
+import 'package:fymoney/data/model/enum/select_interval.dart';
 import 'package:fymoney/ui/dialogs/base/base_dialog.dart';
 import 'package:fymoney/ui/theme/colors.dart';
 import 'package:fymoney/ui/theme/fonts/fonts.dart';

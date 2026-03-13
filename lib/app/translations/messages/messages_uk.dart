@@ -86,6 +86,9 @@ class MessagesUk extends Translations {
       Strings.year: '''Рік''',
       Strings.dataSelectionRange: '''Інтервал вибірки:''',
       Strings.fymoney: '''FYMONEY''',
-        },
+      Strings.commentCantBeLongerThan135Char:
+          '''Коментар не може бути довшим за 135 символів''',
+      Strings.pleaseEnterAValidAmount: '''Будь ласка, введіть дійсну суму''',
+    },
   };
 }

@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:fymoney/app/navigation/router.dart';
 import 'package:fymoney/app/translations/tr_strings.dart';
 import 'package:fymoney/data/firebase/repo/user_repo.dart';
 import 'package:fymoney/data/hive/repo/hive_user.dart';
 import 'package:fymoney/ui/dialogs/base/base_dialog.dart';
+import 'package:fymoney/ui/screens/home/home_cubit.dart';
 import 'package:fymoney/ui/theme/colors.dart';
 import 'package:fymoney/ui/theme/fonts/fonts.dart';
 import 'package:fymoney/ui/theme/fonts/types.dart';
@@ -38,6 +40,7 @@ class _DeleteAccountDialogState extends State<DeleteAccountDialog> {
           if (await AuthUtil.deleteUser(context) == null) {
             await UserRepo.deleteUserData();
             await HiveUser.setUserData(userData: null);
+            context.read<HomeCubit>().cancelTransactionsStream();
             Navigator.of(
               context,
             ).pushNamedAndRemoveUntil(Routes.auth, (route) => false);

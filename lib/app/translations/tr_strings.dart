@@ -79,4 +79,7 @@ class Strings {
   static const String year = 'year';
   static const String dataSelectionRange = 'dataSelectionRange';
   static const String fymoney = 'fymoney';
+  static const String commentCantBeLongerThan135Char =
+      'commentCantBeLongerThan135Char';
+  static const String pleaseEnterAValidAmount = 'pleaseEnterAValidAmount';
 }

@@ -7,6 +7,7 @@ import 'package:fymoney/app/cubits/settings/app_settings_cubit.dart';
 import 'package:fymoney/app/navigation/router.dart';
 import 'package:fymoney/app/translations/tr_strings.dart';
 import 'package:fymoney/data/firebase/model/transaction_model.dart';
+import 'package:fymoney/data/model/enum/transaction_type.dart';
 import 'package:fymoney/data/model/transaction_type_model.dart';
 import 'package:fymoney/ui/components/item/transaction_grid_stats_item.dart';
 import 'package:fymoney/ui/components/item/transaction_row_stats_item.dart';
@@ -40,6 +41,7 @@ class _HomePageState extends State<HomePage> {
   void initState() {
     super.initState();
     cubit = context.read<HomeCubit>();
+    cubit.setTransactionsStream();
 
     _pageController = PageController(
       initialPage: TransactionType.spending.index,
@@ -143,7 +145,8 @@ class _HomePageState extends State<HomePage> {
                                 for (TransactionTypeModel transactionType
                                     in TransactionTypeModel.localTypes.where(
                                       (transaction) =>
-                                          transaction.type == .spending,
+                                          transaction.type ==
+                                          TransactionType.spending,
                                     ))
                                   SegmentData(
                                     value: 40,
@@ -166,7 +169,8 @@ class _HomePageState extends State<HomePage> {
                                 for (TransactionTypeModel transactionType
                                     in TransactionTypeModel.localTypes.where(
                                       (transaction) =>
-                                          transaction.type == .spending,
+                                          transaction.type ==
+                                          TransactionType.spending,
                                     ))
                                   TransactionGridStatsItem(
                                     onHoverStateChanged: cubit.changeHoverState,
@@ -186,7 +190,8 @@ class _HomePageState extends State<HomePage> {
                                 for (TransactionTypeModel transactionType
                                     in TransactionTypeModel.localTypes.where(
                                       (transaction) =>
-                                          transaction.type == .earning,
+                                          transaction.type ==
+                                          TransactionType.earning,
                                     ))
                                   SegmentData(
                                     value: 40,
@@ -209,7 +214,8 @@ class _HomePageState extends State<HomePage> {
                                 for (TransactionTypeModel transactionType
                                     in TransactionTypeModel.localTypes.where(
                                       (transaction) =>
-                                          transaction.type == .earning,
+                                          transaction.type ==
+                                          TransactionType.earning,
                                     ))
                                   TransactionRowStatsItem(
                                     onHoverStateChanged: cubit.changeHoverState,

@@ -14,7 +14,7 @@ T _$identity<T>(T value) => value;
 /// @nodoc
 mixin _$AppSettingsState {
 
- Map<String, Map<String, String>> get translations; String get languageCode; CurrencyModel? get selectedCurrency;
+ Map<String, Map<String, String>> get translations; String get languageCode; CurrencyModel get selectedCurrency;
 /// Create a copy of AppSettingsState
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
@@ -45,11 +45,11 @@ abstract mixin class $AppSettingsStateCopyWith<$Res>  {
   factory $AppSettingsStateCopyWith(AppSettingsState value, $Res Function(AppSettingsState) _then) = _$AppSettingsStateCopyWithImpl;
 @useResult
 $Res call({
- Map<String, Map<String, String>> translations, String languageCode, CurrencyModel? selectedCurrency
+ Map<String, Map<String, String>> translations, String languageCode, CurrencyModel selectedCurrency
 });
 
 
-$CurrencyModelCopyWith<$Res>? get selectedCurrency;
+$CurrencyModelCopyWith<$Res> get selectedCurrency;
 
 }
 /// @nodoc
@@ -62,24 +62,21 @@ class _$AppSettingsStateCopyWithImpl<$Res>
 
 /// Create a copy of AppSettingsState
 /// with the given fields replaced by the non-null parameter values.
-@pragma('vm:prefer-inline') @override $Res call({Object? translations = null,Object? languageCode = null,Object? selectedCurrency = freezed,}) {
+@pragma('vm:prefer-inline') @override $Res call({Object? translations = null,Object? languageCode = null,Object? selectedCurrency = null,}) {
   return _then(_self.copyWith(
 translations: null == translations ? _self.translations : translations // ignore: cast_nullable_to_non_nullable
 as Map<String, Map<String, String>>,languageCode: null == languageCode ? _self.languageCode : languageCode // ignore: cast_nullable_to_non_nullable
-as String,selectedCurrency: freezed == selectedCurrency ? _self.selectedCurrency : selectedCurrency // ignore: cast_nullable_to_non_nullable
-as CurrencyModel?,
+as String,selectedCurrency: null == selectedCurrency ? _self.selectedCurrency : selectedCurrency // ignore: cast_nullable_to_non_nullable
+as CurrencyModel,
   ));
 }
 /// Create a copy of AppSettingsState
 /// with the given fields replaced by the non-null parameter values.
 @override
 @pragma('vm:prefer-inline')
-$CurrencyModelCopyWith<$Res>? get selectedCurrency {
-    if (_self.selectedCurrency == null) {
-    return null;
-  }
-
-  return $CurrencyModelCopyWith<$Res>(_self.selectedCurrency!, (value) {
+$CurrencyModelCopyWith<$Res> get selectedCurrency {
+  
+  return $CurrencyModelCopyWith<$Res>(_self.selectedCurrency, (value) {
     return _then(_self.copyWith(selectedCurrency: value));
   });
 }
@@ -164,7 +161,7 @@ return $default(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( Map<String, Map<String, String>> translations,  String languageCode,  CurrencyModel? selectedCurrency)?  $default,{required TResult orElse(),}) {final _that = this;
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( Map<String, Map<String, String>> translations,  String languageCode,  CurrencyModel selectedCurrency)?  $default,{required TResult orElse(),}) {final _that = this;
 switch (_that) {
 case _AppSettingsState() when $default != null:
 return $default(_that.translations,_that.languageCode,_that.selectedCurrency);case _:
@@ -185,7 +182,7 @@ return $default(_that.translations,_that.languageCode,_that.selectedCurrency);ca
 /// }
 /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( Map<String, Map<String, String>> translations,  String languageCode,  CurrencyModel? selectedCurrency)  $default,) {final _that = this;
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( Map<String, Map<String, String>> translations,  String languageCode,  CurrencyModel selectedCurrency)  $default,) {final _that = this;
 switch (_that) {
 case _AppSettingsState():
 return $default(_that.translations,_that.languageCode,_that.selectedCurrency);case _:
@@ -205,7 +202,7 @@ return $default(_that.translations,_that.languageCode,_that.selectedCurrency);ca
 /// }
 /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( Map<String, Map<String, String>> translations,  String languageCode,  CurrencyModel? selectedCurrency)?  $default,) {final _that = this;
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( Map<String, Map<String, String>> translations,  String languageCode,  CurrencyModel selectedCurrency)?  $default,) {final _that = this;
 switch (_that) {
 case _AppSettingsState() when $default != null:
 return $default(_that.translations,_that.languageCode,_that.selectedCurrency);case _:
@@ -220,7 +217,7 @@ return $default(_that.translations,_that.languageCode,_that.selectedCurrency);ca
 
 
 class _AppSettingsState extends AppSettingsState {
-  const _AppSettingsState({final  Map<String, Map<String, String>> translations = const {}, this.languageCode = 'en', this.selectedCurrency}): _translations = translations,super._();
+  const _AppSettingsState({final  Map<String, Map<String, String>> translations = const {}, this.languageCode = 'en', this.selectedCurrency = const CurrencyModel()}): _translations = translations,super._();
   
 
  final  Map<String, Map<String, String>> _translations;
@@ -231,7 +228,7 @@ class _AppSettingsState extends AppSettingsState {
 }
 
 @override@JsonKey() final  String languageCode;
-@override final  CurrencyModel? selectedCurrency;
+@override@JsonKey() final  CurrencyModel selectedCurrency;
 
 /// Create a copy of AppSettingsState
 /// with the given fields replaced by the non-null parameter values.
@@ -263,11 +260,11 @@ abstract mixin class _$AppSettingsStateCopyWith<$Res> implements $AppSettingsSta
   factory _$AppSettingsStateCopyWith(_AppSettingsState value, $Res Function(_AppSettingsState) _then) = __$AppSettingsStateCopyWithImpl;
 @override @useResult
 $Res call({
- Map<String, Map<String, String>> translations, String languageCode, CurrencyModel? selectedCurrency
+ Map<String, Map<String, String>> translations, String languageCode, CurrencyModel selectedCurrency
 });
 
 
-@override $CurrencyModelCopyWith<$Res>? get selectedCurrency;
+@override $CurrencyModelCopyWith<$Res> get selectedCurrency;
 
 }
 /// @nodoc
@@ -280,12 +277,12 @@ class __$AppSettingsStateCopyWithImpl<$Res>
 
 /// Create a copy of AppSettingsState
 /// with the given fields replaced by the non-null parameter values.
-@override @pragma('vm:prefer-inline') $Res call({Object? translations = null,Object? languageCode = null,Object? selectedCurrency = freezed,}) {
+@override @pragma('vm:prefer-inline') $Res call({Object? translations = null,Object? languageCode = null,Object? selectedCurrency = null,}) {
   return _then(_AppSettingsState(
 translations: null == translations ? _self._translations : translations // ignore: cast_nullable_to_non_nullable
 as Map<String, Map<String, String>>,languageCode: null == languageCode ? _self.languageCode : languageCode // ignore: cast_nullable_to_non_nullable
-as String,selectedCurrency: freezed == selectedCurrency ? _self.selectedCurrency : selectedCurrency // ignore: cast_nullable_to_non_nullable
-as CurrencyModel?,
+as String,selectedCurrency: null == selectedCurrency ? _self.selectedCurrency : selectedCurrency // ignore: cast_nullable_to_non_nullable
+as CurrencyModel,
   ));
 }
 
@@ -293,12 +290,9 @@ as CurrencyModel?,
 /// with the given fields replaced by the non-null parameter values.
 @override
 @pragma('vm:prefer-inline')
-$CurrencyModelCopyWith<$Res>? get selectedCurrency {
-    if (_self.selectedCurrency == null) {
-    return null;
-  }
-
-  return $CurrencyModelCopyWith<$Res>(_self.selectedCurrency!, (value) {
+$CurrencyModelCopyWith<$Res> get selectedCurrency {
+  
+  return $CurrencyModelCopyWith<$Res>(_self.selectedCurrency, (value) {
     return _then(_self.copyWith(selectedCurrency: value));
   });
 }

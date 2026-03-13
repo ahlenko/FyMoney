@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:fymoney/app/translations/tr_strings.dart';
-import 'package:fymoney/data/firebase/model/transaction_model.dart';
+import 'package:fymoney/data/model/enum/transaction_type.dart';
 import 'package:fymoney/ui/theme/icons/vector.dart';
 
 class TransactionTypeModel {

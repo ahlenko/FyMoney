@@ -84,6 +84,8 @@ class MessagesEn extends Translations {
       Strings.year: '''Year''',
       Strings.dataSelectionRange: '''Data selection range:''',
       Strings.fymoney: '''FYMONEY''',
+          Strings.commentCantBeLongerThan135Char: '''Comment can't be longer than 135 characters''',
+          Strings.pleaseEnterAValidAmount: '''Please enter a valid amount''',
         },
   };
 }

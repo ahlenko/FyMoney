@@ -14,7 +14,7 @@ T _$identity<T>(T value) => value;
 /// @nodoc
 mixin _$CreateTransactionState {
 
- TransactionTypeModel? get selectedTransaction; bool get loading;
+ TransactionTypeModel? get selectedTransaction; bool get loading; String? get amountError; String? get commentError;
 /// Create a copy of CreateTransactionState
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
@@ -25,16 +25,16 @@ $CreateTransactionStateCopyWith<CreateTransactionState> get copyWith => _$Create
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is CreateTransactionState&&(identical(other.selectedTransaction, selectedTransaction) || other.selectedTransaction == selectedTransaction)&&(identical(other.loading, loading) || other.loading == loading));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is CreateTransactionState&&(identical(other.selectedTransaction, selectedTransaction) || other.selectedTransaction == selectedTransaction)&&(identical(other.loading, loading) || other.loading == loading)&&(identical(other.amountError, amountError) || other.amountError == amountError)&&(identical(other.commentError, commentError) || other.commentError == commentError));
 }
 
 
 @override
-int get hashCode => Object.hash(runtimeType,selectedTransaction,loading);
+int get hashCode => Object.hash(runtimeType,selectedTransaction,loading,amountError,commentError);
 
 @override
 String toString() {
-  return 'CreateTransactionState(selectedTransaction: $selectedTransaction, loading: $loading)';
+  return 'CreateTransactionState(selectedTransaction: $selectedTransaction, loading: $loading, amountError: $amountError, commentError: $commentError)';
 }
 
 
@@ -45,7 +45,7 @@ abstract mixin class $CreateTransactionStateCopyWith<$Res>  {
   factory $CreateTransactionStateCopyWith(CreateTransactionState value, $Res Function(CreateTransactionState) _then) = _$CreateTransactionStateCopyWithImpl;
 @useResult
 $Res call({
- TransactionTypeModel? selectedTransaction, bool loading
+ TransactionTypeModel? selectedTransaction, bool loading, String? amountError, String? commentError
 });
 
 
@@ -62,11 +62,13 @@ class _$CreateTransactionStateCopyWithImpl<$Res>
 
 /// Create a copy of CreateTransactionState
 /// with the given fields replaced by the non-null parameter values.
-@pragma('vm:prefer-inline') @override $Res call({Object? selectedTransaction = freezed,Object? loading = null,}) {
+@pragma('vm:prefer-inline') @override $Res call({Object? selectedTransaction = freezed,Object? loading = null,Object? amountError = freezed,Object? commentError = freezed,}) {
   return _then(_self.copyWith(
 selectedTransaction: freezed == selectedTransaction ? _self.selectedTransaction : selectedTransaction // ignore: cast_nullable_to_non_nullable
 as TransactionTypeModel?,loading: null == loading ? _self.loading : loading // ignore: cast_nullable_to_non_nullable
-as bool,
+as bool,amountError: freezed == amountError ? _self.amountError : amountError // ignore: cast_nullable_to_non_nullable
+as String?,commentError: freezed == commentError ? _self.commentError : commentError // ignore: cast_nullable_to_non_nullable
+as String?,
   ));
 }
 
@@ -151,10 +153,10 @@ return $default(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( TransactionTypeModel? selectedTransaction,  bool loading)?  $default,{required TResult orElse(),}) {final _that = this;
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( TransactionTypeModel? selectedTransaction,  bool loading,  String? amountError,  String? commentError)?  $default,{required TResult orElse(),}) {final _that = this;
 switch (_that) {
 case _CreateTransactionState() when $default != null:
-return $default(_that.selectedTransaction,_that.loading);case _:
+return $default(_that.selectedTransaction,_that.loading,_that.amountError,_that.commentError);case _:
   return orElse();
 
 }
@@ -172,10 +174,10 @@ return $default(_that.selectedTransaction,_that.loading);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( TransactionTypeModel? selectedTransaction,  bool loading)  $default,) {final _that = this;
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( TransactionTypeModel? selectedTransaction,  bool loading,  String? amountError,  String? commentError)  $default,) {final _that = this;
 switch (_that) {
 case _CreateTransactionState():
-return $default(_that.selectedTransaction,_that.loading);case _:
+return $default(_that.selectedTransaction,_that.loading,_that.amountError,_that.commentError);case _:
   throw StateError('Unexpected subclass');
 
 }
@@ -192,10 +194,10 @@ return $default(_that.selectedTransaction,_that.loading);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( TransactionTypeModel? selectedTransaction,  bool loading)?  $default,) {final _that = this;
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( TransactionTypeModel? selectedTransaction,  bool loading,  String? amountError,  String? commentError)?  $default,) {final _that = this;
 switch (_that) {
 case _CreateTransactionState() when $default != null:
-return $default(_that.selectedTransaction,_that.loading);case _:
+return $default(_that.selectedTransaction,_that.loading,_that.amountError,_that.commentError);case _:
   return null;
 
 }
@@ -207,11 +209,13 @@ return $default(_that.selectedTransaction,_that.loading);case _:
 
 
 class _CreateTransactionState implements CreateTransactionState {
-  const _CreateTransactionState({this.selectedTransaction, this.loading = false});
+  const _CreateTransactionState({this.selectedTransaction, this.loading = false, this.amountError, this.commentError});
   
 
 @override final  TransactionTypeModel? selectedTransaction;
 @override@JsonKey() final  bool loading;
+@override final  String? amountError;
+@override final  String? commentError;
 
 /// Create a copy of CreateTransactionState
 /// with the given fields replaced by the non-null parameter values.
@@ -223,16 +227,16 @@ _$CreateTransactionStateCopyWith<_CreateTransactionState> get copyWith => __$Cre
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _CreateTransactionState&&(identical(other.selectedTransaction, selectedTransaction) || other.selectedTransaction == selectedTransaction)&&(identical(other.loading, loading) || other.loading == loading));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _CreateTransactionState&&(identical(other.selectedTransaction, selectedTransaction) || other.selectedTransaction == selectedTransaction)&&(identical(other.loading, loading) || other.loading == loading)&&(identical(other.amountError, amountError) || other.amountError == amountError)&&(identical(other.commentError, commentError) || other.commentError == commentError));
 }
 
 
 @override
-int get hashCode => Object.hash(runtimeType,selectedTransaction,loading);
+int get hashCode => Object.hash(runtimeType,selectedTransaction,loading,amountError,commentError);
 
 @override
 String toString() {
-  return 'CreateTransactionState(selectedTransaction: $selectedTransaction, loading: $loading)';
+  return 'CreateTransactionState(selectedTransaction: $selectedTransaction, loading: $loading, amountError: $amountError, commentError: $commentError)';
 }
 
 
@@ -243,7 +247,7 @@ abstract mixin class _$CreateTransactionStateCopyWith<$Res> implements $CreateTr
   factory _$CreateTransactionStateCopyWith(_CreateTransactionState value, $Res Function(_CreateTransactionState) _then) = __$CreateTransactionStateCopyWithImpl;
 @override @useResult
 $Res call({
- TransactionTypeModel? selectedTransaction, bool loading
+ TransactionTypeModel? selectedTransaction, bool loading, String? amountError, String? commentError
 });
 
 
@@ -260,11 +264,13 @@ class __$CreateTransactionStateCopyWithImpl<$Res>
 
 /// Create a copy of CreateTransactionState
 /// with the given fields replaced by the non-null parameter values.
-@override @pragma('vm:prefer-inline') $Res call({Object? selectedTransaction = freezed,Object? loading = null,}) {
+@override @pragma('vm:prefer-inline') $Res call({Object? selectedTransaction = freezed,Object? loading = null,Object? amountError = freezed,Object? commentError = freezed,}) {
   return _then(_CreateTransactionState(
 selectedTransaction: freezed == selectedTransaction ? _self.selectedTransaction : selectedTransaction // ignore: cast_nullable_to_non_nullable
 as TransactionTypeModel?,loading: null == loading ? _self.loading : loading // ignore: cast_nullable_to_non_nullable
-as bool,
+as bool,amountError: freezed == amountError ? _self.amountError : amountError // ignore: cast_nullable_to_non_nullable
+as String?,commentError: freezed == commentError ? _self.commentError : commentError // ignore: cast_nullable_to_non_nullable
+as String?,
   ));
 }
 

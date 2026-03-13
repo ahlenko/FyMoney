@@ -16,6 +16,7 @@ import 'package:fymoney/ui/dialogs/delete_account_dialog.dart';
 import 'package:fymoney/ui/components/item/settings_row_currency.dart';
 import 'package:fymoney/ui/components/item/settings_row_language.dart';
 import 'package:fymoney/ui/components/navigation/navigation_app_bar.dart';
+import 'package:fymoney/ui/screens/home/home_cubit.dart';
 import 'package:fymoney/ui/screens/home/pages/settings/settings_cubit.dart';
 import 'package:fymoney/ui/theme/colors.dart';
 import 'package:fymoney/ui/theme/fonts/fonts.dart';
@@ -53,6 +54,7 @@ class _SettingsPageState extends State<SettingsPage> with AfterLayoutMixin {
             sufixCallback: () async {
               await HiveUser.setUserData(userData: null);
               await AuthUtil.signout();
+              context.read<HomeCubit>().cancelTransactionsStream();
               Navigator.of(
                 context,
               ).pushNamedAndRemoveUntil(Routes.auth, (route) => false);

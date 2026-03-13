@@ -5,6 +5,7 @@ abstract class HomeState with _$HomeState {
   const factory HomeState({
     @Default(TransactionType.spending) TransactionType transactionType,
     @Default(SelectInterval.month) SelectInterval selectInterval,
+    @Default([]) List<TransactionModel> transactions,
     @Default(false) bool loading,
     int? hoveredIndex,
   }) = _HomeState;

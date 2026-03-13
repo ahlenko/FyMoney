@@ -4,10 +4,10 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:fymoney/app/cubits/settings/app_settings_cubit.dart';
 import 'package:fymoney/data/firebase/model/transaction_model.dart';
+import 'package:fymoney/data/model/enum/transaction_type.dart';
 import 'package:fymoney/data/model/transaction_type_model.dart';
 import 'package:fymoney/ui/dialogs/view_transaction_dialog.dart';
 import 'package:fymoney/ui/theme/colors.dart';
-import 'package:fymoney/ui/theme/fonts/fonts.dart';
 import 'package:fymoney/ui/theme/fonts/types.dart';
 import 'package:fymoney/util/screen_util.dart';
 import 'package:get/utils.dart';
@@ -20,10 +20,14 @@ class TransactionHistoryItem extends StatelessWidget {
   Widget build(BuildContext context) {
     final transactionType = transaction.type == .earning
         ? TransactionTypeModel.localTypes
-              .where((transaction) => transaction.type == .earning)
+              .where(
+                (transaction) => transaction.type == TransactionType.earning,
+              )
               .firstWhere((tr) => tr.index == transaction.typeIndex)
         : TransactionTypeModel.localTypes
-              .where((transaction) => transaction.type == .spending)
+              .where(
+                (transaction) => transaction.type == TransactionType.spending,
+              )
               .firstWhere((tr) => tr.index == transaction.typeIndex);
 
     return GestureDetector(

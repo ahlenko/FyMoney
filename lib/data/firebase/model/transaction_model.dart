@@ -1,5 +1,6 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:fymoney/app/extensions/date_extension.dart';
+import 'package:fymoney/data/model/enum/transaction_type.dart';
 
 part 'transaction_model.freezed.dart';
 part 'transaction_model.g.dart';
@@ -21,12 +22,4 @@ abstract class TransactionModel with _$TransactionModel {
 
   factory TransactionModel.fromJson(Map<String, dynamic> json) =>
       _$TransactionModelFromJson(json);
-}
-
-@JsonEnum(valueField: "subscriptionPeriod")
-enum TransactionType {
-  @JsonValue('spending')
-  spending(),
-  @JsonValue('earning')
-  earning(),
 }
