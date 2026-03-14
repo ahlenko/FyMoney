@@ -141,7 +141,7 @@ class _SettingsPageState extends State<SettingsPage> with AfterLayoutMixin {
                         : SizedBox();
                   },
                 ),
-                spacerVertical(context.bottomSafe == 0 ? 50 : 0),
+                spacerVertical(context.bottomSafe == 0 ? 135 : 0),
               ],
             ),
           ),

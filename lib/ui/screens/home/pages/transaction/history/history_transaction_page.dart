@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:fymoney/app/di/di.dart';
+import 'package:fymoney/app/extensions/context_extension.dart';
 import 'package:fymoney/app/navigation/router.dart';
 import 'package:fymoney/app/translations/tr_strings.dart';
 import 'package:fymoney/data/firebase/model/transaction_model.dart';
@@ -245,6 +246,7 @@ class _HistoryTransactionPageState extends State<HistoryTransactionPage> {
                     ],
                   ),
                 ),
+                spacerVertical(context.bottomSafe == 0 ? 135 : 0),
               ],
             ),
           ),

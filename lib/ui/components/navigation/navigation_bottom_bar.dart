@@ -19,7 +19,7 @@ class NavigationBottomBar extends StatelessWidget {
         100.w,
         15.h,
         100.w,
-        context.bottomSafe + (context.bottomSafe == 0 ? 24.h : 0.h),
+        context.bottomSafe + (context.bottomSafe == 0 ? 45.h : 0.h),
       ),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceAround,

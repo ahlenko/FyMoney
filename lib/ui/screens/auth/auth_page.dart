@@ -159,6 +159,7 @@ class _AuthPageState extends State<AuthPage> {
                           ),
                         ),
                       ),
+                      spacerVertical(context.bottomSafe == 0 ? 135 : 0),
                     ],
                   ),
                 ),

@@ -149,6 +149,7 @@ class _CreateTransactionPageState extends State<CreateTransactionPage> {
                           ),
                         ),
                       ),
+                      spacerVertical(context.bottomSafe == 0 ? 135 : 0),
                     ],
                   ),
                 ),
