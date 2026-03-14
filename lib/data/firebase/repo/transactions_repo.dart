@@ -49,63 +49,6 @@ abstract class TransactionsRepo {
     await docRef.delete();
   }
 
-  static Future<List<TransactionModel>> getTransactions(
-    SelectInterval selectInterval,
-  ) async {
-    final userId = AuthUtil.auth.currentUser?.uid;
-    if (userId == null) return [];
-
-    final now = DateTime.now();
-
-    DateTime start;
-    DateTime end;
-
-    switch (selectInterval) {
-      case SelectInterval.week:
-        final firstDay = now.subtract(Duration(days: now.weekday - 1));
-        start = DateTime(firstDay.year, firstDay.month, firstDay.day);
-        end = start.add(const Duration(days: 7));
-        break;
-
-      case SelectInterval.month:
-        start = DateTime(now.year, now.month);
-        end = DateTime(now.year, now.month + 1);
-        break;
-
-      case SelectInterval.quarter:
-        final quarter = ((now.month - 1) ~/ 3);
-        start = DateTime(now.year, quarter * 3 + 1);
-        end = DateTime(now.year, quarter * 3 + 4);
-        break;
-
-      case SelectInterval.year:
-        start = DateTime(now.year);
-        end = DateTime(now.year + 1);
-        break;
-    }
-
-    final collectionRef = _firestore
-        .collection(collection)
-        .doc(userId)
-        .collection(subCollection)
-        .where('createDate', isGreaterThanOrEqualTo: start)
-        .where('createDate', isLessThan: end)
-        .where(
-          'currency',
-          isEqualTo: appContext
-              .read<AppSettingsCubit>()
-              .state
-              .selectedCurrency
-              .code,
-        )
-        .orderBy('createDate', descending: true);
-
-    final snapshot = await collectionRef.get();
-    return snapshot.docs
-        .map((doc) => TransactionModel.fromJson(doc.data()..['id'] = doc.id))
-        .toList();
-  }
-
   static Stream<List<TransactionModel>> getTransactionsStream(
     SelectInterval selectInterval,
   ) {
@@ -145,8 +88,8 @@ abstract class TransactionsRepo {
         .collection(collection)
         .doc(userId)
         .collection(subCollection)
-        .where('createDate', isGreaterThanOrEqualTo: start)
-        .where('createDate', isLessThan: end)
+        // .where('createDate', isGreaterThanOrEqualTo: start)
+        // .where('createDate', isLessThan: end)
         .where(
           'currency',
           isEqualTo: appContext

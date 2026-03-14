@@ -4,11 +4,14 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:fymoney/app/di/di.dart';
+import 'package:fymoney/app/navigation/router.dart';
 import 'package:fymoney/app/translations/tr_strings.dart';
 import 'package:fymoney/data/firebase/model/transaction_model.dart';
 import 'package:fymoney/data/model/enum/transaction_type.dart';
+import 'package:fymoney/ui/components/button/custom_button.dart';
 import 'package:fymoney/ui/components/item/transaction_history_item.dart';
 import 'package:fymoney/ui/components/navigation/navigation_app_bar.dart';
+import 'package:fymoney/ui/screens/home/home_cubit.dart';
 import 'package:fymoney/ui/screens/home/pages/transaction/history/history_transaction_cubit.dart';
 import 'package:fymoney/ui/theme/colors.dart';
 import 'package:fymoney/ui/theme/fonts/types.dart';
@@ -64,9 +67,22 @@ class _HistoryTransactionPageState extends State<HistoryTransactionPage> {
 
   @override
   Widget build(BuildContext context) {
+    final transactionsList = context.watch<HomeCubit>().state.transactions;
+
     return BlocBuilder<HistoryTransactionCubit, HistoryTransactionState>(
       bloc: cubit,
       builder: (context, state) {
+        final sortedTransactions = List<TransactionModel>.from(transactionsList)
+          ..sort((a, b) {
+            int compare;
+            if (state.sortByAmount) {
+              compare = a.amount.compareTo(b.amount);
+            } else {
+              compare = a.createDate!.compareTo(b.createDate!);
+            }
+            return state.descendingSort ? -compare : compare;
+          });
+
         return Scaffold(
           appBar: NavigationAppBar(
             sufixCallback: () => cubit.setDescendingSort(!state.descendingSort),
@@ -115,67 +131,83 @@ class _HistoryTransactionPageState extends State<HistoryTransactionPage> {
                       }
                     },
                     children: [
-                      SingleChildScrollView(
-                        child: Column(
-                          children: [
-                            TransactionHistoryItem(
-                              transaction: TransactionModel(
-                                typeIndex: 1,
-                                comment: "fdsfs asfsdfds gsegs gers g",
-                                type: .spending,
-                                amount: 45356,
-                                createDate: DateTime.now(),
+                      sortedTransactions
+                              .where((t) => t.type == .spending)
+                              .isEmpty
+                          ? Center(
+                              child: Column(
+                                mainAxisSize: MainAxisSize.min,
+                                children: [
+                                  Text(
+                                    Strings.noSpendingsFound.tr,
+                                    style: Types.segoe40Regular,
+                                  ),
+                                  spacerVertical(45),
+                                  CustomButton(
+                                    title: Strings.addFirstSpending.tr,
+                                    color: AppColors.darkPurple,
+                                    onPressed: () => {
+                                      Navigator.of(
+                                        context,
+                                      ).pushReplacementNamed(
+                                        Routes.create,
+                                        arguments: TransactionType.spending,
+                                      ),
+                                    },
+                                  ),
+                                ],
+                              ),
+                            )
+                          : SingleChildScrollView(
+                              child: Column(
+                                children: [
+                                  for (var transaction
+                                      in sortedTransactions.where(
+                                        (t) => t.type == .spending,
+                                      ))
+                                    TransactionHistoryItem(
+                                      transaction: transaction,
+                                    ),
+                                ],
                               ),
                             ),
-                            TransactionHistoryItem(
-                              transaction: TransactionModel(
-                                typeIndex: 5,
-                                type: .spending,
-                                amount: 34123,
-                                createDate: DateTime.now(),
+                      sortedTransactions
+                              .where((t) => t.type == .earning)
+                              .isEmpty
+                          ? Center(
+                              child: Column(
+                                mainAxisSize: MainAxisSize.min,
+                                children: [
+                                  Text(
+                                    Strings.noEarningsFound.tr,
+                                    style: Types.segoe40Regular,
+                                  ),
+                                  spacerVertical(45),
+                                  CustomButton(
+                                    title: Strings.addFirstEarning.tr,
+                                    color: AppColors.darkPurple,
+                                    onPressed: () => Navigator.of(context)
+                                        .pushReplacementNamed(
+                                          Routes.create,
+                                          arguments: TransactionType.earning,
+                                        ),
+                                  ),
+                                ],
+                              ),
+                            )
+                          : SingleChildScrollView(
+                              child: Column(
+                                children: [
+                                  for (var transaction
+                                      in sortedTransactions.where(
+                                        (t) => t.type == .earning,
+                                      ))
+                                    TransactionHistoryItem(
+                                      transaction: transaction,
+                                    ),
+                                ],
                               ),
                             ),
-                            TransactionHistoryItem(
-                              transaction: TransactionModel(
-                                typeIndex: 4,
-                                type: .spending,
-                                amount: 6594,
-                                createDate: DateTime.now(),
-                              ),
-                            ),
-                          ],
-                        ),
-                      ),
-                      SingleChildScrollView(
-                        child: Column(
-                          children: [
-                            TransactionHistoryItem(
-                              transaction: TransactionModel(
-                                typeIndex: 1,
-                                type: .earning,
-                                amount: 10000,
-                                createDate: DateTime.now(),
-                              ),
-                            ),
-                            TransactionHistoryItem(
-                              transaction: TransactionModel(
-                                typeIndex: 0,
-                                type: .earning,
-                                amount: 10000,
-                                createDate: DateTime.now(),
-                              ),
-                            ),
-                            TransactionHistoryItem(
-                              transaction: TransactionModel(
-                                typeIndex: 2,
-                                type: .earning,
-                                amount: 5000,
-                                createDate: DateTime.now(),
-                              ),
-                            ),
-                          ],
-                        ),
-                      ),
                     ],
                   ),
                 ),

@@ -82,4 +82,8 @@ class Strings {
   static const String commentCantBeLongerThan135Char =
       'commentCantBeLongerThan135Char';
   static const String pleaseEnterAValidAmount = 'pleaseEnterAValidAmount';
+  static const String addFirstEarning = 'addFirstEarning';
+  static const String noEarningsFound = 'noEarningsFound';
+  static const String addFirstSpending = 'addFirstSpending';
+  static const String noSpendingsFound = 'noSpendingsFound';
 }

@@ -89,6 +89,10 @@ class MessagesUk extends Translations {
       Strings.commentCantBeLongerThan135Char:
           '''Коментар не може бути довшим за 135 символів''',
       Strings.pleaseEnterAValidAmount: '''Будь ласка, введіть дійсну суму''',
+      Strings.addFirstEarning: '''Додати перший дохід''',
+      Strings.noEarningsFound: '''Доходів не найдено''',
+      Strings.addFirstSpending: '''Додати першу витрату''',
+      Strings.noSpendingsFound: '''Витрат не найдено''',
     },
   };
 }

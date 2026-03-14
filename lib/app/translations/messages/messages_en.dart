@@ -86,6 +86,10 @@ class MessagesEn extends Translations {
       Strings.fymoney: '''FYMONEY''',
           Strings.commentCantBeLongerThan135Char: '''Comment can't be longer than 135 characters''',
           Strings.pleaseEnterAValidAmount: '''Please enter a valid amount''',
+          Strings.addFirstEarning: '''Add first earning''',
+          Strings.noEarningsFound: '''No earnings found''',
+          Strings.addFirstSpending: '''Add first spending''',
+          Strings.noSpendingsFound: '''No spendings found''',
         },
   };
 }

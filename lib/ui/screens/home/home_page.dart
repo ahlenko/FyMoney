@@ -1,5 +1,6 @@
 import 'dart:async';
 
+import 'package:after_layout/after_layout.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -34,14 +35,13 @@ class _HomePageState extends State<HomePage> {
   late StreamSubscription<HomeState> subscription;
   late PageController _pageController;
   bool isPageAnimating = false;
-
   late HomeCubit cubit;
 
   @override
   void initState() {
     super.initState();
     cubit = context.read<HomeCubit>();
-    cubit.setTransactionsStream();
+    context.read<HomeCubit>().setTransactionsStream();
 
     _pageController = PageController(
       initialPage: TransactionType.spending.index,

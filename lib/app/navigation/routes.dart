@@ -4,6 +4,7 @@ import 'package:fymoney/data/model/enum/transaction_type.dart';
 import 'package:fymoney/ui/screens/auth/auth_page.dart';
 import 'package:fymoney/ui/screens/home/home_page.dart';
 import 'package:fymoney/ui/screens/home/pages/settings/settings_page.dart';
+import 'package:fymoney/ui/screens/home/pages/transaction/create/create_transaction_page.dart';
 import 'package:fymoney/ui/screens/home/pages/transaction/history/history_transaction_page.dart';
 import 'package:fymoney/ui/screens/splash_page.dart';
 
@@ -32,6 +33,11 @@ class RoutesGenerator {
       Routes.history,
       (context, match, args) =>
           HistoryTransactionPage(initialType: args as TransactionType),
+    ),
+    Path(
+      Routes.create,
+      (context, match, args) =>
+          CreateTransactionPage(selectedType: args as TransactionType),
     ),
   ];
 

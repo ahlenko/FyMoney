@@ -3,6 +3,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:fymoney/app/translations/tr_strings.dart';
 import 'package:fymoney/data/firebase/model/transaction_model.dart';
+import 'package:fymoney/data/firebase/repo/transactions_repo.dart';
 import 'package:fymoney/data/model/enum/transaction_type.dart';
 import 'package:fymoney/data/model/transaction_type_model.dart';
 import 'package:fymoney/ui/dialogs/base/base_dialog.dart';
@@ -27,16 +28,79 @@ class ViewTransactionDialog extends StatefulWidget {
 }
 
 class _ViewTransactionDialogState extends State<ViewTransactionDialog> {
+  final amountController = TextEditingController();
+  final amountNode = FocusNode();
+  String? amountError;
+  bool loading = false;
+
+  @override
+  initState() {
+    super.initState();
+
+    amountController.text = (widget.transaction.amount / 100).toStringAsFixed(
+      2,
+    );
+    amountNode.addListener(() {
+      if (!amountNode.hasFocus) validateAmount();
+    });
+  }
+
+  validateAmount() {
+    setState(() => amountError = null);
+
+    if (amountController.text.trim().isEmpty) {
+      setState(() => amountError = Strings.theFieldMustBeFilled.tr);
+    } else {
+      if (double.tryParse(amountController.text.trim()) == null) {
+        setState(() => amountError = Strings.pleaseEnterAValidAmount.tr);
+      }
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return BaseDialog(
       positiveButtonText: Strings.update.tr,
-      positiveButtonClick: () => {},
+      positiveButtonClick: () async {
+        if (loading) return;
+
+        validateAmount();
+        if (amountError != null) return;
+
+        setState(() => loading = true);
+
+        try {
+          await TransactionsRepo.updateTransaction(
+            widget.transaction.copyWith(
+              amount: (double.parse(amountController.text.trim()) * 100)
+                  .toInt(),
+            ),
+          );
+        } catch (e) {
+          setState(() => loading = false);
+          return;
+        }
+
+        if (mounted) Navigator.of(context).pop();
+      },
       negativeButtonText: Strings.delete.tr,
-      negativeButtonClick: () => {},
+      negativeButtonClick: () async {
+        if (loading) return;
+        setState(() => loading = true);
+
+        try {
+          await TransactionsRepo.deleteTransaction(widget.transaction.id!);
+        } catch (e) {
+          setState(() => loading = false);
+          return;
+        }
+
+        if (mounted) Navigator.of(context).pop();
+      },
       dialogTitle: widget.transaction.type == TransactionType.earning
           ? Strings.earnintData.tr
           : Strings.spendingData.tr,
+      loading: loading,
       body: Column(
         mainAxisSize: MainAxisSize.min,
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -94,9 +158,11 @@ class _ViewTransactionDialogState extends State<ViewTransactionDialog> {
             spacerVertical(24),
           ],
           AmountField(
-            controller: TextEditingController(),
-            focusNode: FocusNode(),
-            onChanged: () => {},
+            controller: amountController,
+            focusNode: amountNode,
+            onChanged: () => {
+              if (amountError != null) setState(() => amountError = null),
+            },
           ),
         ],
       ),

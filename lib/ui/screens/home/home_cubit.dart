@@ -19,12 +19,6 @@ class HomeCubit extends Cubit<HomeState> {
   setTransactionsStream() async {
     cancelTransactionsStream();
 
-    emit(state.copyWith(loading: true));
-    final currentTransactions = await TransactionsRepo.getTransactions(
-      state.selectInterval,
-    );
-    emit(state.copyWith(transactions: currentTransactions, loading: false));
-
     transactionsSubscription =
         TransactionsRepo.getTransactionsStream(state.selectInterval).listen((
           transactions,

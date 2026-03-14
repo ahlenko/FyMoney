@@ -1,7 +1,6 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:fymoney/app/app.dart';
-import 'package:fymoney/data/firebase/model/transaction_model.dart';
 import 'package:fymoney/data/model/enum/transaction_type.dart';
 import 'package:fymoney/ui/screens/home/home_cubit.dart';
 import 'package:injectable/injectable.dart';
