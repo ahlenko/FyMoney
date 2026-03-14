@@ -90,6 +90,7 @@ class MessagesEn extends Translations {
           Strings.noEarningsFound: '''No earnings found''',
           Strings.addFirstSpending: '''Add first spending''',
           Strings.noSpendingsFound: '''No spendings found''',
+          Strings.budget: '''Бюджет:''',
         },
   };
 }

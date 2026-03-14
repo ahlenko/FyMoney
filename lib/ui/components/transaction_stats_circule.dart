@@ -3,18 +3,23 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:fymoney/app/cubits/settings/app_settings_cubit.dart';
+import 'package:fymoney/data/model/transaction_type_model.dart';
 import 'package:fymoney/ui/theme/colors.dart';
-import 'package:fymoney/ui/theme/fonts/fonts.dart';
 import 'package:fymoney/ui/theme/fonts/types.dart';
+import 'package:get/get_utils/src/extensions/internacionalization.dart';
 
 class TransactionStatsCircule extends StatefulWidget {
   final List<SegmentData> segments;
   final int? selectedSegment;
+  final double totalSpending;
+  final double totalEarning;
 
   const TransactionStatsCircule({
     super.key,
     required this.segments,
     required this.selectedSegment,
+    required this.totalSpending,
+    required this.totalEarning,
   });
 
   @override
@@ -46,19 +51,31 @@ class _TransactionStatsCirculeState extends State<TransactionStatsCircule> {
             children: [
               if (widget.selectedSegment == null)
                 Text(
-                  '0,00 ${context.watch<AppSettingsCubit>().state.selectedCurrency?.symbol ?? ''}',
+                  '${widget.totalSpending.toStringAsFixed(2)} ${context.watch<AppSettingsCubit>().state.selectedCurrency?.symbol ?? ''}',
                   style: Types.segoe55Regular.copyWith(color: AppColors.red),
                 ),
               Visibility(
                 visible: widget.selectedSegment != null,
-                child: Text(
-                  '0,00 ${context.watch<AppSettingsCubit>().state.selectedCurrency?.symbol ?? ''}',
-                  style: Types.segoe55Regular,
+                child: Column(
+                  children: [
+                    Text(
+                      widget
+                          .segments[widget.selectedSegment ?? 0]
+                          .transactionType
+                          .name
+                          .tr,
+                      style: Types.segoe55Regular,
+                    ),
+                    Text(
+                      '${(widget.segments[widget.selectedSegment ?? 0].value / 100).toStringAsFixed(2)} ${context.watch<AppSettingsCubit>().state.selectedCurrency?.symbol ?? ''}',
+                      style: Types.segoe55Regular,
+                    ),
+                  ],
                 ),
               ),
               if (widget.selectedSegment == null)
                 Text(
-                  '0,00 ${context.watch<AppSettingsCubit>().state.selectedCurrency?.symbol ?? ''}',
+                  '${widget.totalEarning.toStringAsFixed(2)} ${context.watch<AppSettingsCubit>().state.selectedCurrency?.symbol ?? ''}',
                   style: Types.segoe55Regular.copyWith(color: AppColors.green),
                 ),
             ],
@@ -95,7 +112,9 @@ class _CirclePainter extends CustomPainter {
     final radius = size.width / 2 - 16;
     final rect = Rect.fromCircle(center: center, radius: radius);
 
-    if (segments.isEmpty) canvas.drawArc(rect, 0, 100, false, bgPaint);
+    if (segments.isEmpty || total == 0) {
+      canvas.drawArc(rect, 0, 100, false, bgPaint);
+    }
 
     for (int i = 0; i < segments.length; i++) {
       final sweepAngle = (segments[i].value / total) * 2 * pi;
@@ -107,14 +126,16 @@ class _CirclePainter extends CustomPainter {
       final rect = Rect.fromCircle(center: center, radius: radius);
 
       final paint = Paint()
-        ..color = segments[i].color.withValues(
-          alpha: selectedIndex == null || isSelected ? 1 : 0.3,
+        ..color = segments[i].transactionType.color.withValues(
+          alpha: selectedIndex == null || isSelected ? 1 : 0.4,
         )
         ..style = PaintingStyle.stroke
         ..strokeWidth = strokeWidth;
 
       final circlePaint = Paint()
-        ..color = segments[i].color.withValues(alpha: isSelected ? 0.3 : 0)
+        ..color = segments[i].transactionType.color.withValues(
+          alpha: isSelected ? 0.24 : 0,
+        )
         ..style = PaintingStyle.fill
         ..strokeWidth = strokeWidth;
 
@@ -132,8 +153,8 @@ class _CirclePainter extends CustomPainter {
 }
 
 class SegmentData {
+  final TransactionTypeModel transactionType;
   final double value;
-  final Color color;
 
-  const SegmentData({required this.value, required this.color});
+  const SegmentData({required this.value, required this.transactionType});
 }

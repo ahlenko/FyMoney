@@ -14,7 +14,7 @@ T _$identity<T>(T value) => value;
 /// @nodoc
 mixin _$HomeState {
 
- TransactionType get transactionType; SelectInterval get selectInterval; List<TransactionModel> get transactions; bool get loading; int? get hoveredIndex;
+ TransactionType get transactionType; SelectInterval get selectInterval; List<TransactionModel> get transactions; String? get dateInterval; bool get loading; int? get hoveredIndex;
 /// Create a copy of HomeState
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
@@ -25,16 +25,16 @@ $HomeStateCopyWith<HomeState> get copyWith => _$HomeStateCopyWithImpl<HomeState>
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is HomeState&&(identical(other.transactionType, transactionType) || other.transactionType == transactionType)&&(identical(other.selectInterval, selectInterval) || other.selectInterval == selectInterval)&&const DeepCollectionEquality().equals(other.transactions, transactions)&&(identical(other.loading, loading) || other.loading == loading)&&(identical(other.hoveredIndex, hoveredIndex) || other.hoveredIndex == hoveredIndex));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is HomeState&&(identical(other.transactionType, transactionType) || other.transactionType == transactionType)&&(identical(other.selectInterval, selectInterval) || other.selectInterval == selectInterval)&&const DeepCollectionEquality().equals(other.transactions, transactions)&&(identical(other.dateInterval, dateInterval) || other.dateInterval == dateInterval)&&(identical(other.loading, loading) || other.loading == loading)&&(identical(other.hoveredIndex, hoveredIndex) || other.hoveredIndex == hoveredIndex));
 }
 
 
 @override
-int get hashCode => Object.hash(runtimeType,transactionType,selectInterval,const DeepCollectionEquality().hash(transactions),loading,hoveredIndex);
+int get hashCode => Object.hash(runtimeType,transactionType,selectInterval,const DeepCollectionEquality().hash(transactions),dateInterval,loading,hoveredIndex);
 
 @override
 String toString() {
-  return 'HomeState(transactionType: $transactionType, selectInterval: $selectInterval, transactions: $transactions, loading: $loading, hoveredIndex: $hoveredIndex)';
+  return 'HomeState(transactionType: $transactionType, selectInterval: $selectInterval, transactions: $transactions, dateInterval: $dateInterval, loading: $loading, hoveredIndex: $hoveredIndex)';
 }
 
 
@@ -45,7 +45,7 @@ abstract mixin class $HomeStateCopyWith<$Res>  {
   factory $HomeStateCopyWith(HomeState value, $Res Function(HomeState) _then) = _$HomeStateCopyWithImpl;
 @useResult
 $Res call({
- TransactionType transactionType, SelectInterval selectInterval, List<TransactionModel> transactions, bool loading, int? hoveredIndex
+ TransactionType transactionType, SelectInterval selectInterval, List<TransactionModel> transactions, String? dateInterval, bool loading, int? hoveredIndex
 });
 
 
@@ -62,12 +62,13 @@ class _$HomeStateCopyWithImpl<$Res>
 
 /// Create a copy of HomeState
 /// with the given fields replaced by the non-null parameter values.
-@pragma('vm:prefer-inline') @override $Res call({Object? transactionType = null,Object? selectInterval = null,Object? transactions = null,Object? loading = null,Object? hoveredIndex = freezed,}) {
+@pragma('vm:prefer-inline') @override $Res call({Object? transactionType = null,Object? selectInterval = null,Object? transactions = null,Object? dateInterval = freezed,Object? loading = null,Object? hoveredIndex = freezed,}) {
   return _then(_self.copyWith(
 transactionType: null == transactionType ? _self.transactionType : transactionType // ignore: cast_nullable_to_non_nullable
 as TransactionType,selectInterval: null == selectInterval ? _self.selectInterval : selectInterval // ignore: cast_nullable_to_non_nullable
 as SelectInterval,transactions: null == transactions ? _self.transactions : transactions // ignore: cast_nullable_to_non_nullable
-as List<TransactionModel>,loading: null == loading ? _self.loading : loading // ignore: cast_nullable_to_non_nullable
+as List<TransactionModel>,dateInterval: freezed == dateInterval ? _self.dateInterval : dateInterval // ignore: cast_nullable_to_non_nullable
+as String?,loading: null == loading ? _self.loading : loading // ignore: cast_nullable_to_non_nullable
 as bool,hoveredIndex: freezed == hoveredIndex ? _self.hoveredIndex : hoveredIndex // ignore: cast_nullable_to_non_nullable
 as int?,
   ));
@@ -154,10 +155,10 @@ return $default(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( TransactionType transactionType,  SelectInterval selectInterval,  List<TransactionModel> transactions,  bool loading,  int? hoveredIndex)?  $default,{required TResult orElse(),}) {final _that = this;
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( TransactionType transactionType,  SelectInterval selectInterval,  List<TransactionModel> transactions,  String? dateInterval,  bool loading,  int? hoveredIndex)?  $default,{required TResult orElse(),}) {final _that = this;
 switch (_that) {
 case _HomeState() when $default != null:
-return $default(_that.transactionType,_that.selectInterval,_that.transactions,_that.loading,_that.hoveredIndex);case _:
+return $default(_that.transactionType,_that.selectInterval,_that.transactions,_that.dateInterval,_that.loading,_that.hoveredIndex);case _:
   return orElse();
 
 }
@@ -175,10 +176,10 @@ return $default(_that.transactionType,_that.selectInterval,_that.transactions,_t
 /// }
 /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( TransactionType transactionType,  SelectInterval selectInterval,  List<TransactionModel> transactions,  bool loading,  int? hoveredIndex)  $default,) {final _that = this;
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( TransactionType transactionType,  SelectInterval selectInterval,  List<TransactionModel> transactions,  String? dateInterval,  bool loading,  int? hoveredIndex)  $default,) {final _that = this;
 switch (_that) {
 case _HomeState():
-return $default(_that.transactionType,_that.selectInterval,_that.transactions,_that.loading,_that.hoveredIndex);case _:
+return $default(_that.transactionType,_that.selectInterval,_that.transactions,_that.dateInterval,_that.loading,_that.hoveredIndex);case _:
   throw StateError('Unexpected subclass');
 
 }
@@ -195,10 +196,10 @@ return $default(_that.transactionType,_that.selectInterval,_that.transactions,_t
 /// }
 /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( TransactionType transactionType,  SelectInterval selectInterval,  List<TransactionModel> transactions,  bool loading,  int? hoveredIndex)?  $default,) {final _that = this;
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( TransactionType transactionType,  SelectInterval selectInterval,  List<TransactionModel> transactions,  String? dateInterval,  bool loading,  int? hoveredIndex)?  $default,) {final _that = this;
 switch (_that) {
 case _HomeState() when $default != null:
-return $default(_that.transactionType,_that.selectInterval,_that.transactions,_that.loading,_that.hoveredIndex);case _:
+return $default(_that.transactionType,_that.selectInterval,_that.transactions,_that.dateInterval,_that.loading,_that.hoveredIndex);case _:
   return null;
 
 }
@@ -210,7 +211,7 @@ return $default(_that.transactionType,_that.selectInterval,_that.transactions,_t
 
 
 class _HomeState implements HomeState {
-  const _HomeState({this.transactionType = TransactionType.spending, this.selectInterval = SelectInterval.month, final  List<TransactionModel> transactions = const [], this.loading = false, this.hoveredIndex}): _transactions = transactions;
+  const _HomeState({this.transactionType = TransactionType.spending, this.selectInterval = SelectInterval.week, final  List<TransactionModel> transactions = const [], this.dateInterval, this.loading = false, this.hoveredIndex}): _transactions = transactions;
   
 
 @override@JsonKey() final  TransactionType transactionType;
@@ -222,6 +223,7 @@ class _HomeState implements HomeState {
   return EqualUnmodifiableListView(_transactions);
 }
 
+@override final  String? dateInterval;
 @override@JsonKey() final  bool loading;
 @override final  int? hoveredIndex;
 
@@ -235,16 +237,16 @@ _$HomeStateCopyWith<_HomeState> get copyWith => __$HomeStateCopyWithImpl<_HomeSt
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _HomeState&&(identical(other.transactionType, transactionType) || other.transactionType == transactionType)&&(identical(other.selectInterval, selectInterval) || other.selectInterval == selectInterval)&&const DeepCollectionEquality().equals(other._transactions, _transactions)&&(identical(other.loading, loading) || other.loading == loading)&&(identical(other.hoveredIndex, hoveredIndex) || other.hoveredIndex == hoveredIndex));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _HomeState&&(identical(other.transactionType, transactionType) || other.transactionType == transactionType)&&(identical(other.selectInterval, selectInterval) || other.selectInterval == selectInterval)&&const DeepCollectionEquality().equals(other._transactions, _transactions)&&(identical(other.dateInterval, dateInterval) || other.dateInterval == dateInterval)&&(identical(other.loading, loading) || other.loading == loading)&&(identical(other.hoveredIndex, hoveredIndex) || other.hoveredIndex == hoveredIndex));
 }
 
 
 @override
-int get hashCode => Object.hash(runtimeType,transactionType,selectInterval,const DeepCollectionEquality().hash(_transactions),loading,hoveredIndex);
+int get hashCode => Object.hash(runtimeType,transactionType,selectInterval,const DeepCollectionEquality().hash(_transactions),dateInterval,loading,hoveredIndex);
 
 @override
 String toString() {
-  return 'HomeState(transactionType: $transactionType, selectInterval: $selectInterval, transactions: $transactions, loading: $loading, hoveredIndex: $hoveredIndex)';
+  return 'HomeState(transactionType: $transactionType, selectInterval: $selectInterval, transactions: $transactions, dateInterval: $dateInterval, loading: $loading, hoveredIndex: $hoveredIndex)';
 }
 
 
@@ -255,7 +257,7 @@ abstract mixin class _$HomeStateCopyWith<$Res> implements $HomeStateCopyWith<$Re
   factory _$HomeStateCopyWith(_HomeState value, $Res Function(_HomeState) _then) = __$HomeStateCopyWithImpl;
 @override @useResult
 $Res call({
- TransactionType transactionType, SelectInterval selectInterval, List<TransactionModel> transactions, bool loading, int? hoveredIndex
+ TransactionType transactionType, SelectInterval selectInterval, List<TransactionModel> transactions, String? dateInterval, bool loading, int? hoveredIndex
 });
 
 
@@ -272,12 +274,13 @@ class __$HomeStateCopyWithImpl<$Res>
 
 /// Create a copy of HomeState
 /// with the given fields replaced by the non-null parameter values.
-@override @pragma('vm:prefer-inline') $Res call({Object? transactionType = null,Object? selectInterval = null,Object? transactions = null,Object? loading = null,Object? hoveredIndex = freezed,}) {
+@override @pragma('vm:prefer-inline') $Res call({Object? transactionType = null,Object? selectInterval = null,Object? transactions = null,Object? dateInterval = freezed,Object? loading = null,Object? hoveredIndex = freezed,}) {
   return _then(_HomeState(
 transactionType: null == transactionType ? _self.transactionType : transactionType // ignore: cast_nullable_to_non_nullable
 as TransactionType,selectInterval: null == selectInterval ? _self.selectInterval : selectInterval // ignore: cast_nullable_to_non_nullable
 as SelectInterval,transactions: null == transactions ? _self._transactions : transactions // ignore: cast_nullable_to_non_nullable
-as List<TransactionModel>,loading: null == loading ? _self.loading : loading // ignore: cast_nullable_to_non_nullable
+as List<TransactionModel>,dateInterval: freezed == dateInterval ? _self.dateInterval : dateInterval // ignore: cast_nullable_to_non_nullable
+as String?,loading: null == loading ? _self.loading : loading // ignore: cast_nullable_to_non_nullable
 as bool,hoveredIndex: freezed == hoveredIndex ? _self.hoveredIndex : hoveredIndex // ignore: cast_nullable_to_non_nullable
 as int?,
   ));

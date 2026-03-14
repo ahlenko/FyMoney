@@ -14,7 +14,7 @@ T _$identity<T>(T value) => value;
 /// @nodoc
 mixin _$SettingsState {
 
- bool get loading; String get languageCode; List<String> get linkedProviders; List<CurrencyModel> get availableCurrencies; CurrencyModel? get selectedCurrency;
+ bool get loading; String? get languageCode; List<String> get linkedProviders; List<CurrencyModel> get availableCurrencies; CurrencyModel? get selectedCurrency;
 /// Create a copy of SettingsState
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
@@ -45,7 +45,7 @@ abstract mixin class $SettingsStateCopyWith<$Res>  {
   factory $SettingsStateCopyWith(SettingsState value, $Res Function(SettingsState) _then) = _$SettingsStateCopyWithImpl;
 @useResult
 $Res call({
- bool loading, String languageCode, List<String> linkedProviders, List<CurrencyModel> availableCurrencies, CurrencyModel? selectedCurrency
+ bool loading, String? languageCode, List<String> linkedProviders, List<CurrencyModel> availableCurrencies, CurrencyModel? selectedCurrency
 });
 
 
@@ -62,11 +62,11 @@ class _$SettingsStateCopyWithImpl<$Res>
 
 /// Create a copy of SettingsState
 /// with the given fields replaced by the non-null parameter values.
-@pragma('vm:prefer-inline') @override $Res call({Object? loading = null,Object? languageCode = null,Object? linkedProviders = null,Object? availableCurrencies = null,Object? selectedCurrency = freezed,}) {
+@pragma('vm:prefer-inline') @override $Res call({Object? loading = null,Object? languageCode = freezed,Object? linkedProviders = null,Object? availableCurrencies = null,Object? selectedCurrency = freezed,}) {
   return _then(_self.copyWith(
 loading: null == loading ? _self.loading : loading // ignore: cast_nullable_to_non_nullable
-as bool,languageCode: null == languageCode ? _self.languageCode : languageCode // ignore: cast_nullable_to_non_nullable
-as String,linkedProviders: null == linkedProviders ? _self.linkedProviders : linkedProviders // ignore: cast_nullable_to_non_nullable
+as bool,languageCode: freezed == languageCode ? _self.languageCode : languageCode // ignore: cast_nullable_to_non_nullable
+as String?,linkedProviders: null == linkedProviders ? _self.linkedProviders : linkedProviders // ignore: cast_nullable_to_non_nullable
 as List<String>,availableCurrencies: null == availableCurrencies ? _self.availableCurrencies : availableCurrencies // ignore: cast_nullable_to_non_nullable
 as List<CurrencyModel>,selectedCurrency: freezed == selectedCurrency ? _self.selectedCurrency : selectedCurrency // ignore: cast_nullable_to_non_nullable
 as CurrencyModel?,
@@ -166,7 +166,7 @@ return $default(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( bool loading,  String languageCode,  List<String> linkedProviders,  List<CurrencyModel> availableCurrencies,  CurrencyModel? selectedCurrency)?  $default,{required TResult orElse(),}) {final _that = this;
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( bool loading,  String? languageCode,  List<String> linkedProviders,  List<CurrencyModel> availableCurrencies,  CurrencyModel? selectedCurrency)?  $default,{required TResult orElse(),}) {final _that = this;
 switch (_that) {
 case _SettingsState() when $default != null:
 return $default(_that.loading,_that.languageCode,_that.linkedProviders,_that.availableCurrencies,_that.selectedCurrency);case _:
@@ -187,7 +187,7 @@ return $default(_that.loading,_that.languageCode,_that.linkedProviders,_that.ava
 /// }
 /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( bool loading,  String languageCode,  List<String> linkedProviders,  List<CurrencyModel> availableCurrencies,  CurrencyModel? selectedCurrency)  $default,) {final _that = this;
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( bool loading,  String? languageCode,  List<String> linkedProviders,  List<CurrencyModel> availableCurrencies,  CurrencyModel? selectedCurrency)  $default,) {final _that = this;
 switch (_that) {
 case _SettingsState():
 return $default(_that.loading,_that.languageCode,_that.linkedProviders,_that.availableCurrencies,_that.selectedCurrency);case _:
@@ -207,7 +207,7 @@ return $default(_that.loading,_that.languageCode,_that.linkedProviders,_that.ava
 /// }
 /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( bool loading,  String languageCode,  List<String> linkedProviders,  List<CurrencyModel> availableCurrencies,  CurrencyModel? selectedCurrency)?  $default,) {final _that = this;
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( bool loading,  String? languageCode,  List<String> linkedProviders,  List<CurrencyModel> availableCurrencies,  CurrencyModel? selectedCurrency)?  $default,) {final _that = this;
 switch (_that) {
 case _SettingsState() when $default != null:
 return $default(_that.loading,_that.languageCode,_that.linkedProviders,_that.availableCurrencies,_that.selectedCurrency);case _:
@@ -222,11 +222,11 @@ return $default(_that.loading,_that.languageCode,_that.linkedProviders,_that.ava
 
 
 class _SettingsState implements SettingsState {
-  const _SettingsState({this.loading = false, this.languageCode = 'en', final  List<String> linkedProviders = const [], final  List<CurrencyModel> availableCurrencies = const [], this.selectedCurrency}): _linkedProviders = linkedProviders,_availableCurrencies = availableCurrencies;
+  const _SettingsState({this.loading = false, this.languageCode, final  List<String> linkedProviders = const [], final  List<CurrencyModel> availableCurrencies = const [], this.selectedCurrency}): _linkedProviders = linkedProviders,_availableCurrencies = availableCurrencies;
   
 
 @override@JsonKey() final  bool loading;
-@override@JsonKey() final  String languageCode;
+@override final  String? languageCode;
  final  List<String> _linkedProviders;
 @override@JsonKey() List<String> get linkedProviders {
   if (_linkedProviders is EqualUnmodifiableListView) return _linkedProviders;
@@ -273,7 +273,7 @@ abstract mixin class _$SettingsStateCopyWith<$Res> implements $SettingsStateCopy
   factory _$SettingsStateCopyWith(_SettingsState value, $Res Function(_SettingsState) _then) = __$SettingsStateCopyWithImpl;
 @override @useResult
 $Res call({
- bool loading, String languageCode, List<String> linkedProviders, List<CurrencyModel> availableCurrencies, CurrencyModel? selectedCurrency
+ bool loading, String? languageCode, List<String> linkedProviders, List<CurrencyModel> availableCurrencies, CurrencyModel? selectedCurrency
 });
 
 
@@ -290,11 +290,11 @@ class __$SettingsStateCopyWithImpl<$Res>
 
 /// Create a copy of SettingsState
 /// with the given fields replaced by the non-null parameter values.
-@override @pragma('vm:prefer-inline') $Res call({Object? loading = null,Object? languageCode = null,Object? linkedProviders = null,Object? availableCurrencies = null,Object? selectedCurrency = freezed,}) {
+@override @pragma('vm:prefer-inline') $Res call({Object? loading = null,Object? languageCode = freezed,Object? linkedProviders = null,Object? availableCurrencies = null,Object? selectedCurrency = freezed,}) {
   return _then(_SettingsState(
 loading: null == loading ? _self.loading : loading // ignore: cast_nullable_to_non_nullable
-as bool,languageCode: null == languageCode ? _self.languageCode : languageCode // ignore: cast_nullable_to_non_nullable
-as String,linkedProviders: null == linkedProviders ? _self._linkedProviders : linkedProviders // ignore: cast_nullable_to_non_nullable
+as bool,languageCode: freezed == languageCode ? _self.languageCode : languageCode // ignore: cast_nullable_to_non_nullable
+as String?,linkedProviders: null == linkedProviders ? _self._linkedProviders : linkedProviders // ignore: cast_nullable_to_non_nullable
 as List<String>,availableCurrencies: null == availableCurrencies ? _self._availableCurrencies : availableCurrencies // ignore: cast_nullable_to_non_nullable
 as List<CurrencyModel>,selectedCurrency: freezed == selectedCurrency ? _self.selectedCurrency : selectedCurrency // ignore: cast_nullable_to_non_nullable
 as CurrencyModel?,

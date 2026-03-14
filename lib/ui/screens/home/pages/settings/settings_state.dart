@@ -4,7 +4,7 @@ part of 'settings_cubit.dart';
 abstract class SettingsState with _$SettingsState {
   const factory SettingsState({
     @Default(false) bool loading,
-    @Default('en') String languageCode,
+    String? languageCode,
     @Default([]) List<String> linkedProviders,
     @Default([]) List<CurrencyModel> availableCurrencies,
     CurrencyModel? selectedCurrency,

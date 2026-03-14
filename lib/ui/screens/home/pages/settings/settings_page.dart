@@ -19,7 +19,6 @@ import 'package:fymoney/ui/components/navigation/navigation_app_bar.dart';
 import 'package:fymoney/ui/screens/home/home_cubit.dart';
 import 'package:fymoney/ui/screens/home/pages/settings/settings_cubit.dart';
 import 'package:fymoney/ui/theme/colors.dart';
-import 'package:fymoney/ui/theme/fonts/fonts.dart';
 import 'package:fymoney/ui/theme/fonts/types.dart';
 import 'package:fymoney/ui/theme/icons/vector.dart';
 import 'package:fymoney/util/auth_util.dart';
@@ -39,9 +38,8 @@ class _SettingsPageState extends State<SettingsPage> with AfterLayoutMixin {
 
   @override
   void initState() {
-    super.initState();
     cubit.initLanguage();
-    cubit.initCurrencies();
+    super.initState();
   }
 
   @override
@@ -75,14 +73,17 @@ class _SettingsPageState extends State<SettingsPage> with AfterLayoutMixin {
                   child: SingleChildScrollView(
                     child: Column(
                       children: [
-                        SettingsRowLanguage(
-                          icon: Vector.icLanguage,
-                          text: Strings.language.tr,
-                          selectedOption: state.languageCode,
-                          onSelectedChanged: (lang) => cubit.emitLanguage(
-                            lang ?? TrSettings.fallbackLocale.languageCode,
-                          ),
-                        ),
+                        state.languageCode != null
+                            ? SettingsRowLanguage(
+                                icon: Vector.icLanguage,
+                                text: Strings.language.tr,
+                                selectedOption: state.languageCode,
+                                onSelectedChanged: (lang) => cubit.emitLanguage(
+                                  lang ??
+                                      TrSettings.fallbackLocale.languageCode,
+                                ),
+                              )
+                            : SizedBox(),
                         if (state.availableCurrencies.isNotEmpty &&
                             state.selectedCurrency != null)
                           SettingsRowCurrency(
@@ -151,6 +152,8 @@ class _SettingsPageState extends State<SettingsPage> with AfterLayoutMixin {
 
   @override
   FutureOr<void> afterFirstLayout(BuildContext context) {
+    cubit.initLanguage();
+    cubit.initCurrencies();
     cubit.getLinked();
   }
 }

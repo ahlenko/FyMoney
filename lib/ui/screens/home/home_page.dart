@@ -149,16 +149,54 @@ class _HomePageState extends State<HomePage> {
                                           TransactionType.spending,
                                     ))
                                   SegmentData(
-                                    value: 40,
-                                    color: transactionType.color,
+                                    value: state.transactions
+                                        .where(
+                                          (transaction) =>
+                                              transaction.typeIndex ==
+                                                  transactionType.index &&
+                                              transaction.type ==
+                                                  TransactionType.spending,
+                                        )
+                                        .fold(
+                                          0,
+                                          (sum, transaction) =>
+                                              sum + transaction.amount,
+                                        ),
+                                    transactionType: transactionType,
                                   ),
                               ],
                               selectedSegment: state.hoveredIndex,
+                              totalEarning:
+                                  state.transactions
+                                      .where(
+                                        (transaction) =>
+                                            transaction.type ==
+                                            TransactionType.earning,
+                                      )
+                                      .fold(
+                                        0,
+                                        (sum, transaction) =>
+                                            sum + transaction.amount,
+                                      ) /
+                                  100,
+                              totalSpending:
+                                  state.transactions
+                                      .where(
+                                        (transaction) =>
+                                            transaction.type ==
+                                            TransactionType.spending,
+                                      )
+                                      .fold(
+                                        0,
+                                        (sum, transaction) =>
+                                            sum + transaction.amount,
+                                      ) /
+                                  100,
                             ),
                           ),
                           spacerVertical(37.h),
                           Text(
-                            '8 травня - 11 травня',
+                            state.dateInterval ?? '',
                             style: Types.segoe40Regular,
                           ),
                           spacerVertical(43.h),
@@ -176,6 +214,30 @@ class _HomePageState extends State<HomePage> {
                                     onHoverStateChanged: cubit.changeHoverState,
                                     transactionType: transactionType,
                                     hoveredIndex: state.hoveredIndex,
+                                    percentage: state.transactions.isNotEmpty
+                                        ? state.transactions
+                                                  .where(
+                                                    (transaction) =>
+                                                        transaction.typeIndex ==
+                                                            transactionType
+                                                                .index &&
+                                                        transaction.type ==
+                                                            TransactionType
+                                                                .spending,
+                                                  )
+                                                  .fold(
+                                                    0,
+                                                    (sum, transaction) =>
+                                                        sum +
+                                                        transaction.amount,
+                                                  ) /
+                                              state.transactions.fold(
+                                                1,
+                                                (sum, transaction) =>
+                                                    sum + transaction.amount,
+                                              ) *
+                                              100
+                                        : 0,
                                   ),
                               ],
                             ),
@@ -194,16 +256,54 @@ class _HomePageState extends State<HomePage> {
                                           TransactionType.earning,
                                     ))
                                   SegmentData(
-                                    value: 40,
-                                    color: transactionType.color,
+                                    value: state.transactions
+                                        .where(
+                                          (transaction) =>
+                                              transaction.typeIndex ==
+                                                  transactionType.index &&
+                                              transaction.type ==
+                                                  TransactionType.earning,
+                                        )
+                                        .fold(
+                                          0,
+                                          (sum, transaction) =>
+                                              sum + transaction.amount,
+                                        ),
+                                    transactionType: transactionType,
                                   ),
                               ],
                               selectedSegment: state.hoveredIndex,
+                              totalEarning:
+                                  state.transactions
+                                      .where(
+                                        (transaction) =>
+                                            transaction.type ==
+                                            TransactionType.earning,
+                                      )
+                                      .fold(
+                                        0,
+                                        (sum, transaction) =>
+                                            sum + transaction.amount,
+                                      ) /
+                                  100,
+                              totalSpending:
+                                  state.transactions
+                                      .where(
+                                        (transaction) =>
+                                            transaction.type ==
+                                            TransactionType.spending,
+                                      )
+                                      .fold(
+                                        0,
+                                        (sum, transaction) =>
+                                            sum + transaction.amount,
+                                      ) /
+                                  100,
                             ),
                           ),
                           spacerVertical(37.h),
                           Text(
-                            '8 травня - 11 травня',
+                            state.dateInterval ?? '',
                             style: Types.segoe40Regular,
                           ),
                           spacerVertical(43.h),
@@ -221,6 +321,30 @@ class _HomePageState extends State<HomePage> {
                                     onHoverStateChanged: cubit.changeHoverState,
                                     transactionType: transactionType,
                                     hoveredIndex: state.hoveredIndex,
+                                    percentage: state.transactions.isNotEmpty
+                                        ? state.transactions
+                                                  .where(
+                                                    (transaction) =>
+                                                        transaction.typeIndex ==
+                                                            transactionType
+                                                                .index &&
+                                                        transaction.type ==
+                                                            TransactionType
+                                                                .earning,
+                                                  )
+                                                  .fold(
+                                                    0,
+                                                    (sum, transaction) =>
+                                                        sum +
+                                                        transaction.amount,
+                                                  ) /
+                                              state.transactions.fold(
+                                                1,
+                                                (sum, transaction) =>
+                                                    sum + transaction.amount,
+                                              ) *
+                                              100
+                                        : 0,
                                   ),
                               ],
                             ),
@@ -232,7 +356,7 @@ class _HomePageState extends State<HomePage> {
                 ),
 
                 Text(
-                  'Бюджет: 0,00 ${context.watch<AppSettingsCubit>().state.selectedCurrency?.symbol ?? ''}',
+                  '${Strings.budget.tr} ${(state.transactions.where((transaction) => transaction.type == TransactionType.earning).fold(0, (sum, transaction) => sum + transaction.amount) - state.transactions.where((transaction) => transaction.type == TransactionType.spending).fold(0, (sum, transaction) => sum + transaction.amount) / 100).toStringAsFixed(2)} ${context.watch<AppSettingsCubit>().state.selectedCurrency?.symbol ?? ''}',
                   style: Types.segoe55Regular,
                 ),
                 spacerVertical(27.h),

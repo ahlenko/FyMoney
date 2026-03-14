@@ -58,7 +58,6 @@ class Strings {
   static const String deleteAccount = 'deleteAccount';
   static const String changePassword = 'changePassword';
   static const String language = 'language';
-
   static const String currency = 'currency';
   static const String cancel = 'cancel';
   static const String confirmation = 'confirmation';
@@ -86,4 +85,5 @@ class Strings {
   static const String noEarningsFound = 'noEarningsFound';
   static const String addFirstSpending = 'addFirstSpending';
   static const String noSpendingsFound = 'noSpendingsFound';
+  static const String budget = 'budget';
 }

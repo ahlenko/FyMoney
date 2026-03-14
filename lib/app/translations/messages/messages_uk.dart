@@ -93,6 +93,7 @@ class MessagesUk extends Translations {
       Strings.noEarningsFound: '''Доходів не найдено''',
       Strings.addFirstSpending: '''Додати першу витрату''',
       Strings.noSpendingsFound: '''Витрат не найдено''',
-    },
+      Strings.budget: '''Бюджет:''',
+        },
   };
 }

@@ -23,8 +23,17 @@ class HomeCubit extends Cubit<HomeState> {
         TransactionsRepo.getTransactionsStream(state.selectInterval).listen((
           transactions,
         ) {
-          emit(state.copyWith(transactions: transactions));
+          emit(
+            state.copyWith(
+              transactions: transactions,
+              dateInterval: state.selectInterval.getDateInterval(),
+            ),
+          );
         });
+  }
+
+  setInterval() {
+    emit(state.copyWith(dateInterval: state.selectInterval.getDateInterval()));
   }
 
   cancelTransactionsStream() {

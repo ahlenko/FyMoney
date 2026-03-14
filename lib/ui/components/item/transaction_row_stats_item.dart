@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:fymoney/data/model/transaction_type_model.dart';
-import 'package:fymoney/ui/theme/fonts/fonts.dart';
 import 'package:fymoney/ui/theme/fonts/types.dart';
 import 'package:fymoney/util/screen_util.dart';
 import 'package:get/utils.dart';
@@ -11,11 +10,13 @@ class TransactionRowStatsItem extends StatelessWidget {
   final TransactionTypeModel transactionType;
   final Function(int?) onHoverStateChanged;
   final int? hoveredIndex;
+  final double percentage;
   const TransactionRowStatsItem({
     super.key,
     required this.onHoverStateChanged,
     required this.transactionType,
     required this.hoveredIndex,
+    required this.percentage,
   });
 
   @override
@@ -51,7 +52,7 @@ class TransactionRowStatsItem extends StatelessWidget {
                 ),
                 spacerHorizontal(46.w),
                 Text(
-                  "22%",
+                  "${percentage.toStringAsFixed(1)}%",
                   style: Types.segoe55Regular.copyWith(
                     color: transactionType.color,
                   ),

@@ -4,6 +4,7 @@ import 'package:fymoney/app/app.dart';
 import 'package:fymoney/app/cubits/settings/app_settings_cubit.dart';
 import 'package:fymoney/data/hive/model/currency_model.dart';
 import 'package:fymoney/data/hive/repo/hive_app.dart';
+import 'package:fymoney/ui/screens/home/home_cubit.dart';
 import 'package:fymoney/util/asset_util.dart';
 import 'package:fymoney/util/auth_util.dart';
 import 'package:injectable/injectable.dart';
@@ -16,7 +17,8 @@ class SettingsCubit extends Cubit<SettingsState> {
   SettingsCubit() : super(SettingsState());
 
   initLanguage() async {
-    emit(state.copyWith(languageCode: await HiveApp.getLanguage()));
+    final lang = await HiveApp.getLanguage();
+    emit(state.copyWith(languageCode: lang));
   }
 
   initCurrencies() async {
@@ -33,8 +35,9 @@ class SettingsCubit extends Cubit<SettingsState> {
 
   emitLanguage(String language) async {
     emit(state.copyWith(languageCode: language));
-    await HiveApp.setLanguage(state.languageCode);
-    appContext.read<AppSettingsCubit>().toggleLanguage(state.languageCode);
+    await HiveApp.setLanguage(state.languageCode!);
+    appContext.read<AppSettingsCubit>().toggleLanguage(state.languageCode!);
+    appContext.read<HomeCubit>().setInterval();
   }
 
   emitCurrency(CurrencyModel? currency) async {
@@ -42,5 +45,6 @@ class SettingsCubit extends Cubit<SettingsState> {
     emit(state.copyWith(selectedCurrency: currency));
     await HiveApp.setCurrency(state.selectedCurrency!);
     appContext.read<AppSettingsCubit>().toggleCurrency(state.selectedCurrency!);
+    appContext.read<HomeCubit>().setTransactionsStream();
   }
 }

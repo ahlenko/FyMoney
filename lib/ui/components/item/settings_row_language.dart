@@ -12,7 +12,7 @@ class SettingsRowLanguage extends StatelessWidget {
   final String icon;
   final Color? tint;
   final String text;
-  final String selectedOption;
+  final String? selectedOption;
   final Function(String?) onSelectedChanged;
 
   const SettingsRowLanguage({

@@ -227,7 +227,10 @@ class _HistoryTransactionPageState extends State<HistoryTransactionPage> {
                           ),
                         ),
                       ),
-                      Text('8 травня - 11 травня', style: Types.segoe40Regular),
+                      Text(
+                        context.watch<HomeCubit>().state.dateInterval ?? '',
+                        style: Types.segoe40Regular,
+                      ),
                       GestureDetector(
                         onTap: () => cubit.setSortByAmount(true),
                         child: Text(
