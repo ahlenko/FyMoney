@@ -356,7 +356,7 @@ class _HomePageState extends State<HomePage> {
                 ),
 
                 Text(
-                  '${Strings.budget.tr} ${(state.transactions.where((transaction) => transaction.type == TransactionType.earning).fold(0, (sum, transaction) => sum + transaction.amount) - state.transactions.where((transaction) => transaction.type == TransactionType.spending).fold(0, (sum, transaction) => sum + transaction.amount) / 100).toStringAsFixed(2)} ${context.watch<AppSettingsCubit>().state.selectedCurrency?.symbol ?? ''}',
+                  '${Strings.budget.tr} ${((state.transactions.where((transaction) => transaction.type == TransactionType.earning).fold(0, (sum, transaction) => sum + transaction.amount) / 100) - (state.transactions.where((transaction) => transaction.type == TransactionType.spending).fold(0, (sum, transaction) => sum + transaction.amount) / 100)).toStringAsFixed(2)} ${context.watch<AppSettingsCubit>().state.selectedCurrency?.symbol ?? ''}',
                   style: Types.segoe55Regular,
                 ),
                 spacerVertical(27.h),
